@@ -14,4 +14,16 @@ class Cubo
 		
 };
 
+
+void Cubo::setMatriz(int** valor)
+{
+	Cubo::matriz=valor;
+}
+
+int **Cubo::getMatriz()
+{
+	return matriz;
+}
+
+
 #endif

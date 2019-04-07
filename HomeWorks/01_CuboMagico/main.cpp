@@ -5,16 +5,6 @@
 #include "Cubo.h"
 #define dim 20 
 
-void Cubo::setMatriz(int** valor)
-{
-	Cubo::matriz=valor;
-}
-
-int **Cubo::getMatriz()
-{
-	return matriz;
-}
-
 void Cubo::proceder(int n)
 {  
 	int key,i,j,k,r;
