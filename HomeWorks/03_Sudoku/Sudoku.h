@@ -4,13 +4,18 @@
 class Sudoku
 {
 	public:
-		bool FindUnassignedLocation(int grid[N][N], int &row, int &col); 
-		bool isSafe(int grid[N][N], int row, int col, int num); 
-		bool SolveSudoku(int grid[N][N]);
-		bool UsedInRow(int grid[N][N], int row, int num);
-		bool UsedInCol(int grid[N][N], int col, int num);
-		bool UsedInBox(int grid[N][N], int boxStartRow, int boxStartCol, int num);
-		void printGrid(int grid[N][N]);
+		
+	int principal();
+	int buscar_num(int numero,int** arreglo,int tam,int j,int h);
+	int moverx(int teclado,int a);
+	int movery(int teclado,int b);
+	void pintar(int teclado);
+	void mundo(int opcion,int opcionn);
+	void solucion(int** arreglo);
+	void gotoxy(int x,int y);
+	void pintar();
+	void menu();
+	int condicion(int b,int c);	
 	protected:
 };
 

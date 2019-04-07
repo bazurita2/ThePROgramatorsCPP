@@ -1,107 +1,180 @@
 #include <stdio.h>
+#include <time.h>
+#include <windows.h>
+#include <conio.h>
 #include <stdlib.h>
-#define UNASSIGNED 0
-#define N 9
 #include "Sudoku.h"
 
-bool Sudoku::SolveSudoku(int grid[N][N])
-{
-    int row, col;
-    if (!Sudoku::FindUnassignedLocation(grid, row, col))
-       return true;
+char **mapa;
+int **arreglo1;
+int **arreglo2;
+int **vista2;
 
-    for (int num = 1; num <= 9; num++)
-    {
-        if (Sudoku::isSafe(grid, row, col, num))
-        {
-            grid[row][col] = num;
-            if (SolveSudoku(grid))
-                return true;
-            grid[row][col] = UNASSIGNED;
-        }
-    }
-    return false;
-}
-
-bool Sudoku::FindUnassignedLocation(int grid[N][N], int &row, int &col)
-{
-    for (row = 0; row < N; row++)
-        for (col = 0; col < N; col++)
-            if (grid[row][col] == UNASSIGNED)
-                return true;
-    return false;
-}
-
-
-bool Sudoku::UsedInRow(int grid[N][N], int row, int num)
-{
-    for (int col = 0; col < N; col++)
-        if (grid[row][col] == num)
-            return true;
-    return false;
-}
-bool Sudoku::UsedInCol(int grid[N][N], int col, int num)
-{
-    for (int row = 0; row < N; row++)
-        if (grid[row][col] == num)
-            return true;
-    return false;
-}
-
-bool Sudoku::UsedInBox(int grid[N][N], int boxStartRow, int boxStartCol, int num)
-{
-    for (int row = 0; row < 3; row++)
-        for (int col = 0; col < 3; col++)
-            if (grid[row+boxStartRow][col+boxStartCol] == num)
-                return true;
-    return false;
-}
-
-bool Sudoku::isSafe(int grid[N][N], int row, int col, int num)
-{
-
-    return !UsedInRow(grid, row, num) &&
-           !UsedInCol(grid, col, num) &&
-           !UsedInBox(grid, row - row%3 , col - col%3, num)&&
-            grid[row][col]==UNASSIGNED;
-}
-
-void Sudoku::printGrid(int grid[N][N])
-{
-    for (int row = 0; row < N; row++)
-    {
-       for (int col = 0; col < N; col++)
-             printf("%2d", grid[row][col]);
-        printf("\n");
-    }
-}
+int bandera=0,teclado=0,b,c,contadorx=0,contadory=0,xx=5,yy=5,jota,fstop=0,aleatorio,l=0,i,conta=0,conta2=0;
+int opcion,opcionn,contadoryy,contadorxx;
 
 int main()
-{
-	Sudoku sudoku=Sudoku();
-    int **cubo;
-    cubo=(int**)malloc(N*sizeof(int*));
-
-    for(int i=0; i<N; i++)
-    {
-        *(cubo+i)=(int*)malloc(N*sizeof(int));
+{	
+	mapa=(char**)malloc(9*sizeof(char*));
+	arreglo1=(int**)malloc(9*sizeof(int*));
+	arreglo2=(int**)malloc(9*sizeof(int*));
+	vista2=(int**)malloc(9*sizeof(int*));
+	
+	for(int i=0; i<9; i++)
+	{
+		*(mapa+i)=(char*)malloc(9*sizeof(char));
+		*(arreglo1+i)=(int*)malloc(9*sizeof(int));
+		*(arreglo2+i)=(int*)malloc(9*sizeof(int));	
+		*(vista2+i)=(int*)malloc(9*sizeof(int));	
 	}
+	Sudoku sudoku=Sudoku();
 
- 	 		cubo  = {{3, 0, 6, 5, 0, 8, 4, 0, 0},
-                      {5, 2, 0, 0, 0, 0, 0, 0, 0},
-                      {0, 8, 7, 0, 0, 0, 0, 3, 1},
-                      {0, 0, 3, 0, 1, 0, 0, 8, 0},
-                      {9, 0, 0, 8, 6, 3, 0, 0, 5},
-                      {0, 5, 0, 0, 9, 0, 6, 0, 0},
-                      {1, 3, 0, 0, 0, 0, 2, 5, 0},
-                      {0, 0, 0, 0, 0, 0, 0, 7, 4},
-                      {0, 0, 5, 2, 0, 6, 3, 0, 0}};
-    if (sudoku.SolveSudoku(cubo) == true)
-         sudoku.printGrid(cubo);
-         free(cubo);
-    else
-         printf("No solution exists");
-
-    return 0;
+	while(bandera==0)
+	{
+		bandera=0;teclado=0;contadorx=0;contadory=0;xx=5;yy=5;jota=0;fstop=0;aleatorio=0;opcion=0;opcionn=0;
+		sudoku.menu();
+		sudoku.solucion(arreglo1);
+		sudoku.mundo(opcion,opcionn);
+		bandera=sudoku.principal();
+	}
+}
+int Sudoku::principal()
+{
+	gotoxy(xx,yy);
+	while(teclado!=27 && teclado!=120)
+		{
+		   				teclado=getch();
+					    if(teclado==97 || teclado==100)
+					    {
+					    		xx=moverx(teclado,xx);
+					    		gotoxy(xx,yy);
+					    		if(teclado==100){contadorx=contadorx+1;}
+					    		else if(teclado==97){contadorx=contadorx-1;}
+								if(contadorx>8){contadorx=0;}
+							    if(contadorx<0){contadorx=8;}
+					    }
+					    else if(teclado==119 || teclado==115)
+					    {
+					    		yy=movery(teclado,yy);
+					    		gotoxy(xx,yy);
+					    		if(teclado==115){contadory=contadory+1;}
+					    		else if(teclado==119){contadory=contadory-1;}
+					    		if(contadory>8){contadory=0;}
+							    if(contadory<0){contadory=8;}
+					    }
+						if((teclado==49||teclado==50||teclado==51||teclado==52||teclado==53||
+							teclado==54||teclado==55||teclado==56||teclado==57) && mapa[contadory][contadorx]=='°')
+						{
+							if(teclado==49)jota=1;
+							if(teclado==50)jota=2;
+							if(teclado==51)jota=3;
+							if(teclado==52)jota=4;
+							if(teclado==53)jota=5;
+							if(teclado==54)jota=6;
+							if(teclado==55)jota=7;
+							if(teclado==56)jota=8;
+							if(teclado==57)jota=9;
+							fstop=0;
+							fstop=buscar_num(jota,arreglo2,9,contadory,contadorx);
+							arreglo2[contadory][contadorx]=jota;
+							if(fstop==1){pintar(2);}
+							else{pintar(1);}
+							printf("%d",jota);
+							gotoxy(xx,yy);	
+						}	
+						if(teclado==8 && mapa[contadory][contadorx]=='°')
+						{
+							pintar(3);
+							gotoxy(xx,yy);
+							printf("°");
+							mapa[contadory][contadorx]='°';
+							arreglo2[contadory][contadorx]=0;
+							gotoxy(xx,yy);		
+						}					
+		}
+		if(teclado==120)
+		{
+			system("CLS");
+			return 0;	
+		}
+		else
+		{
+			gotoxy(5,27);
+			return 1;
+		}
 }
 
+int Sudoku::moverx(int teclado,int x) 
+{                                                        
+						if(teclado==97)
+						{
+							x-=6;
+							if(x==23){x=17;}
+							else if(x==47){x=41;}
+							else if(x<5){x=65;}
+						}
+						if(teclado==100)
+						{
+							x+=6;
+							if(x==23){x=29;}
+							else if(x==47){x=53;}
+							else if(x>65){x=5;}
+						}
+return	x;
+}
+
+int Sudoku::movery(int teclado,int y) 
+{
+						if(teclado==119)
+						{
+								y-=2;
+								if(y==11){y=9;}
+								else if(y==19){y=17;}
+								else if(y<5){y=25;}
+						}
+						else if(teclado==115)
+						{
+								y+=2;
+								if(y==11){y=13;}
+								else if(y==19){y=21;}
+								else if(y>25){y=5;}	
+						}
+return	y;
+}
+void Sudoku::gotoxy(int x,int y)
+{
+	HANDLE hCon; 
+	hCon=GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD dwPos;
+	dwPos.X=x;
+	dwPos.Y=y;
+	SetConsoleCursorPosition(hCon,dwPos); 
+}
+void Sudoku::mundo(int opcion,int opcionn)
+{
+pintar(3);
+printf("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° SUDOKU °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n \n");
+srand(time(NULL));
+for(b=0;b<9;b++)
+{
+	printf("\n \n");
+	if(b==3 || b==6){printf("---------------------------------------------------------------------\n\n");}
+	for(c=0;c<9;c++)
+	{
+		if(c==3 || c==6){printf("     |");}
+		if(opcion!=1)
+		{
+			*(*(arreglo2+b)+c)=0;
+			*(*(mapa+b)+c)='°';
+
+			if(rand()%(opcionn+1)==1)
+			{
+				printf("%6d",*(*(arreglo1+b)+c));
+				*(*(arreglo2+b)+c)=*(*(arreglo1+b)+c);
+				*(*(mapa+b)+c)='|';
+			}
+			else{printf("%6c",mapa[b][c]);}	
+		}
+		else*(*(mapa+b)+c)='|'; printf("%6d",*(*(arreglo1+b)+c));}
+	}
+}						
