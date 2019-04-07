@@ -82,4 +82,12 @@ void Matriz::llenar(int n,int **matriz){
     printf("\n");
 }
 
+int **Matriz::getMatriz(){
+    return matriz;
+}
+
+void Matriz::setMatriz(int **matriz){
+    matriz = matriz;
+}
+
 #endif
