@@ -27,3 +27,15 @@ void Vector::qs(int* lista,int limite_izq,int limite_der){
 	    if(limite_izq<der){qs(lista,limite_izq,der);}
 	    if(limite_der>izq){qs(lista,izq,limite_der);}
 	}
+
+void Vector::quicksort(int* lista,int n){
+	    qs(lista,0,n-1);
+	    
+	    printf("Lista Ordenada \n");
+	    for (int i=0; i<5; i++) 
+		{
+	        printf("[%d]",*(lista+i));
+	        if(i<5-1)
+            printf(",");
+    	}
+}

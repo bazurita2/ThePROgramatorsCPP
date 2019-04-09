@@ -22,5 +22,10 @@ int main()
 		{
 	        printf("[%d]",*(array+i));
 	    }
+            printf("\n");
+	    Vector vector=Vector();
+	    vector.quicksort(array,5);
+		free(array);	
+	    return 0;
 
 }
