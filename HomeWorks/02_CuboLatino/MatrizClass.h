@@ -1,93 +1,95 @@
-#ifndef MATRIZCLASS_H_INCLUDED
-#define MATRIZCLASS_H_INCLUDED
-
+//#ifndef CUADRADOL_H
+#define CUADRADOL_H
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <iostream>
 
-class Matriz{
+using namespace std;
+
+class CuadradoL{
     private:
-    	int n;
-    	int **matriz;
+        int dimension;
+        int i,j,k;
+
     public:
-        Matriz();
-        int **getMatriz();
-        void setMatriz(int **matriz);
-        void llenar(int n,int **matriz);
-        void imprimir(int n,int **matriz);
-        bool comprobarCuadrado(int n,int **matriz);
+        CuadradoL();
+
+        void imprimir(CuadradoL );
+
+        int **getCuadradoLMatriz();
+        int getCuadradoLDimension();
+        int getCuadradoI();
+        int getCuadradoJ();
+        int getCuadradoK();
+        void setCuadradoLMatriz(int **);
+        void setCuadradoLDimension(int);
+        void setCuadradoI(int);
+        void setCuadradoJ(int);
+        void setCuadradoK(int);
+
 };
 
-Matriz::Matriz(){
-
+CuadradoL::CuadradoL(){
 }
 
-bool Matriz::comprobarCuadrado(int n,int **matriz){
-    int numero=0;
-    int suma1[n];
-    int suma2[n];
-    bool comprob=true;
-    numero = (n*(n*n+1))/2;
-    printf("\nLa suma de la fila y columna debe ser: %d\n",numero);
-    for(int i=0;i<n;i++){
-    		suma1[i]=0;
-    }
-    for(int i=0;i<n;i++){
-    		suma2[i]=0;
-    }
-
-	for(int i=0;i<n;i++){
-    	for (int j=0;j<n;j++){
-    		suma1[i]+=(*(*(matriz+i)+j));
-		}
-		if(suma1[i] == numero){
-		}else{
-        	comprob=false;
-		}
-    }
-
-    printf("\n");
-
-    for(int i=0;i<n;i++){
-    	for (int j=0;j<n;j++){
-    		suma2[i]+=(*(*(matriz+j)+i));
-		}
-		if(suma1[i] == numero){
-		}else{
-        	comprob=false;
-		}
-    }
-
-
-    return comprob;
+int CuadradoL::getCuadradoLDimension(){
+    return dimension;
 }
 
-void Matriz::imprimir(int n,int **matriz){
-    for(int i=0;i<n;i++){
-    	for (int j=0;j<n;j++){
-    		printf("\t%d\t",*(*(matriz+i)+j));
-		}
-		printf("\n");
-    }
+int CuadradoL::getCuadradoI(){
+    return i;
 }
 
-void Matriz::llenar(int n,int **matriz){
-
-    for(int i=0;i<n;i++){
-    	for (int j=0;j<n;j++){
-    		printf("\tIngrese el valor [%d][%d]:",i+1,j+1);
-		    scanf("%d",&(*(*(matriz+i)+j)));
-		}
-    }
-    printf("\n");
+int CuadradoL::getCuadradoJ(){
+    return j;
 }
 
-int **Matriz::getMatriz(){
-    return matriz;
+int CuadradoL::getCuadradoK(){
+    return k;
 }
 
-void Matriz::setMatriz(int **matriz){
-    matriz = matriz;
+void CuadradoL::setCuadradoLDimension(int dimension){
+    this->dimension=dimension;
 }
 
-#endif
+void CuadradoL::setCuadradoI(int i){
+    this->i=i;
+}
+
+void CuadradoL::setCuadradoJ(int j){
+    this->j=j;
+}
+
+void CuadradoL::setCuadradoK(int k){
+    this->k=k;
+}
+
+
+void CuadradoL::imprimir(CuadradoL c){
+
+
+
+    for(c.i=1;c.i<=c.dimension;c.i++)
+        {
+            for(c.j=c.i,c.k=1; c.k <=c.dimension ; c.k++,c.j++)
+            {
+                if (c.j>c.dimension)
+                {
+                        for(c.j=1; c.k <= c.dimension ; c.k++,c.j++)
+                        {
+                              cout<<"\t "<<c.j;
+                        }
+                }
+
+                else
+                    cout<<"\t "<<c.j;
+            }
+        cout<<endl;
+        }
+    system ("pause");
+}
+
+
+
+
+

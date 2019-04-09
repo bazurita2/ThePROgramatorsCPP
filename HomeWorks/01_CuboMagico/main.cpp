@@ -19,8 +19,12 @@ int main()
 	}
 
    system("cls");
-   printf("Digite un valor que sea de preferencia impar: ");
+
+   do{
+   printf("Digite un valor impar: ");
    scanf("%d",&num);
+   }while(num<=1||(num%2==0));
+
    c.setN(num);
    printf("Cubo magico:\n\n");
    c.setMatriz(cubo);
