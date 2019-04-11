@@ -1,0 +1,7 @@
+﻿  Source.cpp
+C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Ahorcado\Source.cpp(37): warning C4838: la conversión de 'USHORT' en 'SHORT' requiere una conversión de restricción
+C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Ahorcado\Source.cpp(91): warning C4101: 'a': variable local sin referencia
+C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Ahorcado\Source.cpp(91): warning C4101: 'b': variable local sin referencia
+C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Ahorcado\Source.cpp(92): warning C4101: 'c': variable local sin referencia
+C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Ahorcado\Source.cpp(92): warning C4101: 'd': variable local sin referencia
+  Ahorcado.vcxproj -> C:\Users\papic\Documents\SEBASTIAN\ESPE\DataEstructure\GITHUB\Deberes-Talleres-Estr.Datos3828\Ahorcado\Debug\Ahorcado.exe
