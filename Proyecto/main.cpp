@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <Diccionario.h>
+#include "Diccionario.h"
 #include <stdlib.h>
 
 using namespace std;

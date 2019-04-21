@@ -1,4 +1,4 @@
-#include <Diccionario.h>
+#include "Diccionario.h"
 
 Diccionario::Diccionario(){
 
