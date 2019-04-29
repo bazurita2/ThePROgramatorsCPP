@@ -3,7 +3,7 @@
 #include <time.h>
 #include <ctime>
 
-#define dim 100
+#define dim 10
 
 using namespace std;
 
@@ -49,7 +49,7 @@ void Gnome::gnomeSort(int *vector,int position,int auxiliar){
 }
 
 int Gnome::random(){
-	return rand()%(100-1);
+	return rand()%(100000-1);
 }
 
 

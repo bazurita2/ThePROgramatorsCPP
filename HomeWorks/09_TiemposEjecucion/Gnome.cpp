@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include "Gnome.h"
-#define dim 100
+#define dim 10
 
 using namespace std;
 
@@ -27,7 +27,7 @@ int main(){
     }
     
 
-    printf("\nEl tiempo de ejecucion es de: %f ms",((float)t1-t0)/CLOCKS_PER_SEC);
-
+    printf("\nEl tiempo de ejecucion es de: %f ms",((double)(t1-t0))/CLOCKS_PER_SEC);
+    delete(vector);
     return 0;
 }
