@@ -3,7 +3,7 @@
 #include <time.h>
 #include <ctime>
 
-#define dim 5
+#define dim 100
 
 using namespace std;
 
@@ -23,11 +23,11 @@ class Gnome{
 
 void Gnome::ask(int *vector){
 	srand(time(NULL)); 
-     for(int i=0;i<5;i++){
+     for(int i=0;i<dim;i++){
 	 *(vector+i)= random();
     }
     cout<<"Mostrar vector desordenado: "<<endl;
-     for(int i=0;i<5;i++){
+     for(int i=0;i<dim;i++){
 	 cout<<" ["<<*(vector+i)<<"]";
     }
 }
@@ -43,6 +43,7 @@ void Gnome::gnomeSort(int *vector,int position,int auxiliar){
                       *(vector+position) = auxiliar;
                       auxiliar=0;
                       gnomeSort(vector,position-1,auxiliar);
+
                 }
         }
 }
