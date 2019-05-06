@@ -13,6 +13,7 @@
 #define ARRIBA 72
 #define ABAJO 80
 #define ENTER 13
+#define AYUDA 112
 
 using namespace std;
 
@@ -182,7 +183,10 @@ void menuDinamico(){
 					case 1:
 						system("cls");
 						cout<<"Ayuda"<<endl;
-						//Aqui van las instrucciones
+						system("ayuda.chm");
+						system("pause");
+						system("cls");
+						menuDinamico();
 						break;
 					case 2:
 						system("cls");
@@ -191,6 +195,14 @@ void menuDinamico(){
 						break;
 				}
 
+				break;
+				case 59:
+						system("cls");
+						cout<<"Ayuda"<<endl;
+						system("ayuda.chm");
+						system("pause");
+						system("cls");
+						menuDinamico();
 				break;
 		}
 	}
