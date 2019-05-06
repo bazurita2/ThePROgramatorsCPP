@@ -7,7 +7,12 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <time.h>
+
 #include "Diccionario.h"
+
+#define ARRIBA 72
+#define ABAJO 80
+#define ENTER 13
 
 using namespace std;
 
@@ -17,19 +22,10 @@ class Archivo{
         void lectura();
         void aniadir(Diccionario);
 		void buscar();
-	    void sonido(char *);
 };
 
 Archivo::Archivo(){
 
-}
-
-void Archivo::sonido(char *palabra){
-	char *soundfile;
-	soundfile=(char*)malloc(20*sizeof(char));
-	soundfile=palabra;
-//	cout<<PlaySound((LPCSTR)soundfile,NULL,SND_FILENAME|SND_ASYNC)<<endl;
-	
 }
 
 void Archivo::lectura(){
@@ -66,26 +62,20 @@ void Archivo::buscar(){
     fstream archivo;
     string linea1,linea2,linea3;
     int res=0;
+    string wav=".wav";
     char *busca;
-    char *wav;
     char *unir;
-    
-    busca=(char*)malloc(20*sizeof(char));
-    wav=(char*)malloc(20*sizeof(char));
-    unir=(char*)malloc(20*sizeof(char));
-    
-    wav=".wav";
-    
+    char *cadena;
+    char *soundfile;
     cout<<"Digite la palabra a buscar: ";
     cin>>busca;
-
-    
+    cadena=(char*)wav.c_str();
     strcpy(unir,busca);
-    strcat(unir,wav);
+    strcat(unir,cadena);
+    cout<<unir;
+//    cout<<PlaySound((LPCSTR)unir,NULL,SND_FILENAME|SND_ASYNC)<<endl;
     
-	sonido(unir);
-	
-  
+    
     if(!archivo.is_open()){
         archivo.open("diccionario.txt",ios::in);
     }
@@ -110,36 +100,104 @@ void Archivo::buscar(){
 	agregarTxtLog.close();
 }
 
-int main(){
-    Archivo arch = Archivo();
+//Funcion para ubicar la posicion del Cursor(Gotoxy)
+//Lee posiciones con espacios
+void gotoxy(int x,int y){
+	HANDLE hcon;
+	hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD dwPos;
+	dwPos.X = x;
+	dwPos.Y= y;
+	SetConsoleCursorPosition(hcon,dwPos);
+}
+
+void menu(){
+	gotoxy(0,3);
+	cout<<"\t ********        *  *********  *********  *  *********  *      *  *********  *********   *  *********"<<endl
+	    <<"\t *        *      *  *          *          *  *       *  * *    *  *       *  *        *  *  *       *"<<endl
+		<<"\t *          *    *  *          *          *  *       *  * *    *  *       *  *        *  *  *       *"<<endl
+		<<"\t *           *   *  *          *          *  *       *  *  *   *  *       *  *        *  *  *       *"<<endl
+		<<"\t *            *  *  *          *          *  *       *  *  *   *  *********  *********   *  *       *"<<endl
+		<<"\t *           *   *  *          *          *  *       *  *   *  *  *       *  *     *     *  *       *"<<endl
+		<<"\t *          *    *  *          *          *  *       *  *   *  *  *       *  *      *    *  *       *"<<endl
+		<<"\t *        *      *  *          *          *  *       *  *    * *  *       *  *       *   *  *       *"<<endl
+		<<"\t ********        *  *********  *********  *  *********  *      *  *       *  *        *  *  *********"<<endl;
+	cout<<endl<<endl;
+	cout<<"\t\t\t\t ******   ******                 ******  *     *"<<endl
+	    <<"\t\t\t\t *       *            *    *     *       * *   *"<<endl
+	    <<"\t\t\t\t ******   ******     ********    ******  *  *  *"<<endl
+	    <<"\t\t\t\t *              *     *    *     *       *   * *"<<endl
+	    <<"\t\t\t\t ******   ******                 ******  *     *"<<endl;
+    gotoxy(47,21);
+	cout<<"\t\tMENU"<<endl;
+	gotoxy(47,23);
+	cout<<"1. Buscar una palabra";
+	gotoxy(47,24);
+	cout<<"2. Ayuda";
+	gotoxy(47,25);
+	cout<<"3. Salir";
+}
+
+//Para seleccionar opcion
+void Selector(int i){
+	gotoxy(45,23+i);
+}
+
+void menuDinamico(){
+	Archivo arch = Archivo();
     Diccionario di = Diccionario();
+	int i = 0;
+	char tecla;
+	menu();
+	Selector(i);
+	while(true){
+		tecla = getch();
+		switch(tecla){
+			case ARRIBA:
+				i--;
+				if(i < 0){
+					i = 2;
+				}
+				Selector(i);
+				break;
+			case ABAJO:
+				i++;
+				if(i == 0){
+					i = 1;
+				}
+				if(i == 3){
+					i = 0;
+				}
+				Selector(i);
+				break;
+			case ENTER:
+				Selector(5);
+				switch(i){
+					//Aqui va las instrucciones de las opciones
+					case 0:
+						system("cls");
+						cout<<"Buscar una palabra"<<endl;
+						arch.buscar();
+						break;
+					case 1:
+						system("cls");
+						cout<<"Ayuda"<<endl;
+						//Aqui van las instrucciones
+						break;
+					case 2:
+						system("cls");
+						cout<<"Salir"<<endl;
+						exit(0);
+						break;
+				}
 
+				break;
+		}
+	}
+}
 
-    int op;
-
-    do{
-        cout<<"Digite una opcion"<<endl;
-        cout<<" 1) agregar"<<endl;
-        cout<<" 2) leer"<<endl;
-        cout<<" 3) buscar"<<endl;
-        cout<<" 4) Salir"<<endl;
-
-        cin>>op;
-        system("cls");
-    switch(op){
-        case 1: 
-		arch.aniadir(di);
-        break;
-        case 2: arch.lectura();
-        break;
-        case 3: arch.buscar();
-		system("pause");
-        break;
-
-    }
-
-    }while(op!=4);
-
-return 0;
-
+int main(){
+    menuDinamico();
+	system("pause");
+	return 0;
 }
