@@ -1,0 +1,39 @@
+
+	Palabra: casa
+	Definicion: house
+
+	Palabra: gato
+	Definicion: cat
+
+	Palabra: luz
+	Definicion: light
+
+	Palabra: carro
+	Definicion: car
+
+	Palabra: television
+	Definicion: televition
+
+	Palabra: manzana
+	Definicion: apple
+
+	Palabra: mujer
+	Definicion: woman
+
+	Palabra: arbol
+	Definicion: tree
+
+	Palabra: manute
+	Definicion: manu
+
+	Palabra: salado
+	Definicion: salty
+
+	Palabra: rico
+	Definicion: rich
+
+	Palabra: pobre
+	Definicion: poor
+
+	Palabra: zapatos
+	Definicion: shoes
