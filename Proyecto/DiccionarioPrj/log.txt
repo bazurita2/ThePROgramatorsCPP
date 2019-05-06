@@ -72,3 +72,27 @@ Se busco la palabra: aire en la fecha: Mon May 06 09:49:01 2019
 
 Se busco la palabra: aire en la fecha: Mon May 06 09:49:24 2019
 
+Se busco la palabra: aire en la fecha: Mon May 06 09:52:39 2019
+
+Se busco la palabra: aire en la fecha: Mon May 06 09:52:52 2019
+
+Se busco la palabra: aire en la fecha: Mon May 06 09:54:13 2019
+
+Se busco la palabra: aire en la fecha: Mon May 06 09:55:25 2019
+
+Se busco la palabra: aire en la fecha: Mon May 06 10:11:14 2019
+
+Se busco la palabra: air en la fecha: Mon May 06 10:11:41 2019
+
+Se busco la palabra: airesito en la fecha: Mon May 06 10:33:59 2019
+
+Se busco la palabra: aire en la fecha: Mon May 06 10:34:07 2019
+
+Se busco la palabra: carro en la fecha: Mon May 06 11:07:21 2019
+
+Se busco la palabra: amor en la fecha: Mon May 06 11:07:28 2019
+
+Se busco la palabra: sapo en la fecha: Mon May 06 11:07:50 2019
+
+Se busco la palabra: mujer en la fecha: Mon May 06 11:08:02 2019
+

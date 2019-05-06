@@ -1,3 +1,8 @@
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURA DE DATOS
+//AUTORES: BRYAN ZURITA, VICTOR JIMENEZ, SEBASTIAN LANDAZURI
+//FECHA: 6/5/2019
+
 #include <conio.h>
 #include <fstream>
 #include <stdio.h>
@@ -9,6 +14,7 @@
 #include <time.h>
 
 #include "Diccionario.h"
+#include "Busqueda.h"
 
 #define ARRIBA 72
 #define ABAJO 80
