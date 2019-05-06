@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -57,8 +58,12 @@ Mochila::Mochila(int n,int m,int *p,int *b,int **A){
 
 void Mochila::pesoP(){
     for(int q=1;q<n;++q){
- 	cout<<"Ingrese peso para p["<<q<<"] : "<<endl;
- 	cin>>*(p+q);
+ 	
+ 	do{
+ 		cout<<"Ingrese peso para p["<<q<<"] : "<<endl;
+ 		cin>>*(p+q);
+	 }while(*(p+q)<=0);
+ 	
  }
  	fflush(stdin);
  }
@@ -66,8 +71,11 @@ void Mochila::pesoP(){
 
 void Mochila::beneficioB(){
       for(int q=1;q<n;++q){
- 	cout<<"Ingrese beneficio para b["<<q<<"] : "<<endl;
- 	cin>>*(b+q);
+      	do{
+      		cout<<"Ingrese beneficio para b["<<q<<"] : "<<endl;
+			
+			cin>>*(b+q);
+	 }while(*(b+q)<=0);
  }
  	fflush(stdin);
  }
@@ -117,8 +125,11 @@ aniadir3(V);
 int main()
 {
  int n,m;
+ do{
  cout<<"Ingrese n y m de la matriz (n=cantidad de objetos)y (m=peso max): "<<endl;
- cin>>n>>m;
+ cin>>n>>m;		
+	 }while(n<1 && m<1);
+ 
  n=n+1;
  m=m+1;
 

@@ -1,7 +1,13 @@
+	0 	0 	0 
+	0 	0 	2 
+	0 	0 	2 
 
-	0 	0 	0 	0 	0 
-	0 	1 	1 	1 	1 
-	0 	1 	2 	3 	3 
-	0 	1 	2 	3 	4 
+El mayor beneficio es: 2
+	0 	0 	0 
+	0 	0 	2 
+	0 	0 	2 
 
-El mayor beneficio es: 4
+El mayor beneficio es: 2
+	0 	0 	0 
+
+El mayor beneficio es: 0

@@ -1,4 +1,6 @@
 #include <iostream>
+
+
 using namespace std;
 
 class Hanoi{
@@ -8,12 +10,11 @@ class Hanoi{
 
 void Hanoi::solucion(int num,char A,char C,char B){
     if(num==1){
-            cout<<"Mueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
+            cout<<"\tMueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
              
-    }
-    else{
+    }else{
         solucion(num-1,A,B,C);
-        cout<<"Mueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
+        cout<<"\tMueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
         solucion(num-1,B,C,A);
     }
 }

@@ -13,3 +13,12 @@
 
 	Palabra: television
 	Definicion: televition
+
+	Palabra: manzana
+	Definicion: apple
+
+	Palabra: mujer
+	Definicion: woman
+
+	Palabra: arbol
+	Definicion: tree

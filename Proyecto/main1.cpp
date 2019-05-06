@@ -4,9 +4,10 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "Diccionario.h"
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
+#include "Diccionario.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void Archivo::sonido(char *palabra){
 	char *soundfile;
 	soundfile=(char*)malloc(20*sizeof(char));
 	soundfile=palabra;
-	cout<<PlaySound((LPCSTR)soundfile,NULL,SND_FILENAME|SND_ASYNC)<<endl;
+//	cout<<PlaySound((LPCSTR)soundfile,NULL,SND_FILENAME|SND_ASYNC)<<endl;
 	
 }
 
@@ -48,12 +49,25 @@ void Archivo::lectura(){
 
 void Archivo::aniadir(Diccionario di){
     ofstream agregarTxt;
-
+    ofstream agregarTxtAux;
+    ofstream agregarTxtLog;
+    
     fflush(stdin);
     agregarTxt.open("diccionario.txt",ios::app);
     agregarTxt<<"\n\tPalabra: "<<di.agregarPalabra()<<endl;
     agregarTxt<<"\tDefinicion: "<<di.agregarDefinicion()<<endl;
-        agregarTxt.close();
+	agregarTxt.close();
+	fflush(stdin);
+	agregarTxtAux.open("diccionarioPalabras.txt",ios::app);
+	agregarTxtAux<<di.agregarPalabra()<<endl;
+    agregarTxtAux<<di.agregarDefinicion()<<endl;
+	agregarTxtAux.close();
+	fflush(stdin);
+	agregarTxtLog.open("log.txt",ios::app);
+	time_t tiempoAhora;
+	time(&tiempoAhora);
+	agregarTxtLog<<"Se busco la palabra: "<<di.agregarPalabra()<<" en la fecha: "<<ctime(&tiempoAhora)<<endl;
+	agregarTxtLog.close();
 }
 
 void Archivo::buscar(){
@@ -68,7 +82,7 @@ void Archivo::buscar(){
     wav=(char*)malloc(20*sizeof(char));
     unir=(char*)malloc(20*sizeof(char));
     
-    wav=".wav";
+//    wav=".wav";
     
     cout<<"Digite la palabra a buscar: ";
     cin>>busca;

@@ -37,12 +37,16 @@ class Alfil{
 
 
 void Alfil::pedirUbicacion(){
-    cout<<"\n\tIngrese la ubicacion en x del alfil: ";
-    cin>>m;
+	do{
+		cout<<"\n\tIngrese la ubicacion en x del alfil: ";
+		cin>>m;
+	}while(m<1 || m>8);
     cout<<endl;
     m--;
-    cout<<"\tIngrese la ubicacion en y del alfil: ";
-    cin>>n;
+    do{
+		cout<<"\tIngrese la ubicacion en y del alfil: ";
+        cin>>n;
+	}while(n<1 || n>8);
     cout<<endl;
     n--;
     *(*(tablero+n)+m)='A';
