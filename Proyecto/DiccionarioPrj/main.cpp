@@ -55,12 +55,13 @@ void Archivo::buscar(){
     busca=(char*)palabraBuscar.c_str();
     strcpy(unir,busca);
     strcat(unir,cadena);
+    getch();
     cout<<PlaySound((LPCSTR)unir,NULL,SND_FILENAME|SND_ASYNC)<<endl;
-    
+    getch();
     if(!archivo.is_open()){
         archivo.open("diccionario.txt",ios::in);
     }
- 
+    fflush(stdin);
     while(getline(archivo,linea1)){
         if(linea1.find(palabraBuscar)!=string::npos){
             cout<<linea1<<endl;
@@ -68,10 +69,28 @@ void Archivo::buscar(){
             cout<<linea2<<endl;
             res=1;
         }
+        
     }
     if(res==0){
         cout<<"Palabra no encontrada"<<endl;
     }
+    string palabras[2];
+    char textoAcumChars[linea2.length()+1];
+	strcpy(textoAcumChars,linea2.c_str());
+    char *textoSeparado = strtok(textoAcumChars," ");
+	int cont=0;
+	fflush(stdin);
+	while(textoSeparado!=NULL){
+		palabras[cont]=textoSeparado;
+		textoSeparado=strtok(NULL," ");
+		cont++;
+	}
+	char *definicion;
+	char *unir2;
+	definicion=(char*)palabras[1].c_str();
+	strcpy(unir2,definicion);
+    strcat(unir2,cadena);
+    cout<<PlaySound((LPCSTR)unir2,NULL,SND_FILENAME|SND_ASYNC)<<endl;
     ofstream agregarTxtLog;
     fflush(stdin);
 	agregarTxtLog.open("log.txt",ios::app);
