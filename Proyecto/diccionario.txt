@@ -22,3 +22,18 @@
 
 	Palabra: arbol
 	Definicion: tree
+
+	Palabra: manute
+	Definicion: manu
+
+	Palabra: salado
+	Definicion: salty
+
+	Palabra: rico
+	Definicion: rich
+
+	Palabra: pobre
+	Definicion: poor
+
+	Palabra: zapatos
+	Definicion: shoes

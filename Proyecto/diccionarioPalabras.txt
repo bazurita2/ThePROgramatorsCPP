@@ -2,3 +2,7 @@ tree
 arbol
 hormiga
 ant
+pobre
+poor
+zapatos
+shoes

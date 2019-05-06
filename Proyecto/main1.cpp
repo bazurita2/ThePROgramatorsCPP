@@ -11,15 +11,13 @@
 
 using namespace std;
 
-
 class Archivo{
-
     public:
         Archivo();
         void lectura();
         void aniadir(Diccionario);
-        void buscar();
-	void sonido(char *);
+		void buscar();
+	    void sonido(char *);
 };
 
 Archivo::Archivo(){
@@ -50,24 +48,18 @@ void Archivo::lectura(){
 void Archivo::aniadir(Diccionario di){
     ofstream agregarTxt;
     ofstream agregarTxtAux;
-    ofstream agregarTxtLog;
-    
     fflush(stdin);
     agregarTxt.open("diccionario.txt",ios::app);
-    agregarTxt<<"\n\tPalabra: "<<di.agregarPalabra()<<endl;
-    agregarTxt<<"\tDefinicion: "<<di.agregarDefinicion()<<endl;
+    string palabra = di.agregarPalabra();
+    string definicion = di.agregarDefinicion();
+    agregarTxt<<"\n\tPalabra: "<<palabra<<endl;
+    agregarTxt<<"\tDefinicion: "<<definicion<<endl;
 	agregarTxt.close();
 	fflush(stdin);
 	agregarTxtAux.open("diccionarioPalabras.txt",ios::app);
-	agregarTxtAux<<di.agregarPalabra()<<endl;
-    agregarTxtAux<<di.agregarDefinicion()<<endl;
+	agregarTxtAux<<palabra<<endl;
+    agregarTxtAux<<definicion<<endl;
 	agregarTxtAux.close();
-	fflush(stdin);
-	agregarTxtLog.open("log.txt",ios::app);
-	time_t tiempoAhora;
-	time(&tiempoAhora);
-	agregarTxtLog<<"Se busco la palabra: "<<di.agregarPalabra()<<" en la fecha: "<<ctime(&tiempoAhora)<<endl;
-	agregarTxtLog.close();
 }
 
 void Archivo::buscar(){
@@ -82,7 +74,7 @@ void Archivo::buscar(){
     wav=(char*)malloc(20*sizeof(char));
     unir=(char*)malloc(20*sizeof(char));
     
-//    wav=".wav";
+    wav=".wav";
     
     cout<<"Digite la palabra a buscar: ";
     cin>>busca;
@@ -102,12 +94,20 @@ void Archivo::buscar(){
         if(linea1.find(busca)!=string::npos){
             cout<<linea1<<endl;
             getline(archivo,linea2);
+            cout<<linea2<<endl;
             res=1;
         }
     }
     if(res==0){
         cout<<"Palabra no encontrada"<<endl;
     }
+    ofstream agregarTxtLog;
+    fflush(stdin);
+	agregarTxtLog.open("log.txt",ios::app);
+	time_t tiempoAhora;
+	time(&tiempoAhora);
+	agregarTxtLog<<"Se busco la palabra: "<<busca<<" en la fecha: "<<ctime(&tiempoAhora)<<endl;
+	agregarTxtLog.close();
 }
 
 int main(){
@@ -127,7 +127,8 @@ int main(){
         cin>>op;
         system("cls");
     switch(op){
-        case 1: arch.aniadir(di);
+        case 1: 
+		arch.aniadir(di);
         break;
         case 2: arch.lectura();
         break;
