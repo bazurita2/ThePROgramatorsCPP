@@ -49,8 +49,13 @@ void Archivo::buscar(){
     char *unir;
     char *cadena;
     char *soundfile;
-    cout<<"Digite la palabra a buscar: ";
-    cin>>palabraBuscar;
+	do
+    {
+    	 cout<<"Digite la palabra a buscar: ";
+    	 cin>>palabraBuscar;	
+    	 system("cls");
+	}while(!(palabraBuscar<"1"||palabraBuscar>"9")/*&&(palabraBuscar>"A")||(palabraBuscar<"Z")*/);
+   
     cadena=(char*)wav.c_str();
     busca=(char*)palabraBuscar.c_str();
     strcpy(unir,busca);
@@ -195,6 +200,14 @@ void menuDinamico(){
 				}
 
 				break;
+			case 59:
+						system("cls");
+						cout<<"Ayuda"<<endl;
+						system("ayuda.chm");
+						system("pause");
+						system("cls");
+						menuDinamico();
+						break;
 		}
 	}
 }
