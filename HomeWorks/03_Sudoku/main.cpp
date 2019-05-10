@@ -14,7 +14,14 @@ int bandera=0,teclado=0,b,c,contadorx=0,contadory=0,xx=5,yy=5,jota,fstop=0,aleat
 int opcion,opcionn,contadoryy,contadorxx;
 
 int main()
-{
+{	
+	cout<<"\n\n\t\t\t\t\tUniversidad de las Fuerzas Armadas ESPE"<<endl;
+	cout<<"\n\n\t\t\Tema: Sudoku."<<endl;
+	cout<<"\n\n\t\t\Autores: Camilo Jimenez, Bryan Zurita,Sebastian Landazuri G."<<endl;
+	cout<<"\n\t Fecha de creacion: 03-05-2019";
+	cout<<"\n\t Fecha de presentacion: 05-05-2019";
+	cout<<"\n\n\n\n\n"<<endl;
+	
 	mapa=(char**)malloc(9*sizeof(char*));
 	arreglo1=(int**)malloc(9*sizeof(int*));
 	arreglo2=(int**)malloc(9*sizeof(int*));

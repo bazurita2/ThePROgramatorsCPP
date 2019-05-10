@@ -123,7 +123,12 @@ aniadir3(V);
 
 
 int main()
-{
+{	cout<<"\n\n\t\t\t\t\tUniversidad de las Fuerzas Armadas ESPE"<<endl;
+	cout<<"\n\n\t\t\Tema: Juego de Mochilero."<<endl;
+	cout<<"\n\n\t\t\Autores: Camilo Jimenez, Bryan Zurita,Sebastian Landazuri G."<<endl;
+	cout<<"\n\t Fecha de creacion: 09-05-2019";
+	cout<<"\n\t Fecha de presentacion: 11-05-2019";
+	cout<<"\n\n\n\n\n"<<endl;
  int n,m;
  do{
  cout<<"Ingrese n y m de la matriz (n=cantidad de objetos)y (m=peso max): "<<endl;

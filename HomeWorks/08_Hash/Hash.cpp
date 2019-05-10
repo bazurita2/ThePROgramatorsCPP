@@ -5,7 +5,12 @@
 using namespace std;
 
 int main()
-{
+{	cout<<"\n\n\t\t\t\t\tUniversidad de las Fuerzas Armadas ESPE"<<endl;
+	cout<<"\n\n\t\t\Tema: Tablas Hash."<<endl;
+	cout<<"\n\n\t\t\Autores: Camilo Jimenez, Bryan Zurita,Sebastian Landazuri G."<<endl;
+	cout<<"\n\t Fecha de creacion: 06-05-2019";
+	cout<<"\n\t Fecha de presentacion: 08-05-2019";
+	cout<<"\n\n\n\n\n"<<endl;
 
     string *placaLetra;
     placaLetra=(string*)calloc(tamanio,sizeof(string));

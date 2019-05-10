@@ -2,7 +2,12 @@
 #include "new 1.h"
 
 int main(){
-
+	cout<<"\n\n\t\t\t\t\tUniversidad de las Fuerzas Armadas ESPE"<<endl;
+	cout<<"\n\n\t\t\Tema: Juego de dados, recursivo."<<endl;
+	cout<<"\n\n\t\t\Autores: Camilo Jimenez, Bryan Zurita,Sebastian Landazuri G."<<endl;
+	cout<<"\n\t Fecha de creacion: 04-05-2019";
+	cout<<"\n\t Fecha de presentacion: 05-05-2019";
+	cout<<"\n\n\n\n\n"<<endl;
     Dado dado=Dado();
     dado.pedirsuma();
     dado.contar(1,1,1,1);
