@@ -12,6 +12,7 @@ class Nodo{
 };
 
 void insertarLista(Nodo *&,int);
+void modificarLista(Nodo *&,int);
 void mostrarLista(Nodo *);
 void menu();
 
@@ -20,6 +21,32 @@ Nodo *lista=NULL;
 int main (){
 	menu();
 	return 0;
+}
+
+void modificarNodo(Nodo *&lista,int n){
+	bool band = false;
+	Nodo *actual = new Nodo();
+	actual = lista;
+	Nodo *nuevoNodo;
+	int nuevoDato;
+	while((actual!=NULL)&&(actual->dato<=n)){
+		if(actual->dato==n){
+			band=true;
+		}
+		if(band==true){
+			cout<<"Elemento "<<n<<" encontrado";
+			cout<<"Ingrese el nuevo elemento";
+			cin>>nuevoDato;
+			nuevoNodo->dato=nuevoDato;
+			actual=nuevoNodo;
+		}else{
+			actual=actual;
+		}
+		actual= actual->sig;
+	}
+	
+	
+	
 }
 
 void insertarFinLista(Nodo *&lista,int n){
@@ -40,10 +67,6 @@ void insertarFinLista(Nodo *&lista,int n){
 	cout<<"\tElemento "<<n;
 }
 
-void insertarIniLista(Nodo *&lista,int n){
-	
-}
-
 void mostrarLista(Nodo *lista){
 	Nodo *actual = new Nodo();
 	actual = lista;
@@ -60,7 +83,7 @@ void menu(){
 	char op;
 	do{
 		cout<<"\n\t\tMenu "<<endl;
-		cout<<"\n1.Insercion Inicio -> Final \n2.Insercion Final -> Inicio \n3.Mostrar "<<endl;
+		cout<<"\n1.Insercion Inicio -> Final \n2.Modificar elemento \n3.Mostrar "<<endl;
 		cout<<"\nOprima \"esc\" para salir...."<<endl;
 		cout<<"\nDigite la opcion: ";
 		op=getch();
@@ -74,13 +97,10 @@ void menu(){
 			getch();
 			break;
 		case 50:
-			int dato2;
+			int buscarNum;
 			cout<<"\n\n\tDigite un numero: ";
-			cin>>dato2;
-			insertarIniLista(lista,dato2);
-			cout<<endl;
-			getch();
-			break;
+			cin>>buscarNum;
+			modificarNodo(lista,buscarNum);
 		case 51:
 			mostrarLista(lista);
 			break;
