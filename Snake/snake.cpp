@@ -1,4 +1,4 @@
-    #include <iostream>
+ #include <iostream>
     #include <windows.h>
     #include <stdlib.h>
     #include <conio.h>
@@ -15,18 +15,80 @@
             dwPos.Y=y;
             SetConsoleCursorPosition(hCon,dwPos);
     }
+    
+    int numerosRandom(){
+    	int num =rand()%(10);
+    	return num;
+	}
+
+    
+
+class Nodo{
+	private:
+		float dato;
+		Nodo *sig;
+	public:
+		Nodo ();
+		
+		void insertarInicio(Nodo *&,float);;
+		int mostrar(Nodo *);
+		
+		float getDato(){
+			return dato;
+		}
+		Nodo *getSig(){
+			return sig;
+		}
+		
+		void setDato(float dat){
+			dato=dat;
+		}
+		void setSig(Nodo *s){
+			sig = s;
+		}
+};
+
+Nodo::Nodo(){
+}
+
+void Nodo::insertarInicio(Nodo *&lista,float n){
+	Nodo *nuevo = new Nodo();
+	
+	nuevo->dato=n;
+	nuevo->sig=lista;
+	lista=nuevo;
+}
+
+int Nodo::mostrar(Nodo *lista){	
+	Nodo *actual = new Nodo();
+	
+	actual = lista;
+	while(actual != NULL){ 
+		return actual->dato;
+		actual = actual->sig; 
+	}
+}
+
+Nodo *lista = NULL;
      
     class Snake{
             public:
                     int x,y;
                     int dx,dy;
-                    char cuerpo;
+                   	char cuerpo;
     };
      
     class Fruta{
             public:
                     int x,y;
-                    char cuerpo=254;
+                    
+                    
+                    
+                    void cuerpo(){
+                    	lista->insertarInicio(lista,numerosRandom());
+						cout<<numerosRandom();				
+					}
+						
     };
      
     class Juego{
@@ -40,7 +102,6 @@
                     int c=21,f=64;
                     bool gameover=false;
                     void tablero();
-                    //void inicio();
                     void genFruta();
                     void genSnake();
                     void loop();
@@ -50,7 +111,6 @@
                     void cfruta();
                     void muerte();
                     void puntos();
-                    //void menu();
                     void portada();
                     void muerte2();
             
@@ -100,7 +160,10 @@
             gotoxy(33,r);
             
             gotoxy(8,23);
-            cout<<"Para salir presione ESC, para jugar de nuevo cualquier tecla";
+            system("pause");
+            system("cls");
+            cout<<"\n\n\t\tSi desea salir del juego presione ESC"<<endl;
+            cout<<"\n\t\tSi desea continuar presione cualquier tecla";
             key=getch();
             if(key==27)
                     exit(1);
@@ -150,12 +213,9 @@
      
      
     void Juego::puntos(){
-            gotoxy(f+2,2);
-            cout<<"Score: "<<(score-1)*10;
-            gotoxy(f+2,4);
-            cout<<"Level: "<<nivel;
+
             gotoxy(f+2,6);
-            cout<<"Length: "<<tam;
+
             
             
     }
@@ -165,7 +225,7 @@
                     gotoxy(i,1);
                     cout<<t;
                     gotoxy(i,c);
-                    cout<<t; //marco 
+                    cout<<t; 
             }
             for(int i=1 ; i<=c ; i++){
                     gotoxy(1,i);
@@ -176,11 +236,10 @@
     }
      
     void Juego::genFruta(){
-            
         fruta.x = 2+( rand() % (f-2) );
         fruta.y = 2+(rand() % (c-2));
         gotoxy(fruta.x,fruta.y);
-        cout<<fruta.cuerpo;
+        fruta.cuerpo();
             
     }
      
@@ -247,11 +306,17 @@
         }
     }
      
+     
+     
+     
+     
     void Juego::cfruta(){
+    	
+    	
             if(snake[0].x==fruta.x && snake[0].y==fruta.y){
                     genFruta();
             tam+=1;
-            snake[tam-1].cuerpo=184;
+            snake[tam-1].cuerpo;
             score+=1;
             if(tam%10==0){
                             nivel++;
@@ -259,7 +324,15 @@
                     }
      
         }
+        
+        
+        
     }
+    
+    
+    
+    
+    
     void Juego::actualizar(){
             int i;
             gotoxy(snake[tam-1].x,snake[tam-1].y);
@@ -284,7 +357,7 @@
     void Juego::loop(){
             while(!gameover){
                     cfruta();
-                    puntos();
+					puntos();
                     actualizar();
                     imprimir();
                     tecla();
@@ -321,4 +394,3 @@
             Juego j;
             j.main();
     }
-     
