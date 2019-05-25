@@ -3,11 +3,12 @@
 //VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
 //27/05/2019
 
-#include "Juego.h"
 
-int main()
+class Snake
 {
-    Juego* j= new Juego(); 
-	j->main();
-	return 0;
-} 
+        public:
+                int x,y;
+                int dx,dy;
+                int cuerpo;
+};
+ 
