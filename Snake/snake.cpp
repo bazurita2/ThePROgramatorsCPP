@@ -9,5 +9,6 @@ int main()
 {
     Juego* j= new Juego(); 
 	j->main();
+	j->mostrar();
 	return 0;
 } 

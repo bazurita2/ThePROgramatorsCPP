@@ -34,6 +34,7 @@ class Juego
                 void puntos();
                 void portada();
                 void muerte2();
+                void mostrar();
         
         private:
                 int score,nivel,velocidad;
@@ -164,7 +165,8 @@ void Juego::portada()
  
 void Juego::genFruta()
 {
-     int num=1+rand()%(10-1);
+     int num;
+	 num=1+rand()%(10-1);
     fruta.x = 2+( rand() % (f-2) );
     fruta.y = 2+(rand() % (c-2));
     gotoxy(fruta.x,fruta.y);
@@ -344,3 +346,6 @@ void Juego::main()
     
 }
  
+void Juego::mostrar(){
+	lista->mostrar(lista);
+} 
