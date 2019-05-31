@@ -27,15 +27,17 @@ public class Lista {
         return tamanio;
     }
     
-    public void agregarAlInicio(long teleCasa,long celu,String nomb,String apell,String opc){
+    public void agregarAlInicio(long teleCasa,long celu,String nomb,String apell){
        
         Nodo nuevo = new Nodo();
-        
+        Archivo archivo = new Archivo();
         
         nuevo.setTelefonoCasa(teleCasa);
 	nuevo.setCelular(celu);
 	nuevo.setNombre(nomb);
 	nuevo.setApellido(apell);
+        
+        archivo.guardar("Agenda.csv",nuevo);
        
         if (esVacia()) {
             
@@ -50,13 +52,50 @@ public class Lista {
        
         tamanio++;
     }
+    
+     public void agregarAlInicioCampoExtra(long cedula,int cumpleDia,int cumpleMes,int cumpleAnio,String correo,String direccion,int aniverDia,int aniverMes,int aniverAnio,String nota){
+       
+        Nodo nuevo = new Nodo();
+        Archivo archivo = new Archivo();
+        
+        nuevo.setCedula(cedula);
+        nuevo.setCumpleDia(cumpleDia);
+        nuevo.setCumpleMes(cumpleMes);
+        nuevo.setCumpleAnio(cumpleAnio);
+        nuevo.setCorreo(correo);
+        nuevo.setDireccion(direccion);
+        nuevo.setAniverDia(aniverDia);
+        nuevo.setAniverMes(aniverMes);
+        nuevo.setAniverAnio(aniverAnio);
+        nuevo.setNota(nota);
+        
+        archivo.guardar("Agenda.csv",nuevo);
+       
+        if (esVacia()) {
+            
+            inicio = nuevo;
+        
+        } else{
+           
+            nuevo.setSiguiente(inicio);
+           
+            inicio = nuevo;
+        }
+       
+        tamanio++;
+    }
+    
+    
       public void listar(){
         
+          
+          
         if (!esVacia()) {
             
             Nodo aux = inicio;
             
             while(aux != null){
+                
                 System.out.println("");
                 System.out.print("\nNombre: "+aux.getNombre());
                 System.out.println("\nApellido: "+aux.getApellido());
@@ -65,9 +104,12 @@ public class Lista {
                                
                 aux = aux.getSiguiente();
                 
+                //falta imprimir los datos extras
             
             }
         }
     }
+
+  
       
 }
