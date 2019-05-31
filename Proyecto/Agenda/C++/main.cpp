@@ -99,10 +99,11 @@ int menuOp(const char titulo[], const char *opciones[], int n){
     aux2=new char[20];
     aux3=new char[20];
     bool repite = true;
-   int opcion;
-   string nombre,apellido;
-	long int teleCasa,celular;
-
+   int opcion,cumpleDia,cumpleMes,cumpleAnio,aniverDia,aniverMes,aniverAnio;
+   string nombre,apellido,op,correo,nota,direccion;
+	long int teleCasa,celular,cedula;
+	
+	system("cls");
    setlocale(LC_CTYPE,"Spanish");
    const char *titulo = "-------< PILAS >---------";
    const char *opciones[] = { "AGREGAR CONTACTO", "ELIMINAR CONTACTO","MODIFICAR CONTACTO","MOSTRAR AGENDA","SALIR"};
@@ -132,8 +133,53 @@ int menuOp(const char titulo[], const char *opciones[], int n){
       			cout<<"Digite su celular: ";
       			cin>>celular;
       			fflush(stdin);    
-      			lista->insertarInicio(lista,teleCasa,celular,nombre,apellido,"n");
-                system("pause");
+      			lista->insertarInicio(lista,teleCasa,celular,nombre,apellido);
+                
+                
+                cout<<"\nAgregar mas campo de contacto? (S/N)";
+                getline(cin,op);
+                
+                if(op=="s"||op=="S"){
+                
+				cout<<"Digite su cedula: ";
+				cin>>cedula;
+				fflush(stdin);    
+				cout<<"Digite el dia de su cumpleaños: ";
+				cin>>cumpleDia;
+				fflush(stdin);    
+				cout<<"Digite el mes de su cumpleaños: ";
+				cin>>cumpleMes;
+				fflush(stdin);    
+				cout<<"Digite el anio de su cumpleaños: ";
+				cin>>cumpleAnio;
+				fflush(stdin);    
+				cout<<"Digite su correo: ";
+				getline(cin,correo);
+				fflush(stdin);    
+				cout<<"Digite su direccion: ";
+				getline(cin,direccion);
+				fflush(stdin);    
+				cout<<"Digite el dia de su aniversario: ";
+				cin>>aniverDia;
+				fflush(stdin);    
+				cout<<"Digite el mes de su aniversario: ";
+				cin>>aniverMes;
+				fflush(stdin);    
+				cout<<"Digite el anio de su aniversario: ";
+				cin>>aniverAnio;
+				fflush(stdin);    
+				cout<<"Digite una nota para el contacto: ";
+				getline(cin,nota);
+				fflush(stdin);    
+				
+				lista->insertarInicioExtra(lista,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);	
+				
+				}else{
+					cout<<"\nContacto guardado"<<endl;
+				}
+				
+				system("pause");
+				                
              }break;
          case 2:{
              char c;
@@ -166,13 +212,39 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 
 }
 
-
+void portada(){
+	cout<<"\n\n\n"<<endl;
+	cout<<"\t\t:::::::::::     :::::::::      :::::::::      ::::: ::      :::    :::::::       :::::::::::   "<<endl;
+	cout<<"\t\t:::::::::::     :::            ::   	      ::::   ::	    :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::     :::     :::            ::    	      ::::    ::    :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::     :::     :::            :::::::::      ::::     ::   :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::::::::::     :::    :::::   ::             ::::      ::  :::    :: 	 ::	 :::::::::::   "<<endl;
+	cout<<"\t\t:::     :::     ::::::::::     ::             ::::       :: :::    :: 	 ::	 :::	 :::   "<<endl;
+	cout<<"\t\t:::     :::     ::::::::::     :::::::::      ::::        :::::    :::::::	 :::	 :::   "<<endl;
+	cout<<"\n\n\n"<<endl;
+	system("pause");
+	
+}
 
 
 
 int main(){
 	
+	portada();
+	
 	menuPila(); 
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+

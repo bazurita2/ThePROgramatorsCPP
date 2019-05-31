@@ -116,7 +116,8 @@ class Nodo{
 			this->direccion=direccion;
 		}
 		
-		void insertarInicio(Nodo *&,long int, long int, string,string,string);
+		void insertarInicio(Nodo *&,long int, long int, string,string);
+		void insertarInicioExtra(Nodo *&,long int ,int ,int ,int ,string ,string ,int ,int ,int ,string );
 		void mostrar(Nodo *);
 		
 		Nodo *getSig(){
@@ -132,7 +133,7 @@ class Nodo{
 Nodo::Nodo(){
 }
 
-void Nodo::insertarInicio(Nodo *&lista,long int teleCasa,long int celu,string nomb,string apell,string opc){
+void Nodo::insertarInicio(Nodo *&lista,long int teleCasa,long int celu,string nomb,string apell){
 	Nodo *nuevo = new Nodo();
 	
 	ofstream agregarTxt;
@@ -151,16 +152,33 @@ void Nodo::insertarInicio(Nodo *&lista,long int teleCasa,long int celu,string no
 	nuevo->nombre=nomb;
 	nuevo->apellido=apell;
 	
-	
-	
-	if(opc=="S"||opc=="s"){
-		//llamar complementos
-		nuevo->sig=lista;
-		lista=nuevo;
-	}else{
 		nuevo->sig=lista;
 		lista=nuevo;	
-	}
+	
+}
+
+void Nodo::insertarInicioExtra(Nodo *&lista,long int cedula,int cumpleDia,int cumpleMes,int cumpleAnio,string correo,string direccion,int aniverDia,int aniverMes,int aniverAnio,string nota){
+	Nodo *nuevo = new Nodo();
+	
+	ofstream agregarTxt;
+    fflush(stdin);
+  
+    agregarTxt.close();
+	
+	nuevo->cedula=cedula;
+	nuevo->cumpleDia=cumpleDia;
+	nuevo->cumpleMes=cumpleMes;
+	nuevo->cumpleAnio=cumpleAnio;
+	nuevo->correo=correo;
+	nuevo->direccion=direccion;
+	nuevo->aniverDia=aniverDia;
+	nuevo->aniverMes=aniverMes;
+	nuevo->aniverAnio=aniverAnio;
+	nuevo->nota=nota;
+	
+		nuevo->sig=lista;
+		lista=nuevo;	
+	
 }
 
 
