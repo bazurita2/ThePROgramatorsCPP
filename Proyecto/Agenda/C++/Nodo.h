@@ -117,8 +117,19 @@ class Nodo{
 		}
 		
 		void insertarInicio(Nodo *&,long int, long int, string,string);
-		void insertarInicioExtra(Nodo *&,long int ,int ,int ,int ,string ,string ,int ,int ,int ,string );
+		void insertarInicioExtra(Nodo *&,long int ,int ,int ,int ,string ,string ,int ,int ,int ,string);
 		void mostrar(Nodo *);
+		void mostrarExtra(Nodo *);
+		bool eliminarElemento(Nodo*& );
+		bool modificarNombre(Nodo *&,string,string);
+		bool modificarApellido(Nodo *&,string,string);
+		bool modificarTeleCasa(Nodo *&,long int,long int);
+		bool modificarCelular(Nodo *&,long int,long int);
+		bool modificarCedula(Nodo *&,long int,long int);
+		bool modificarCumpleanios(Nodo *&,int,int,int,int,int,int);
+		bool modificarCorreo(Nodo *&,string,string);
+		bool modificarDireccion(Nodo *&,string,string);
+		bool modificarAniversario(Nodo *&,int,int,int,int,int,int);
 		
 		Nodo *getSig(){
 			return sig;
@@ -142,8 +153,8 @@ void Nodo::insertarInicio(Nodo *&lista,long int teleCasa,long int celu,string no
     agregarTxt<<"\nNombre: "<<";"<<nomb;
     agregarTxt<<"\nApellido: "<<";"<<apell;
     agregarTxt<<"\nTelefono de casa: "<<";"<<teleCasa;
-    agregarTxt<<"\nCelular: "<<";"<<celu;
-    agregarTxt<<""<<";";
+    agregarTxt<<"\nCelular: "<<";"<<"0"<<celu;
+    agregarTxt<<"\n"<<";";
     agregarTxt.close();
 	
 	nuevo->nombre=nomb;
@@ -159,10 +170,17 @@ void Nodo::insertarInicio(Nodo *&lista,long int teleCasa,long int celu,string no
 
 void Nodo::insertarInicioExtra(Nodo *&lista,long int cedula,int cumpleDia,int cumpleMes,int cumpleAnio,string correo,string direccion,int aniverDia,int aniverMes,int aniverAnio,string nota){
 	Nodo *nuevo = new Nodo();
-	
+
 	ofstream agregarTxt;
     fflush(stdin);
-  
+    agregarTxt.open("Agenda.csv",ios::app);
+    agregarTxt<<"\nCedula: "<<";"<<cedula;
+    agregarTxt<<"\nCumpleanios: "<<";"<<cumpleDia<<"/"<<cumpleMes<<"/"<<cumpleAnio;
+    agregarTxt<<"\nCorreo: "<<";"<<correo;
+    agregarTxt<<"\nDireccion: "<<";"<<direccion;
+    agregarTxt<<"\nAniversario: "<<";"<<aniverDia<<"/"<<aniverMes<<"/"<<aniverAnio;
+    agregarTxt<<"\nNota: "<<";"<<nota;
+    agregarTxt<<"\n"<<";";
     agregarTxt.close();
 	
 	nuevo->cedula=cedula;
@@ -184,19 +202,150 @@ void Nodo::insertarInicioExtra(Nodo *&lista,long int cedula,int cumpleDia,int cu
 
 void Nodo::mostrar(Nodo *lista){	
 	Nodo *actual = new Nodo();
-	//Si lee desde el archivo, lee con comas por eso mejor que imprima asi
 	actual = lista;
 	while(actual != NULL){ 
 		cout<<endl;
 		cout<<"Nombre: "<<actual->nombre<<"\nApellido: "<<actual->apellido<<"\nTelefono casa: "<<actual->telefonoCasa<<"\nCelular: 0"<<actual->celular<<endl;
 		actual = actual->sig; 
 	}
-	
+
+}
+
+void Nodo::mostrarExtra(Nodo *lista){	
+	Nodo *actual = new Nodo();
+	actual = lista;
+	while(actual != NULL){ 
+		cout<<endl;
+		cout<<"Cedula: "<<actual->cedula<<"\nCumpleanios: "<<actual->cumpleDia<<"/"<<cumpleMes<<"/"<<cumpleAnio<<"\nCorreo: "<<actual->correo
+		<<"\nDireccion: "<<actual->direccion<<"\nAniversario: "<<actual->aniverDia<<"/"<<actual->aniverMes<<"/"<<actual->aniverAnio<<"\nNota: "<<actual->nota<<endl;	
+		actual = actual->sig; 
+	}
 
 }
 
 
+  //valor2 = modificar
+	//valor1 = dato en lista
 
+bool Nodo::modificarNombre(Nodo*& _lista,string nombre1,string nombre2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
 
+bool Nodo::modificarApellido(Nodo*& _lista,string apellido1,string apellido2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+bool Nodo::modificarTeleCasa(Nodo*& _lista,long int teleCasa1,long int teleCasa2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+bool Nodo::modificarCelular(Nodo*& _lista,long int celular1,long int celular2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+bool Nodo::modificarCedula(Nodo*& _lista,long int cedula1,long int cedula2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+bool Nodo::modificarCumpleanios(Nodo*& _lista,int dia1,int mes1,int anio1,int dia2,int mes2,int anio2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+bool Nodo::modificarCorreo(Nodo*& _lista,string correo1,string correo2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+
+bool Nodo::modificarDireccion(Nodo*& _lista,string direccion1,string direccion2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
+
+bool Nodo::modificarAniversario(Nodo*& _lista,int dia1,int mes1,int anio1,int dia2,int mes2,int anio2){
+	  bool aux=false;
+    Nodo *actual =new Nodo();
+    actual=_lista;
+    while(actual!=NULL){
+        if((actual->dato)==valor1){
+            actual->dato=valor2;
+            aux=true;
+        }
+        actual=actual->sig;
+    }
+    return aux;
+}
 
 
