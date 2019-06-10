@@ -11,8 +11,9 @@ using namespace std;
 #define ENTER 13
 #define TAM 100
 
-Nodo *lista = new Nodo();
-bool ext=false;
+
+int c=0;
+Nodo *listac;
 
 void gotoxy(int x,int y){
       HANDLE hcon;
@@ -91,7 +92,10 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 
 
  void menuPila(){setlocale(LC_CTYPE,"Spanish");
-    char* plbr;
+    
+	bool ext=false;
+	
+	char* plbr;
     
         char* aux2;
         char* aux3;
@@ -117,6 +121,9 @@ int menuOp(const char titulo[], const char *opciones[], int n){
       switch (opcion) {
          case 1:
              {   system("cls");
+             c++;
+              Nodo *listac = new Nodo();
+             
                 cout<<endl<<"==================================================================================================";
                 cout<<"\t\t\tINGRESO DE CONTACTO"<<endl;
                 cout<<"=================================================================================================="<<endl<<endl;
@@ -133,7 +140,7 @@ int menuOp(const char titulo[], const char *opciones[], int n){
       			cout<<"\nDigite su celular: ";
       			celular=entero2();
       			fflush(stdin);    
-      			lista->insertarInicio(lista,teleCasa,celular,nombre,apellido);
+      			listac->insertarInicio(listac,teleCasa,celular,nombre,apellido);
                 
                 
                 cout<<"\nAgregar mas campo de contacto? (S/N)";
@@ -184,12 +191,13 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 				fflush(stdin);    
 				ext=true;
 				
-				lista->insertarInicioExtra(lista,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);	
+				listac->insertarInicioExtra(listac,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);
+				cout<<"\nContacto guardado"<<endl;	
 			
 				}else{
 					cout<<"\nContacto guardado"<<endl;
 				}
-				
+		
 				system("pause");
 				                
              }break;
@@ -204,8 +212,33 @@ int menuOp(const char titulo[], const char *opciones[], int n){
                 break;
          }
          case 3:{
+         
+         	
+         	bool auxiliar=false;
+         	int numC=0;
+         			int cumpleDia1,cumpleMes1,cumpleAnio1,aniverDia1,aniverMes1,aniverAnio1;
+   					string nombre1,nombre2,apellido1,correo1,nota1,direccion1;
+					long int teleCasa1,celular1,cedula1;
+         	
               system("cls");
-              const char *titulo2 = "-------< MODIFICAR CONTACTO >---------";
+              cout<<"\n\t\tDigite el nombre del contacto a modificar: ";
+              nombre1=ingresarLetras();
+              int p=1;
+
+           		do{   	
+              	if(listac->buscar(listac,nombre1)==true){
+              	auxiliar=true;
+				  numC=c;	
+				  }
+              	c++;
+			  }while(c<50);
+			  
+              if(auxiliar==true){
+              	cout<<"\nContacto existente"<<endl;
+              	system("pause");
+              	system("cls");
+              	
+				  const char *titulo2 = "-------< MODIFICAR CONTACTO >---------";              
               const char *opciones2[] = { "NOMBRE", "APELLIDO","TELEFONO DE CASA","CELULAR","CEDULA","CUMPLEANIOS","CORREO","DIRECCION","ANIVERSARIO","NOTA","SALIR"};
               int n2 = 11,op;
               bool repite2 = true;
@@ -215,65 +248,99 @@ int menuOp(const char titulo[], const char *opciones[], int n){
               do{
               	system("cls");
               	op = menuOp(titulo2, opciones2, n2);
-              	
+              	c=numC;
               	switch(op){
               		case 1:
               		system("cls");
-
+					
+					cout<<"Ingrese el nuevo nombre: ";
+					nombre2=ingresarLetras();
+					listac->modificarNombre(listac,nombre2);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 2:
               		system("cls");
-
+					
+					cout<<"Ingrese el nuevo apellido: ";
+					apellido1=ingresarLetras();
+					listac->modificarApellido(listac,apellido1);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 3:
               		system("cls");
-
+						cout<<"Ingrese el nuevo telefono de casa: ";
+					cin>>teleCasa1;
+					listac->modificarTeleCasa(listac,teleCasa1);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 4:
               		system("cls");
-
+						cout<<"Ingrese el nuevo celular: ";
+					cin>>celular1;
+					listac->modificarCelular(listac,celular1);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 5:
               		system("cls");
-
+					cedula1=validarCedula();
+					listac->modificarCedula(listac,cedula1);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 6:
               		system("cls");
-
+						cout<<"Ingrese el nuevo dia de cumpleanios: ";
+					cin>>cumpleDia1;
+					cout<<"Ingrese el nuevo mes de cumpleanios: ";
+					cin>>cumpleMes1;
+					cout<<"Ingrese el nuevo anio de cumpleanios: ";
+					cin>>cumpleAnio1;
+					listac->modificarCumpleanios(listac,cumpleDia1,cumpleMes1,cumpleAnio1);
+						cout<<"\nContacto modificado";
               		system("pause");
               		break;
               		
               		case 7:
               		system("cls");
-
+					cout<<"Ingrese el nuevo correo: ";
+					getline(cin,correo1);
+					listac->modificarCorreo(listac,correo1); 
               		system("pause");
               		break;
               		
               		case 8:
               		system("cls");
-
+					cout<<"Ingrese la nueva direccion: ";
+					direccion1=ingresarLetras();
               		system("pause");
               		break;
               		
               		case 9:
               		system("cls");
-
+					cout<<"Ingrese el nuevo dia de aniversario: ";
+					cin>>aniverDia1;
+					cout<<"Ingrese el nuevo mes de aniversario: ";
+					cin>>aniverMes1;
+					cout<<"Ingrese el nuevo anio de aniversario: ";
+					cin>>aniverAnio1;
+					listac->modificarAniversario(listac,aniverDia1,aniverMes1,aniverAnio1);
               		system("pause");
               		break;
               		
               		case 10:
               		system("cls");
-
+					cout<<"Ingrese la nueva nota: ";
+					getline(cin,nota1);
+					listac->modificarNota(listac,nota1);
               		system("pause");
               		break;
               		
@@ -281,11 +348,11 @@ int menuOp(const char titulo[], const char *opciones[], int n){
               		repite2=false;
               		break;
 				  }
-              	
-              		
-              	
-              	
-			  }while(repite2);
+	
+			  }while(repite2);              	
+			}else{
+			  	cout<<"\nContacto no registrado"<<endl;
+			  }
               
               cout<<endl;
             system("pause");
@@ -293,12 +360,13 @@ int menuOp(const char titulo[], const char *opciones[], int n){
          }
         case 4: {
                  system("cls");
+                
                 cout<<endl<<"==================================================================================================";
                 cout<<"\t\t\tLISTA DE CONTACTOS "<<endl;
                 cout<<"=================================================================================================="<<endl<<endl;
                 cout<<endl<<endl;
-                lista->mostrar(lista);
-                if(ext==true) lista->mostrarExtra(lista);
+                listac->mostrar(listac);
+                if(ext==true) listac->mostrarExtra(listac);
                 cout<<endl;
                 system("pause");
          break;
