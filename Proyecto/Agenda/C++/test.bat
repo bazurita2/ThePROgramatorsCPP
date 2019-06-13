@@ -1,0 +1,1 @@
+qrcode.exe -o test.png -s 10 -l H hola
