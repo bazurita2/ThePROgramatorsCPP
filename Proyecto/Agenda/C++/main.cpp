@@ -6,14 +6,16 @@
 #include "Nodo.h"
 #include "Validacion.h"
 using namespace std;
+
 #define ARRIBA 72
 #define ABAJO 80
 #define ENTER 13
 #define TAM 100
 
+	Nodo *inicio= NULL;
+	Nodo *ultimo= NULL;
+	Nodo obj = Nodo();
 
-int c=0;
-Nodo *listac;
 
 void gotoxy(int x,int y){
       HANDLE hcon;
@@ -94,6 +96,7 @@ int menuOp(const char titulo[], const char *opciones[], int n){
  void menuPila(){setlocale(LC_CTYPE,"Spanish");
     
 	bool ext=false;
+
 	
 	char* plbr;
     
@@ -121,8 +124,8 @@ int menuOp(const char titulo[], const char *opciones[], int n){
       switch (opcion) {
          case 1:
              {   system("cls");
-             c++;
-              Nodo *listac = new Nodo();
+    				         
+            	
              
                 cout<<endl<<"==================================================================================================";
                 cout<<"\t\t\tINGRESO DE CONTACTO"<<endl;
@@ -135,13 +138,14 @@ int menuOp(const char titulo[], const char *opciones[], int n){
       			apellido=ingresarLetras();
       			fflush(stdin);    
       			cout<<"\nDigite su telefono de casa: ";
-      			teleCasa=entero2();
+      			cin>>teleCasa;
       			fflush(stdin);    
       			cout<<"\nDigite su celular: ";
-      			celular=entero2();
+      			cin>>celular;
       			fflush(stdin);    
-      			listac->insertarInicio(listac,teleCasa,celular,nombre,apellido);
+      			obj.insertarInicio(inicio,ultimo,teleCasa,celular,nombre,apellido);
                 
+                /*
                 
                 cout<<"\nAgregar mas campo de contacto? (S/N)";
                 getline(cin,op);
@@ -187,35 +191,65 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 				}while(aniverAnio<1900||aniverAnio>2019);
 				fflush(stdin);    
 				cout<<"\nDigite una nota para el contacto: ";
-				nota=ingresarLetras();
+				getline(cin,nota);
 				fflush(stdin);    
 				ext=true;
 				
-				listac->insertarInicioExtra(listac,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);
+					
+				lista[p]->insertarInicioExtra(p,lista,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);
 				cout<<"\nContacto guardado"<<endl;	
 			
 				}else{
 					cout<<"\nContacto guardado"<<endl;
 				}
-		
+					p++;*/
 				system("pause");
-				                
-             }break;
+			break;	                
+             }
          case 2:{
-             
+            /* string nombre1;
+             p=0;
+             bool auxiliar=false;
+             int p1=0;
                 system("cls");
                 
-                
-                
+              cout<<"\n\t\tDigite el nombre del contacto a eliminar: ";
+              nombre1=ingresarLetras();
+            
+
+           	do{   	
+              	if(lista[p1]->buscar(p1,lista,nombre1)==true){
+              	auxiliar=true;
+              	p=p1;
+				}
+				  p1++;
+			  }while(p1<50);
+			  
+              if(auxiliar==true){
+              	cout<<"\nContacto existente"<<endl;
+              	
+              	
+              	while(lista[p]!=NULL){
+				  lista[p]->eliminarElemento(p,lista,teleCasa,celular,nombre,apellido,cedula,cumpleDia,cumpleMes,cumpleAnio,correo,direccion,aniverDia,aniverMes,aniverAnio,nota);			  
+			}
+              	
+           			
+		   
+		   }else{
+		   	system("cls");
+		   	cout<<"\nContacto No resgistrado";
+		   }
                 
                 system("pause");
+                */
                 break;
          }
          case 3:{
+         	/*
+         			p=0;
+         			bool auxiliar=false;
+         			int p1=0;	
          
-         	
-         	bool auxiliar=false;
-         	int numC=0;
          			int cumpleDia1,cumpleMes1,cumpleAnio1,aniverDia1,aniverMes1,aniverAnio1;
    					string nombre1,nombre2,apellido1,correo1,nota1,direccion1;
 					long int teleCasa1,celular1,cedula1;
@@ -223,41 +257,42 @@ int menuOp(const char titulo[], const char *opciones[], int n){
               system("cls");
               cout<<"\n\t\tDigite el nombre del contacto a modificar: ";
               nombre1=ingresarLetras();
-              int p=1;
+            
 
-           		do{   	
-              	if(listac->buscar(listac,nombre1)==true){
+           	do{   	
+              	if(lista[p1]->buscar(p1,lista,nombre1)==true){
               	auxiliar=true;
-				  numC=c;	
-				  }
-              	c++;
-			  }while(c<50);
+              	p=p1;
+				}
+				  p1++;
+			  }while(p1<50);
 			  
               if(auxiliar==true){
               	cout<<"\nContacto existente"<<endl;
               	system("pause");
               	system("cls");
-              	
+              	fflush(stdin); 
 				  const char *titulo2 = "-------< MODIFICAR CONTACTO >---------";              
               const char *opciones2[] = { "NOMBRE", "APELLIDO","TELEFONO DE CASA","CELULAR","CEDULA","CUMPLEANIOS","CORREO","DIRECCION","ANIVERSARIO","NOTA","SALIR"};
               int n2 = 11,op;
               bool repite2 = true;
-              
-			  
+          
+				
               
               do{
               	system("cls");
               	op = menuOp(titulo2, opciones2, n2);
-              	c=numC;
+              	
               	switch(op){
               		case 1:
               		system("cls");
 					
 					cout<<"Ingrese el nuevo nombre: ";
 					nombre2=ingresarLetras();
-					listac->modificarNombre(listac,nombre2);
+					lista[p]->modificarNombre(p,lista,nombre2);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 2:
@@ -265,35 +300,39 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 					
 					cout<<"Ingrese el nuevo apellido: ";
 					apellido1=ingresarLetras();
-					listac->modificarApellido(listac,apellido1);
+					lista[p]->modificarApellido(p,lista,apellido1);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 3:
               		system("cls");
 						cout<<"Ingrese el nuevo telefono de casa: ";
 					cin>>teleCasa1;
-					listac->modificarTeleCasa(listac,teleCasa1);
+					lista[p]->modificarTeleCasa(p,lista,teleCasa1);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 4:
               		system("cls");
 						cout<<"Ingrese el nuevo celular: ";
 					cin>>celular1;
-					listac->modificarCelular(listac,celular1);
+					lista[p]->modificarCelular(p,lista,celular1);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 5:
               		system("cls");
 					cedula1=validarCedula();
-					listac->modificarCedula(listac,cedula1);
+					lista[p]->modificarCedula(p,lista,cedula1);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 6:
@@ -304,24 +343,28 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 					cin>>cumpleMes1;
 					cout<<"Ingrese el nuevo anio de cumpleanios: ";
 					cin>>cumpleAnio1;
-					listac->modificarCumpleanios(listac,cumpleDia1,cumpleMes1,cumpleAnio1);
+					lista[p]->modificarCumpleanios(p,lista,cumpleDia1,cumpleMes1,cumpleAnio1);
 						cout<<"\nContacto modificado";
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 7:
               		system("cls");
 					cout<<"Ingrese el nuevo correo: ";
 					getline(cin,correo1);
-					listac->modificarCorreo(listac,correo1); 
+					lista[p]->modificarCorreo(p,lista,correo1); 
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 8:
               		system("cls");
 					cout<<"Ingrese la nueva direccion: ";
 					direccion1=ingresarLetras();
+					lista[p]->modificarDireccion(p,lista,direccion1);
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 9:
@@ -332,16 +375,18 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 					cin>>aniverMes1;
 					cout<<"Ingrese el nuevo anio de aniversario: ";
 					cin>>aniverAnio1;
-					listac->modificarAniversario(listac,aniverDia1,aniverMes1,aniverAnio1);
+					lista[p]->modificarAniversario(p,lista,aniverDia1,aniverMes1,aniverAnio1);
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 10:
               		system("cls");
 					cout<<"Ingrese la nueva nota: ";
 					getline(cin,nota1);
-					listac->modificarNota(listac,nota1);
+					lista[p]->modificarNota(p,lista,nota1);
               		system("pause");
+              		fflush(stdin); 
               		break;
               		
               		case 11:
@@ -355,20 +400,27 @@ int menuOp(const char titulo[], const char *opciones[], int n){
 			  }
               
               cout<<endl;
+              
             system("pause");
+            */
          break;
          }
         case 4: {
+        	
+        	
                  system("cls");
                 
                 cout<<endl<<"==================================================================================================";
                 cout<<"\t\t\tLISTA DE CONTACTOS "<<endl;
                 cout<<"=================================================================================================="<<endl<<endl;
                 cout<<endl<<endl;
-                listac->mostrar(listac);
-                if(ext==true) listac->mostrarExtra(listac);
+                
+				obj.mostrarLista(inicio);
+                //if(ext==true) lista->mostrarExtra(p,lista);
                 cout<<endl;
+                fflush(stdin); 
                 system("pause");
+                
          break;
         }
         case 5:

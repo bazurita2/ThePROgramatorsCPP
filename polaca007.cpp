@@ -1,7 +1,3 @@
-//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
-//ESTRUCTURA DE DATOS
-//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
-//Fecha de creacion: 03/05/2019   Fecha de entrega: 04/05/2019
 #include<bits/stdc++.h> 
 #include<iostream>
 #include<stack>
