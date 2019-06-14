@@ -5,72 +5,6 @@
 #include <conio.h>
 #include <string>
 
-int entero2(){
-
-	char *pass = new char[20];
-	int i = 0;
-	while (i<1){
-		pass[i] = _getch();
-		if ((pass[i]>32 && i<20) && (pass[i] >= 48 && pass[i] <= 57))
-		{
-			printf("%c", pass[i]);
-			i++;
-		}
-        else if (pass[i] == 8 && i>0)
-		{
-			putchar(8);
-			putchar(' ');
-			putchar(8);
-			i--;
-    }
-	}
-	pass[i] = '\0';
-	int entero = atoi(pass);
-	return entero;
-    }
-
-    float validarFlotante(){
-	char *pass = new char[10];
-	int i = 0, punto = 0, acm = 0;
-	while (pass[i] != 13 || i<1){
-		if ((pass[i]>32 && i<20) && (pass[i] >= 48 && pass[i] <= 57) || pass[i] == 46){
-			if (pass[i] == 46){
-				punto++;
-				if (punto>1)
-					acm++;
-			}
-			if (acm > 0)
-			{
-				if (pass[i] != 46)
-				{
-					printf("%c", pass[i]);
-					i++;
-				}
-			}
-			else
-			{
-				printf("%c", pass[i]);
-				i++;
-			}
-		}
-		else if (pass[i] == 8 && i>0)
-		{
-			if (pass[i - 1] == 46)acm = 0;
-			putchar(8);
-			putchar(' ');
-			putchar(8);
-			i--;
-			if (pass[i] == 46)
-			{
-				punto = 0;
-			}
-		}
-	}
-	pass[i] = '\0';
-	float flotante = atof(pass);
-	return flotante;
-}
-
 char* ingresarLetras(){
 	char *dato,c;
 	string dato2;
@@ -100,6 +34,22 @@ char *ingresarNumeros(int &cont){
 	*(dato+i)='\0';
 	return dato;
 }
+int ingresarSoloNumeros(){
+	int num;
+	char *dato,c;
+	dato=(char*)malloc(10*sizeof(char));
+	int i=0;
+	while((c=getch())!=13){
+		if(c=='0' || c=='1'|| c=='2'|| c=='3'|| c=='4'|| c=='5'|| c=='6'|| c=='7'|| c=='8'|| c=='9'){
+			printf("%c",c);
+			*(dato+(i++))=c;
+		}
+	}
+	*(dato+i)='\0';
+    num= atoi(dato);
+	return num;
+}
+
 
 int validarCedula(){
    int cedula,ced,pares,impares,total,dec=0,cedulaValida;
