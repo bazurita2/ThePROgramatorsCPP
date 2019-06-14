@@ -1,17 +1,30 @@
+
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURAS DE DATOS
+//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
+//14/06/2019
+
 #include "Nodo.h"
 #include "Validacion.h"
 #include <windows.h>
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
 #define ARRIBA 72
 #define ABAJO 80
 #define DERECHA 77
 #define IZQUIERDA 75
 #define ENTER 13
 
+using namespace std;
+
 int seleccionar2(const char *[],int);
 
 void menu(Nodo *,Nodo *,int);
 //void menuPila();
 void gotoxy(int,int);
+ifstream f;
+ofstream temp;
 int menuOp(const char titulo[], const char *opciones[], int n);
 Nodo *inicio= NULL;
 Nodo *ultimo= NULL;
@@ -61,7 +74,7 @@ int seleccionar2(const char *opciones2[],int n)
 		do
 		{
 			tecla = getch();
-		}while((tecla != ARRIBA) && (tecla != ABAJO) && (tecla != ENTER));
+		}while((tecla != ARRIBA) && (tecla != ABAJO) && (tecla != ENTER)&& (tecla != 59));
 
 		switch(tecla)
 			{
@@ -78,6 +91,15 @@ int seleccionar2(const char *opciones2[],int n)
 			case ENTER:
 				repetir = false;
 				break;
+			case 59:
+				system("cls");
+				cout<<"Ayuda"<<endl;
+				system("ayuda.chm");
+				system("pause");
+				system("cls");
+				menu(inicio,ultimo,0);
+				repetir = false;
+				break;
 			}
 	}while(repetir);
 	return opcselec;
@@ -91,6 +113,61 @@ void gotoxy(int x, int y) //referencia: https://www.youtube.com/watch?v=evmIH4ny
 	dwPos.X=x;
 	dwPos.Y=y;
 	SetConsoleCursorPosition(hCon,dwPos);
+}
+
+
+void qrgen1(char* n, char* a)
+{
+	string lineas="";
+	string ao="\"";
+	printf(ao.c_str());
+	string na=string(n);
+	string ap=string(a);
+	string tot=na+ap+".png";
+	string cmd;
+	ifstream fe("temp.txt");
+   	while(!fe.eof()) 
+   	{
+   		getline (fe,lineas);
+   		ao=ao+lineas+" ";
+   	}
+   	ao=ao +"\"";
+   	fe.close();
+   	system("del temp.txt");
+   	printf(ao.c_str());
+   	printf("\n");
+    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
+    printf(cmd.c_str());
+    printf("\n");
+    system(cmd.c_str());
+    system(tot.c_str());
+    
+}
+void qrgen2(char* m)
+{
+	string lineas="";
+	string ao="\"";
+	printf(ao.c_str());
+	string na=string(m);
+	string tot=na+".png";
+	string cmd;
+	ifstream fe("temp.txt");
+   	while(!fe.eof()) 
+   	{
+   		getline (fe,lineas);
+   		ao=ao+lineas+" ";
+   	}
+   	ao=ao +"\"";
+   	fe.close();
+   	system("del temp.txt");
+   	printf(ao.c_str());
+   	printf("\n");
+    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
+    printf(cmd.c_str());
+    printf("\n");
+    system(cmd.c_str());
+    system(tot.c_str());
+    
 }
 
 void menu(Nodo *inicio,Nodo *ultimo,int opcion)
@@ -120,7 +197,7 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
     
     bool ext=false;
   
-	int opc,tecla,n=6;
+	int opc,tecla,n=7;
 	char *nombre;
 	nombre=(char*)malloc(15*sizeof(char));
 	correo=(char*)malloc(50*sizeof(char));
@@ -135,7 +212,7 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
 	bool repetir = true;
 	bool repite2 = true;
 	system("cls");
-	const char *opciones[]={"INGRESAR CONTACTO","INGRESAR DATOS EXTRAS","MODIFICAR CONTACTO","ELIMINAR PERSONA","MOSTRAR CONTACTOS","SALIR"};
+	const char *opciones[]={"INGRESAR CONTACTO","INGRESAR DATOS EXTRAS","MODIFICAR CONTACTO","ELIMINAR PERSONA","MOSTRAR CONTACTOS","GENERAR PDF DE CONTACTOS","SALIR"};
 	do
 	{
 		opc = seleccionar2(opciones,n);
@@ -152,7 +229,15 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
                 cin>>celular;
                 printf("\nCasa: ");
                 cin>>teleCasa;
-                
+
+				temp.open("temp.txt",ios::app);
+    			temp<<"Nombre: "<<nombre;
+    			temp<<"\nApellido: "<<apellido;
+    			temp<<"\nTelefono de casa: "<<teleCasa;
+    			temp<<"\nCelular: "<<"0"<<celular;
+    			temp<<"\n";
+				temp.close();
+				qrgen1(nombre,apellido);
 				p.insertarInicio(inicio,ultimo,nombre,apellido,celular,teleCasa);
 				
                 cout<<endl;
@@ -204,7 +289,14 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
 				nota=ingresarLetras();
 				fflush(stdin);    
 				ext=true;
-				
+				temp.open("temp.txt",ios::app);
+   				temp<<"\nCumpleanios: "<<";"<<cumpleDia<<"/"<<cumpleMes<<"/"<<cumpleAnio;
+    			temp<<"\nCorreo: "<<";"<<correo;
+    			temp<<"\nDireccion: "<<";"<<direccion;
+    			temp<<"\nAniversario: "<<";"<<aniverDia<<"/"<<aniverMes<<"/"<<aniverAnio;
+    			temp<<"\nNota: "<<";"<<nota;
+    			temp.close();
+    			qrgen2(correo);
 				p.insertarExtra(inicio,ultimo,cedula, cumpleDia, cumpleMes, cumpleAnio, correo, direccion, aniverDia, aniverMes, aniverAnio, nota);
 				cout<<endl;
 				system("Pause");
@@ -367,7 +459,27 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
 				cout<<endl;
 				system("Pause");
 				break;
-            case 7:
+             case 7:
+                
+                f.open("Agenda.csv", std::fstream::in);
+                
+              	if(!f.good())
+              	{
+              		system("cls");
+              		cout<<"ERROR: El archivo de agenda no esta creado\n";
+              		system("pause");
+				}
+				else
+				{
+					f.close();
+					system("cls");
+					system("txt2pdf.exe Agenda.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
+              		cout<<"Archivo generado exitosamente\n";
+              		system("pause");
+						
+				}
+				break;
+			 case 8:
                 //SALIR
 				repetir = false;
 				break;

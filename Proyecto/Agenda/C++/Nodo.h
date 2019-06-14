@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
+#include <sstream>
+#include <string>
 #include "Persona.h"
 
 using namespace std;
@@ -60,9 +62,9 @@ int cont =0;
 }
 
 void Nodo::insertarInicio(Nodo *&inicio,Nodo *&ultimo,char *nombre,char *apellido,int celular,int teleCasa){
-    
-	
+
 	ofstream agregarTxt;
+	ofstream temp;
     fflush(stdin);
     agregarTxt.open("Agenda.csv",ios::app);
     agregarTxt<<"\nNombre: "<<";"<<nombre;
@@ -70,8 +72,7 @@ void Nodo::insertarInicio(Nodo *&inicio,Nodo *&ultimo,char *nombre,char *apellid
     agregarTxt<<"\nTelefono de casa: "<<";"<<teleCasa;
     agregarTxt<<"\nCelular: "<<";"<<"0"<<celular;
     agregarTxt<<"\n"<<";";
-	agregarTxt.close();
-	
+    agregarTxt.close();
 	Nodo *nuevo=new Nodo();
     //persona = new Persona(nombre,apellido,cedula,sueldo);
     persona = (Persona*)malloc(sizeof(Persona));
@@ -95,6 +96,7 @@ void Nodo::insertarInicio(Nodo *&inicio,Nodo *&ultimo,char *nombre,char *apellid
 void Nodo::insertarExtra(Nodo *&inicio,Nodo *&ultimo,int cedula,int cumpleDia,int cumpleMes,int cumpleAnio,char *correo,char *direccion,int aniverDia,int aniverMes,int aniverAnio,char *nota){
     
 	ofstream agregarTxt;
+	ofstream temp;
     fflush(stdin);
     agregarTxt.open("Agenda.csv",ios::app);
     agregarTxt<<"\nCedula: "<<";"<<cedula;
@@ -104,8 +106,7 @@ void Nodo::insertarExtra(Nodo *&inicio,Nodo *&ultimo,int cedula,int cumpleDia,in
     agregarTxt<<"\nAniversario: "<<";"<<aniverDia<<"/"<<aniverMes<<"/"<<aniverAnio;
     agregarTxt<<"\nNota: "<<";"<<nota;
     agregarTxt<<"\n"<<";";
-agregarTxt.close();
-	
+	agregarTxt.close();
 	
 	
 	Nodo *nuevo=new Nodo();
