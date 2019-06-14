@@ -116,59 +116,7 @@ void gotoxy(int x, int y) //referencia: https://www.youtube.com/watch?v=evmIH4ny
 }
 
 
-void qrgen1(char* n, char* a)
-{
-	string lineas="";
-	string ao="\"";
-	printf(ao.c_str());
-	string na=string(n);
-	string ap=string(a);
-	string tot=na+ap+".png";
-	string cmd;
-	ifstream fe("temp.txt");
-   	while(!fe.eof()) 
-   	{
-   		getline (fe,lineas);
-   		ao=ao+lineas+" ";
-   	}
-   	ao=ao +"\"";
-   	fe.close();
-   	system("del temp.txt");
-   	printf(ao.c_str());
-   	printf("\n");
-    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
-    printf(cmd.c_str());
-    printf("\n");
-    system(cmd.c_str());
-    system(tot.c_str());
-    
-}
-void qrgen2(char* m)
-{
-	string lineas="";
-	string ao="\"";
-	printf(ao.c_str());
-	string na=string(m);
-	string tot=na+".png";
-	string cmd;
-	ifstream fe("temp.txt");
-   	while(!fe.eof()) 
-   	{
-   		getline (fe,lineas);
-   		ao=ao+lineas+" ";
-   	}
-   	ao=ao +"\"";
-   	fe.close();
-   	system("del temp.txt");
-   	printf(ao.c_str());
-   	printf("\n");
-    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
-    printf(cmd.c_str());
-    printf("\n");
-    system(cmd.c_str());
-    system(tot.c_str());
-    
-}
+
 
 void menu(Nodo *inicio,Nodo *ultimo,int opcion)
 {

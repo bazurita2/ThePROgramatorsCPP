@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000001000000
-UnitCount=4
+UnitCount=5
 
 [VersionInfo]
 Major=1
@@ -50,8 +50,18 @@ ProductVersion=1.0.0.0
 AutoIncBuildNr=0
 SyncProduct=1
 
+[Unit4]
+FileName=qrencode.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 [Unit1]
-FileName=..\..\Agenda\C++\Nodo.h
+FileName=main.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -61,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=..\..\Agenda\C++\Persona.h
+FileName=Persona.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -71,7 +81,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=..\..\Agenda\C++\main.cpp
+FileName=Nodo.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -80,8 +90,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit4]
-FileName=..\..\Agenda\C++\Validacion.h
+[Unit5]
+FileName=Validacion.h
 CompileCpp=1
 Folder=
 Compile=1

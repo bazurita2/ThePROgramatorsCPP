@@ -7735,7 +7735,7 @@ g_HandleSystemReboot();
 <PostBuildProg/>
 <PostBuildCmdLine/>
 <PostBuildWait>0</PostBuildWait>
-<Filename>AgendaInst.exe</Filename>
+<Filename>AgendaInst</Filename>
 <OutputFolder>C:\Users\Arkano036\Desktop\Cuarto Semestre\ThePROgramatorsCPP\ThePROgramatorsCPP\Proyecto\AgendaFix</OutputFolder>
 <SegmentSizeMode>0</SegmentSizeMode>
 <CustomSegSize>100</CustomSegSize>
