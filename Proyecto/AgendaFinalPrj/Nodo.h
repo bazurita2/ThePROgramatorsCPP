@@ -167,7 +167,7 @@ void Nodo::cargarCVS(){
 				contPersonas++;
 			}
 		}
-		//Mini vevctores de cada atributo para n Personas
+		//Mini vectores de cada atributo para n Personas
 		totalPersonas=contPersonas;
 		string nombrePersonas[totalPersonas],apellidoPersonas[totalPersonas],cedulaPersonas[totalPersonas],sueldoPersonas[totalPersonas];
 		string telefonoCasaPersonas[totalPersonas],cumpleDiaPersonas[totalPersonas],cumpleMesPersonas[totalPersonas],
@@ -293,6 +293,8 @@ void Nodo::mostrarListaUP(){
 
 void Nodo::modificarNodo(){
 	string nombre,apellido,cedula,sueldo;
+	string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,
+	aniverDia,aniverMes,aniverAnio,celular,correo,nota,direccion;
 	Nodo *actual = new Nodo();
 	actual = primero;
 	bool band=false;
@@ -304,20 +306,71 @@ void Nodo::modificarNodo(){
 		while(actual!=NULL&&band!=true){
 			if(actual->persona.getNombre()==cmpNombreStr){
 				cout<<"\tPersona "<<cmpNombreStr<<" encontrada"<<endl<<endl;
-					cout<<"----------------------\n";
-					cout<<"Nombre: "<<actual->persona.getNombre()<<endl;
-					cout<<"Apellido: "<<actual->persona.getApellido()<<endl;
-					cout<<"Telefono de Casa: "<<actual->persona.getTelefonoCasa()<<endl;
-					cout<<"Celular: "<<actual->persona.getCelular()<<endl;
-					cout<<"Correo: "<<actual->persona.getCorreo()<<endl;
-					cout<<"Direccion: "<<actual->persona.getDireccion()<<endl;
-					cout<<"Cedula: "<<actual->persona.getCedula()<<endl;
-					cout<<"Cumpleanios: "<<actual->persona.getCumpleDia()+"/"+actual->persona.getCumpleMes()+
-					"/"+actual->persona.getCumpleAnio()<<endl;
-					cout<<"Aniversario: "<<actual->persona.getAniverDia()+"/"+actual->persona.getAniverMes()+
-					"/"+actual->persona.getAniverAnio()<<endl;
-					cout<<"Nota: "<<actual->persona.getNota()<<endl;
-					cout<<"----------------------\n";
+				cout<<"----------------------\n";
+				cout<<"Nombre: "<<actual->persona.getNombre()<<endl;
+				cout<<"Apellido: "<<actual->persona.getApellido()<<endl;
+				cout<<"Telefono de Casa: "<<actual->persona.getTelefonoCasa()<<endl;
+				cout<<"Celular: "<<actual->persona.getCelular()<<endl;
+				cout<<"Correo: "<<actual->persona.getCorreo()<<endl;
+				cout<<"Direccion: "<<actual->persona.getDireccion()<<endl;
+				cout<<"Cedula: "<<actual->persona.getCedula()<<endl;
+				cout<<"Cumpleanios: "<<actual->persona.getCumpleanios()<<endl;
+				cout<<"Aniversario: "<<actual->persona.getAniversario()<<endl;
+				cout<<"Nota: "<<actual->persona.getNota()<<endl;
+				cout<<"----------------------\n";
+				cout<<"\tModificar esta persona:\n";
+				//Nombre
+				cout<<"\tIngrese el nombre de la persona: ";
+				cin>>nombre;
+				actual->persona.setNombre(nombre);
+				//Apellido
+				cout<<"\tIngrese el apellido de la persona: ";
+				cin>>apellido;
+				actual->persona.setApellido(apellido);
+				//Telefono Casa
+				cout<<"\tIngrese el telefono de Casa: ";
+				cin>>telefonoCasa;
+				actual->persona.setTelefonoCasa(telefonoCasa);
+				//Celular
+				cout<<"\tIngrese el celular: ";
+				cin>>celular;
+				actual->persona.setCelular(celular);
+				//Correo
+				cout<<"\tIngrese el correo: ";
+				cin>>correo;
+				actual->persona.setCorreo(correo);
+				//Direccion
+				cout<<"\tIngrese la direccion: ";
+				cin>>direccion;
+				actual->persona.setDireccion(direccion);
+				//Cedula
+				cout<<"\tIngrese la cedula de la persona: ";
+				cin>>cedula;
+				actual->persona.setCedula(cedula);
+				//Cumpleaños
+				cout<<"\tIngrese el cumple Dia: ";
+				cin>>cumpleDia;
+				actual->persona.setCumpleDia(cumpleDia);
+				cout<<"\tIngrese el cumple Mes: ";
+				cin>>cumpleMes;
+				actual->persona.setCumpleMes(cumpleMes);
+				cout<<"\tIngrese el cumple Anio: ";
+				cin>>cumpleAnio;
+				actual->persona.setCumpleAnio(cumpleAnio);
+				//Aniversario
+				cout<<"\tIngrese el aniver Dia: ";
+				cin>>aniverDia;
+				actual->persona.setAniverDia(aniverDia);
+				cout<<"\tIngrese el aniver Mes: ";
+				cin>>aniverMes;
+				actual->persona.setAniverMes(aniverMes);
+				cout<<"\tIngrese el aniver Anio: ";
+				cin>>aniverAnio;
+				actual->persona.setAniverAnio(aniverAnio);
+				//Nota
+				cout<<"\tIngrese una nota: ";
+				cin>>nota;
+				actual->persona.setNota(nota);
 				cout<<"\tPersona modificada... ";
 				band=true;
 			}
