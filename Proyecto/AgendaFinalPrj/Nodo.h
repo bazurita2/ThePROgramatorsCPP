@@ -30,7 +30,9 @@ Nodo *primero,*ultimo;
 
 void Nodo::insertarNodo(){
 	string nombre,apellido,cedula,sueldo;
-	string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,aniverDia,aniverMes,aniverAnio,celular,correo,nota,direccion;
+	string telefonoCasa,cumpleDia,cumpleMes,
+	cumpleAnio,cumpleanios,aniverDia,aniverMes,
+	aniverAnio,aniversario,celular,correo,nota,direccion;
 	Nodo *nuevoNodo= new Nodo();
 	cout<<endl<<endl;
 	//Nombre
@@ -71,6 +73,8 @@ void Nodo::insertarNodo(){
 	cout<<"\tIngrese el cumple Anio: ";
 	cin>>cumpleAnio;
 	nuevoNodo->persona.setCumpleAnio(cumpleAnio);
+	cumpleanios=nuevoNodo->persona.getCumpleDia()+"/"+nuevoNodo->persona.getCumpleMes()+"/"+nuevoNodo->persona.getCumpleAnio();
+	nuevoNodo->persona.setCumpleanios(cumpleanios);
 	//Aniversario
 	cout<<"\tIngrese el aniver Dia: ";
 	cin>>aniverDia;
@@ -81,6 +85,8 @@ void Nodo::insertarNodo(){
 	cout<<"\tIngrese el aniver Anio: ";
 	cin>>aniverAnio;
 	nuevoNodo->persona.setAniverAnio(aniverAnio);
+	aniversario=nuevoNodo->persona.getAniverDia()+"/"+nuevoNodo->persona.getAniverMes()+"/"+nuevoNodo->persona.getAniverAnio();
+	nuevoNodo->persona.setAniversario(aniversario);
 	//Nota
 	cout<<"\tIngrese una nota: ";
 	cin>>nota;
@@ -89,18 +95,16 @@ void Nodo::insertarNodo(){
 	ofstream agregarTxt;
 	fflush(stdin);
 	agregarTxt.open("AgendaTemp.csv",ios::app);
-	agregarTxt<<"\n"<<";"<<"Nombre: "<<";"<<nombre;
-	agregarTxt<<"\n"<<";"<<"Apellido: "<<";"<<apellido;
-	agregarTxt<<"\n"<<";"<<"Telefono de Casa: "<<";"<<telefonoCasa;
-	agregarTxt<<"\n"<<";"<<"Celular: "<<";"<<celular;
-	agregarTxt<<"\n"<<";"<<"Correo: "<<";"<<correo;
-	agregarTxt<<"\n"<<";"<<"Direccion: "<<";"<<direccion;
-	agregarTxt<<"\n"<<";"<<"Cedula: "<<";"<<cedula;
-	agregarTxt<<"\n"<<";"<<"Cumpleanios: "<<";"<<cumpleDia+"/"+cumpleMes+
-	"/"+cumpleAnio;
-	agregarTxt<<"\n"<<";"<<"Aniversario: "<<";"<<aniverDia+"/"+aniverMes+
-	"/"+aniverAnio;
-	agregarTxt<<"\n"<<";"<<"Nota: "<<";"<<nota;
+	agregarTxt<<"\n"<<";"<<"Nombre: "<<";"<<nuevoNodo->persona.getNombre();
+	agregarTxt<<"\n"<<";"<<"Apellido: "<<";"<<nuevoNodo->persona.getApellido();
+	agregarTxt<<"\n"<<";"<<"Telefono de Casa: "<<";"<<nuevoNodo->persona.getTelefonoCasa();
+	agregarTxt<<"\n"<<";"<<"Celular: "<<";"<<nuevoNodo->persona.getCelular();
+	agregarTxt<<"\n"<<";"<<"Correo: "<<";"<<nuevoNodo->persona.getCorreo();
+	agregarTxt<<"\n"<<";"<<"Direccion: "<<";"<<nuevoNodo->persona.getDireccion();
+	agregarTxt<<"\n"<<";"<<"Cedula: "<<";"<<nuevoNodo->persona.getCedula();
+	agregarTxt<<"\n"<<";"<<"Cumpleanios: "<<";"<<nuevoNodo->persona.getCumpleanios();
+	agregarTxt<<"\n"<<";"<<"Aniversario: "<<";"<<nuevoNodo->persona.getAniversario();
+	agregarTxt<<"\n"<<";"<<"Nota: "<<";"<<nuevoNodo->persona.getNota();
 	agregarTxt<<"\n";
 	agregarTxt.close();
 	//
@@ -116,6 +120,7 @@ void Nodo::insertarNodo(){
 		ultimo=nuevoNodo;
 	}
 }
+
 void Nodo::cargarCSV(){
 	Nodo *actual = new Nodo();
 	//Cargar CVS
@@ -149,7 +154,7 @@ void Nodo::cargarCSV(){
 				palabrasCorreccion[cont3]=palabras[cont];
 				if(!(cont3%2==0)){
 				datosLista[cont2]=palabrasCorreccion[cont3];
-				cout << datosLista[cont2] << cont2<<endl;
+//				cout << datosLista[cont2] << cont2<<endl;
 				cont2++;
 				}
 				cont3++;
@@ -160,10 +165,8 @@ void Nodo::cargarCSV(){
 		//Llenando lista
 		int contPersonas=0,totalPersonas=0;
 		for(int i=1;i<=cont2;i++){
-			cout<<"\n -> "<<i<<endl;
 			//Conteo personas
 			if(i%10==0){
-				cout<<"entro"<<endl;
 				contPersonas++;
 			}
 		}
@@ -193,8 +196,7 @@ void Nodo::cargarCSV(){
 		}
 		int numNodos=0;
 		string nombre,apellido,cedula,sueldo;
-		string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,
-		aniverDia,aniverMes,aniverAnio,celular,correo,nota,direccion;
+		string telefonoCasa,cumpleanios,aniversario,celular,correo,nota,direccion;
 		while(numNodos!=totalPersonas){
 			Nodo *nuevoNodo= new Nodo();
 			nombre=nombrePersonas[numNodos];
@@ -211,10 +213,10 @@ void Nodo::cargarCSV(){
 			nuevoNodo->persona.setDireccion(direccion);
 			cedula=cedulaPersonas[numNodos];
 			nuevoNodo->persona.setCedula(cedula);
-			cumpleAnio=cumpleAnioPersonas[numNodos];
-			nuevoNodo->persona.setCumpleAnio(cumpleAnio);
-			aniverAnio=aniverAnioPersonas[numNodos];
-			nuevoNodo->persona.setAniverAnio(aniverAnio);
+			cumpleanios=cumpleAnioPersonas[numNodos];
+			nuevoNodo->persona.setCumpleanios(cumpleanios);
+			aniversario=aniverAnioPersonas[numNodos];
+			nuevoNodo->persona.setAniversario(aniversario);
 			nota=notaPersonas[numNodos];
 			nuevoNodo->persona.setNota(nota);
 			if(primero==NULL){
@@ -289,8 +291,8 @@ void Nodo::mostrarListaUP(){
 
 void Nodo::modificarNodo(){
 	string nombre,apellido,cedula,sueldo;
-	string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,
-	aniverDia,aniverMes,aniverAnio,celular,correo,nota,direccion;
+	string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,cumpleanios,
+	aniverDia,aniverMes,aniverAnio,aniversario,celular,correo,nota,direccion;
 	Nodo *actual = new Nodo();
 	actual = primero;
 	bool band=false;
@@ -353,6 +355,8 @@ void Nodo::modificarNodo(){
 				cout<<"\tIngrese el cumple Anio: ";
 				cin>>cumpleAnio;
 				actual->persona.setCumpleAnio(cumpleAnio);
+				cumpleanios=actual->persona.getCumpleDia()+"/"+actual->persona.getCumpleMes()+"/"+actual->persona.getCumpleAnio();
+				actual->persona.setCumpleanios(cumpleanios);
 				//Aniversario
 				cout<<"\tIngrese el aniver Dia: ";
 				cin>>aniverDia;
@@ -363,6 +367,8 @@ void Nodo::modificarNodo(){
 				cout<<"\tIngrese el aniver Anio: ";
 				cin>>aniverAnio;
 				actual->persona.setAniverAnio(aniverAnio);
+				aniversario=actual->persona.getAniverDia()+"/"+actual->persona.getAniverMes()+"/"+actual->persona.getAniverAnio();
+				actual->persona.setAniversario(aniversario);
 				//Nota
 				cout<<"\tIngrese una nota: ";
 				cin>>nota;
