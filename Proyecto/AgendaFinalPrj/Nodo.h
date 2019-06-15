@@ -21,7 +21,7 @@ class Nodo{
 		void modificarNodo();
 		void eliminarNodo();
 		void menuDinamico();
-		void cargarCVS();
+		void cargarCSV();
 	private:
 		
 };
@@ -116,7 +116,7 @@ void Nodo::insertarNodo(){
 		ultimo=nuevoNodo;
 	}
 }
-void Nodo::cargarCVS(){
+void Nodo::cargarCSV(){
 	Nodo *actual = new Nodo();
 	//Cargar CVS
 	int lineas=0;
@@ -124,7 +124,7 @@ void Nodo::cargarCVS(){
 	string texto="",textoAcumulado="";
 	archivo.open("AgendaTemp.csv",ios::in);
 	if(archivo.fail()){
-		cout<<"\tNo se pudo abrir el archivo...";
+		cout<<"\n\n\tNo se pudo abrir el archivo...\n";
 	}else{
 		while(!archivo.eof()){
 		lineas++;
@@ -177,16 +177,16 @@ void Nodo::cargarCVS(){
 		for(int i=1;i<=cont2;i++){
 			//Otra persona
 			if(i%10==0){
-				nombrePersonas[j]=datosLista[1+acum2];
-				apellidoPersonas[j]=datosLista[2+acum2];
-				telefonoCasaPersonas[j]=datosLista[3+acum2];
-				celularPersonas[j]=datosLista[4+acum2];
-				correoPersonas[j]=datosLista[5+acum2];
-				direccionPersonas[j]=datosLista[6+acum2];
-				cedulaPersonas[j]=datosLista[7+acum2];
-				cumpleAnioPersonas[j]=datosLista[8+acum2];
-				aniverAnioPersonas[j]=datosLista[9+acum2];
-				notaPersonas[j]=datosLista[10+acum2];
+				nombrePersonas[j]=datosLista[0+acum2];
+				apellidoPersonas[j]=datosLista[1+acum2];
+				telefonoCasaPersonas[j]=datosLista[2+acum2];
+				celularPersonas[j]=datosLista[3+acum2];
+				correoPersonas[j]=datosLista[4+acum2];
+				direccionPersonas[j]=datosLista[5+acum2];
+				cedulaPersonas[j]=datosLista[6+acum2];
+				cumpleAnioPersonas[j]=datosLista[7+acum2];
+				aniverAnioPersonas[j]=datosLista[8+acum2];
+				notaPersonas[j]=datosLista[9+acum2];
 				j++;
 				acum2+=10;
 			}
@@ -218,10 +218,10 @@ void Nodo::cargarCVS(){
 			nota=notaPersonas[numNodos];
 			nuevoNodo->persona.setNota(nota);
 			if(primero==NULL){
-			primero=nuevoNodo;
-			primero->sig=NULL;
-			primero->ant=NULL;
-			ultimo=primero;
+				primero=nuevoNodo;
+				primero->sig=NULL;
+				primero->ant=NULL;
+				ultimo=primero;
 			}else{
 				ultimo->sig=nuevoNodo;
 				nuevoNodo->sig=NULL;
@@ -237,10 +237,8 @@ void Nodo::mostrarListaPU(){
 	Nodo *actual = new Nodo();
 	actual = primero;
 	cout<<endl<<endl;
-	int i=0;
 	if(primero!=NULL){
 		while(actual!=NULL){
-		i++;
 		cout<<"----------------------\n";
 		cout<<"Nombre: "<<actual->persona.getNombre()<<endl;
 		cout<<"Apellido: "<<actual->persona.getApellido()<<endl;
@@ -276,10 +274,8 @@ void Nodo::mostrarListaUP(){
 		cout<<"Correo: "<<actual->persona.getCorreo()<<endl;
 		cout<<"Direccion: "<<actual->persona.getDireccion()<<endl;
 		cout<<"Cedula: "<<actual->persona.getCedula()<<endl;
-		cout<<"Cumpleanios: "<<actual->persona.getCumpleDia()+"/"+actual->persona.getCumpleMes()+
-		"/"+actual->persona.getCumpleAnio()<<endl;
-		cout<<"Aniversario: "<<actual->persona.getAniverDia()+"/"+actual->persona.getAniverMes()+
-		"/"+actual->persona.getAniverAnio()<<endl;
+		cout<<"Cumpleanios: "<<actual->persona.getCumpleanios()<<endl;
+		cout<<"Aniversario: "<<actual->persona.getAniversario()<<endl;
 		cout<<"Nota: "<<actual->persona.getNota()<<endl;
 		cout<<"----------------------\n";
 		actual=actual->ant;

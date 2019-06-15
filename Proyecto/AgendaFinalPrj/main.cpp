@@ -140,7 +140,7 @@ void menuDinamico(){
 					case 5:
 						system("cls");
 						cout<<"Cargando"<<endl;
-						listaDoble->cargarCVS();
+						listaDoble->cargarCSV();
 						system("pause");
 						system("cls");
 						menuDinamico();
