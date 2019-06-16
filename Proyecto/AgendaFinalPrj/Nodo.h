@@ -11,6 +11,7 @@
 #include <string.h>
 #include <fstream>
 #include <map>
+#include "Validar.h"
 //#include <jdbc/cppconn/driver.h>
 //#include <jdbc/cppconn/exception.h>
 //#include <jdbc/cppconn/resultset.h>
@@ -106,59 +107,70 @@ void Nodo::insertarNodo(){
 	Nodo *nuevoNodo= new Nodo();
 	cout<<endl<<endl;
 	//Nombre
-	cout<<"\tIngrese el nombre de la persona: ";
-	cin>>nombre;
+	cout<<"\n\tIngrese el nombre de la persona: ";
+	nombre=ingresarLetras();
 	nuevoNodo->persona.setNombre(nombre);
 	//Apellido
-	cout<<"\tIngrese el apellido de la persona: ";
-	cin>>apellido;
+	cout<<"\n\tIngrese el apellido de la persona: ";
+	apellido=ingresarLetras();
 	nuevoNodo->persona.setApellido(apellido);
 	//Telefono Casa
-	cout<<"\tIngrese el telefono de Casa: ";
-	cin>>telefonoCasa;
+	cout<<"\n\tIngrese el telefono de Casa: ";
+	telefonoCasa=ingresarCasa();
 	nuevoNodo->persona.setTelefonoCasa(telefonoCasa);
 	//Celular
-	cout<<"\tIngrese el celular: ";
-	cin>>celular;
+	cout<<"\n\tIngrese el celular: ";
+	celular=ingresarCelular();
 	nuevoNodo->persona.setCelular(celular);
 	//Correo
-	cout<<"\tIngrese el correo: ";
+	cout<<"\n\tIngrese el correo: ";
 	cin>>correo;
 	nuevoNodo->persona.setCorreo(correo);
 	//Direccion
-	cout<<"\tIngrese la direccion: ";
+	cout<<"\n\tIngrese la direccion: ";
 	cin>>direccion;
 	nuevoNodo->persona.setDireccion(direccion);
 	//Cedula
-	cout<<"\tIngrese la cedula de la persona: ";
-	cin>>cedula;
+	cedula=validarCedula();
 	nuevoNodo->persona.setCedula(cedula);
 	//Cumpleaños
-	cout<<"\tIngrese el cumple Dia: ";
-	cin>>cumpleDia;
+	do{
+	cout<<"\n\tIngrese el cumple Dia: ";
+	cumpleDia=ingresarDia();
+	}while(cumpleDia<"01"||cumpleDia>"31");
 	nuevoNodo->persona.setCumpleDia(cumpleDia);
-	cout<<"\tIngrese el cumple Mes: ";
-	cin>>cumpleMes;
+	do{
+	cout<<"\n\tIngrese el cumple Mes: ";
+	cumpleMes=ingresarMes();
+	}while(cumpleMes<"01"||cumpleMes>"12");
 	nuevoNodo->persona.setCumpleMes(cumpleMes);
-	cout<<"\tIngrese el cumple Anio: ";
-	cin>>cumpleAnio;
+	do{
+	cout<<"\n\tIngrese el cumple Anio: ";
+	cumpleAnio=ingresarAnio();
+	}while(cumpleAnio<"1900"||cumpleAnio>"2019");
 	nuevoNodo->persona.setCumpleAnio(cumpleAnio);
 	cumpleanios=nuevoNodo->persona.getCumpleDia()+"/"+nuevoNodo->persona.getCumpleMes()+"/"+nuevoNodo->persona.getCumpleAnio();
 	nuevoNodo->persona.setCumpleanios(cumpleanios);
 	//Aniversario
-	cout<<"\tIngrese el aniver Dia: ";
-	cin>>aniverDia;
+	do{
+	cout<<"\n\tIngrese el aniver Dia: ";
+	aniverDia=ingresarDia();
+	}while(aniverDia<"01"||aniverDia>"31");
 	nuevoNodo->persona.setAniverDia(aniverDia);
-	cout<<"\tIngrese el aniver Mes: ";
-	cin>>aniverMes;
+	do{
+	cout<<"\n\tIngrese el aniver Mes: ";
+	aniverMes=ingresarMes();
+	}while(aniverMes<"01"||aniverMes>"12");
 	nuevoNodo->persona.setAniverMes(aniverMes);
-	cout<<"\tIngrese el aniver Anio: ";
-	cin>>aniverAnio;
+	do{
+	cout<<"\n\tIngrese el aniver Anio: ";
+	aniverAnio=ingresarAnio();
+	}while(aniverAnio<"1900"||aniverAnio>"2019");
 	nuevoNodo->persona.setAniverAnio(aniverAnio);
 	aniversario=nuevoNodo->persona.getAniverDia()+"/"+nuevoNodo->persona.getAniverMes()+"/"+nuevoNodo->persona.getAniverAnio();
 	nuevoNodo->persona.setAniversario(aniversario);
 	//Nota
-	cout<<"\tIngrese una nota: ";
+	cout<<"\n\tIngrese una nota: ";
 	cin>>nota;
 	nuevoNodo->persona.setNota(nota);
 	//CVS
@@ -384,12 +396,12 @@ void Nodo::modificarNodo(){
 	bool band=false;
 	string cmpNombreStr;
 	cout<<endl<<endl;
-	cout<<"\tIngrese el nombre de la persona a modificar: ";
-	cin>>cmpNombreStr;
+	cout<<"\n\tIngrese el nombre de la persona a modificar: ";
+	cmpNombreStr=ingresarLetras();
 	if(primero!=NULL){
 		while(actual!=NULL&&band!=true){
 			if(actual->persona.getNombre()==cmpNombreStr){
-				cout<<"\tPersona "<<cmpNombreStr<<" encontrada"<<endl<<endl;
+				cout<<"\n\tPersona "<<cmpNombreStr<<" encontrada"<<endl<<endl;
 				cout<<"----------------------\n";
 				cout<<"Nombre: "<<actual->persona.getNombre()<<endl;
 				cout<<"Apellido: "<<actual->persona.getApellido()<<endl;
@@ -402,70 +414,81 @@ void Nodo::modificarNodo(){
 				cout<<"Aniversario: "<<actual->persona.getAniversario()<<endl;
 				cout<<"Nota: "<<actual->persona.getNota()<<endl;
 				cout<<"----------------------\n";
-				cout<<"\tModificar esta persona:\n";
+				cout<<"\t\nModificar esta persona:\n";
 				//Nombre
-				cout<<"\tIngrese el nombre de la persona: ";
-				cin>>nombre;
+				cout<<"\n\tIngrese el nombre de la persona: ";
+				nombre=ingresarLetras();
 				actual->persona.setNombre(nombre);
 				//Apellido
-				cout<<"\tIngrese el apellido de la persona: ";
-				cin>>apellido;
+				cout<<"\n\tIngrese el apellido de la persona: ";
+				apellido=ingresarLetras();
 				actual->persona.setApellido(apellido);
 				//Telefono Casa
-				cout<<"\tIngrese el telefono de Casa: ";
-				cin>>telefonoCasa;
+				cout<<"\n\tIngrese el telefono de Casa: ";
+				telefonoCasa=ingresarCasa();
 				actual->persona.setTelefonoCasa(telefonoCasa);
 				//Celular
-				cout<<"\tIngrese el celular: ";
-				cin>>celular;
+				cout<<"\n\tIngrese el celular: ";
+				celular=ingresarCelular();
 				actual->persona.setCelular(celular);
 				//Correo
-				cout<<"\tIngrese el correo: ";
+				cout<<"\n\tIngrese el correo: ";
 				cin>>correo;
 				actual->persona.setCorreo(correo);
 				//Direccion
-				cout<<"\tIngrese la direccion: ";
+				cout<<"\n\tIngrese la direccion: ";
 				cin>>direccion;
 				actual->persona.setDireccion(direccion);
 				//Cedula
-				cout<<"\tIngrese la cedula de la persona: ";
-				cin>>cedula;
+				cedula=validarCedula();
 				actual->persona.setCedula(cedula);
 				//Cumpleaños
-				cout<<"\tIngrese el cumple Dia: ";
-				cin>>cumpleDia;
+				do{
+				cout<<"\n\tIngrese el cumple Dia: ";
+				cumpleDia=ingresarDia();
+				}while(cumpleDia<"01"||cumpleDia>"31");
 				actual->persona.setCumpleDia(cumpleDia);
-				cout<<"\tIngrese el cumple Mes: ";
-				cin>>cumpleMes;
+					do{
+				cout<<"\n\tIngrese el cumple Mes: ";
+				cumpleMes=ingresarMes();
+				}while(cumpleMes<"01"||cumpleMes>"12");
 				actual->persona.setCumpleMes(cumpleMes);
-				cout<<"\tIngrese el cumple Anio: ";
-				cin>>cumpleAnio;
+				do{
+				cout<<"\n\tIngrese el cumple Anio: ";
+				cumpleAnio=ingresarAnio();
+				}while(cumpleAnio<"1900"||cumpleAnio>"2019");
 				actual->persona.setCumpleAnio(cumpleAnio);
 				cumpleanios=actual->persona.getCumpleDia()+"/"+actual->persona.getCumpleMes()+"/"+actual->persona.getCumpleAnio();
 				actual->persona.setCumpleanios(cumpleanios);
 				//Aniversario
-				cout<<"\tIngrese el aniver Dia: ";
-				cin>>aniverDia;
+				do{
+				cout<<"\n\tIngrese el aniver Dia: ";
+				aniverDia=ingresarDia();
+				}while(aniverDia<"01"||aniverDia>"31");
 				actual->persona.setAniverDia(aniverDia);
-				cout<<"\tIngrese el aniver Mes: ";
-				cin>>aniverMes;
+					do{
+				cout<<"\n\tIngrese el aniver Mes: ";
+				aniverMes=ingresarMes();
+				}while(aniverMes<"01"||aniverMes>"12");
 				actual->persona.setAniverMes(aniverMes);
-				cout<<"\tIngrese el aniver Anio: ";
-				cin>>aniverAnio;
+					do{
+				cout<<"\n\tIngrese el aniver Anio: ";
+				aniverAnio=ingresarAnio();
+				}while(aniverAnio<"1900"||aniverAnio>"2019");
 				actual->persona.setAniverAnio(aniverAnio);
 				aniversario=actual->persona.getAniverDia()+"/"+actual->persona.getAniverMes()+"/"+actual->persona.getAniverAnio();
 				actual->persona.setAniversario(aniversario);
 				//Nota
-				cout<<"\tIngrese una nota: ";
+				cout<<"\n\tIngrese una nota: ";
 				cin>>nota;
 				actual->persona.setNota(nota);
-				cout<<"\tPersona modificada... ";
+				cout<<"\n\tPersona modificada... ";
 				band=true;
 			}
 			actual=actual->sig;
 		}
 		if(!band){
-			cout<<"\tPersona no encontrada...";
+			cout<<"\n\tPersona no encontrada...";
 		}
 		
 		//Archivo CSV Modificar Persona
@@ -652,12 +675,12 @@ void Nodo::eliminarNodo(){
 	bool band=false;
 	string cmpNombreStr;
 	cout<<endl<<endl;
-	cout<<"\tIngrese el nombre de la persona a eliminar: ";
+	cout<<"\n\tIngrese el nombre de la persona a eliminar: ";
 	cin>>cmpNombreStr;
 	if(primero!=NULL){
 		while(actual!=NULL&&band!=true){
 			if(actual->persona.getNombre()==cmpNombreStr){
-				cout<<"\tPersona "<<cmpNombreStr<<" encontrada"<<endl<<endl;
+				cout<<"\n\tPersona "<<cmpNombreStr<<" encontrada"<<endl<<endl;
 				if(actual==primero){
 					primero=primero->sig;
 					primero->ant=NULL;
@@ -676,7 +699,7 @@ void Nodo::eliminarNodo(){
 			actual=actual->sig;
 		}
 		if(!band){
-			cout<<"\tPersona no encontrada...";
+			cout<<"\n\tPersona no encontrada...";
 		}
 	}else{
 		cout<<"\tLista vacia...";

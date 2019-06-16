@@ -24,6 +24,7 @@ ifstream f;
 
 void portada()
 {
+	system ("color 9F" );
 	cout<<"\n\n\n"<<endl;
 	cout<<"\t\t:::::::::::     :::::::::      :::::::::      ::::: ::      :::    :::::::       :::::::::::   "<<endl;
 	cout<<"\t\t:::::::::::     :::            ::   	      ::::   ::	    :::	   :: 	 ::	 :::	 :::    "<<endl;
@@ -56,29 +57,30 @@ void gotoxy(int x,int y){
 }
 
 void menuInicio(){
-	printf("================================================\n");
+system ("color 9F" );
+	printf("\t\t\t================================================\n");
 	gotoxy(5,1);
-	cout<<"\t\tMENU"<<endl;
+	cout<<"\t\t\t\t\t------MENU------"<<endl;
 	gotoxy(5,2);
-	cout<<"  Insertar Nodo";
+	cout<<"\t\t\t\t*  Insertar Nodo";
 	gotoxy(5,3);
-	cout<<"  Eliminar Nodo";
+	cout<<"\t\t\t\t*  Eliminar Nodo";
 	gotoxy(5,4);
-	cout<<"  Modificar Nodo";
+	cout<<"\t\t\t\t*  Modificar Nodo";
 	gotoxy(5,5);
-	cout<<"  Imprimir Lista P->U";
+	cout<<"\t\t\t\t*  Imprimir Lista P->U";
 	gotoxy(5,6);
-	cout<<"  Imprimir Lista U->P";
+	cout<<"\t\t\t\t*  Imprimir Lista U->P";
 	gotoxy(5,7);
-	cout<<"  Generar PDF de Contactos";
+	cout<<"\t\t\t\t*  Generar PDF de Contactos";
 	gotoxy(5,8);
-	cout<<"  Salir\n";
-	printf("================================================");
+	cout<<"\t\t\t\t*  Salir\n";
+	printf("\t\t\t================================================");
 }
 
 void Selector(int i)
 {
-	gotoxy(5,2+i);
+	gotoxy(30,2+i);
 }
 
 void menuDinamico()
