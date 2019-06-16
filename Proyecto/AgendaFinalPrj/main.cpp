@@ -37,8 +37,8 @@ void portada()
 }
 int main()
 {
-	Nodo* sql= new Nodo();
-	sql->sql();
+//	Nodo* sql= new Nodo();
+//	sql->sql();
 	listaDoble->cargarCSV();
 	portada();
 	system("cls");

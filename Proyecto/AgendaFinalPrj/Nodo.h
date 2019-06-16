@@ -11,11 +11,11 @@
 #include <string.h>
 #include <fstream>
 #include <map>
-#include <jdbc/cppconn/driver.h>
-#include <jdbc/cppconn/exception.h>
-#include <jdbc/cppconn/resultset.h>
-#include <jdbc/mysql_connection.h>
-#include <jdbc/cppconn/statement.h>
+//#include <jdbc/cppconn/driver.h>
+//#include <jdbc/cppconn/exception.h>
+//#include <jdbc/cppconn/resultset.h>
+//#include <jdbc/mysql_connection.h>
+//#include <jdbc/cppconn/statement.h>
 
 #include "Persona.h"
 
@@ -41,45 +41,43 @@ class Nodo{
 
 Nodo *primero,*ultimo;
 
-void Nodo::sql()
-{
-	try 
-	{
-		sql::Driver *driver;
-  		sql::Connection *con;
-  		sql::Statement *stmt;
-  		sql::ResultSet *res;
-  		driver = get_driver_instance();
-  		con = driver->connect("tcp://127.0.0.1:3306", "root", "cedptmc04");
-  		con->setSchema("agenda");
-		stmt = con->createStatement();
- 		res = stmt->executeQuery("SELECT 'Hello World!' AS _message");
-  		while (res->next()) 
-		{
-    		cout << "\t... MySQL replies: ";
-    		cout << res->getString("_message") << endl;
-    		cout << "\t... MySQL says it again: ";
-    		cout << res->getString(1) << endl;
- 		 }
-  	delete res;
-  	delete stmt;
-  	delete con;
-  	} 
-	catch (sql::SQLException &e) 
-  	
-	{
-  		cout << "# ERR: SQLException in " << __FILE__;
-  		//cout << "(" << __FUNCTION__ << ") on line " »<< __LINE__ << endl;
-  		cout << "# ERR: " << e.what();
-  		cout << " (MySQL error code: " << e.getErrorCode();
-  		cout << ", SQLState: " << e.getSQLState() << " )" << endl;
-	}
-
-
-}
+//void Nodo::sql(){
+//	try 
+//	{
+//		sql::Driver *driver;
+//  		sql::Connection *con;
+//  		sql::Statement *stmt;
+//  		sql::ResultSet *res;
+//  		driver = get_driver_instance();
+//  		con = driver->connect("tcp://127.0.0.1:3306", "root", "cedptmc04");
+//  		con->setSchema("agenda");
+//		stmt = con->createStatement();
+// 		res = stmt->executeQuery("SELECT 'Hello World!' AS _message");
+//  		while (res->next()) 
+//		{
+//    		cout << "\t... MySQL replies: ";
+//    		cout << res->getString("_message") << endl;
+//    		cout << "\t... MySQL says it again: ";
+//    		cout << res->getString(1) << endl;
+// 		 }
+//  	delete res;
+//  	delete stmt;
+//  	delete con;
+//  	} 
+//	catch (sql::SQLException &e) 
+//  	
+//	{
+//  		cout << "# ERR: SQLException in " << __FILE__;
+//  		//cout << "(" << __FUNCTION__ << ") on line " »<< __LINE__ << endl;
+//  		cout << "# ERR: " << e.what();
+//  		cout << " (MySQL error code: " << e.getErrorCode();
+//  		cout << ", SQLState: " << e.getSQLState() << " )" << endl;
+//	}
+//
+//
+//}
 	
-void Nodo::qrgen(string n, string a)
-{
+void Nodo::qrgen(string n, string a){
 	string lineas="";
 	string ao="\"";
 	string tot=n+a+".png";
@@ -101,10 +99,10 @@ void Nodo::qrgen(string n, string a)
 }
 
 void Nodo::insertarNodo(){
-	string nombre,apellido,cedula,sueldo;
-	string telefonoCasa,cumpleDia,cumpleMes,
-	cumpleAnio,cumpleanios,aniverDia,aniverMes,
-	aniverAnio,aniversario,celular,correo,nota,direccion;
+	string nombre,apellido,telefonoCasa,celular,correo,
+	direccion,cedula,cumpleDia,cumpleMes,cumpleAnio,cumpleanios,
+	aniverDia,aniverMes,aniverAnio,aniversario,nota;
+	
 	Nodo *nuevoNodo= new Nodo();
 	cout<<endl<<endl;
 	//Nombre
@@ -261,10 +259,9 @@ void Nodo::cargarCSV(){
 		}
 		//Mini vectores de cada atributo para n Personas
 		totalPersonas=contPersonas;
-		string nombrePersonas[totalPersonas],apellidoPersonas[totalPersonas],cedulaPersonas[totalPersonas],sueldoPersonas[totalPersonas];
-		string telefonoCasaPersonas[totalPersonas],cumpleDiaPersonas[totalPersonas],cumpleMesPersonas[totalPersonas],
-		cumpleAnioPersonas[totalPersonas],aniverDiaPersonas[totalPersonas],aniverMesPersonas[totalPersonas],aniverAnioPersonas[totalPersonas],
-		celularPersonas[totalPersonas],correoPersonas[totalPersonas],notaPersonas[totalPersonas],direccionPersonas[totalPersonas];
+		string nombrePersonas[totalPersonas],apellidoPersonas[totalPersonas],telefonoCasaPersonas[totalPersonas],celularPersonas[totalPersonas],
+		correoPersonas[totalPersonas],direccionPersonas[totalPersonas],cedulaPersonas[totalPersonas],cumpleaniosPersonas[totalPersonas],
+		aniversarioPersonas[totalPersonas],notaPersonas[totalPersonas];
 		int j=0,acum2=0;
 		for(int i=1;i<=cont2;i++){
 			//Otra persona
@@ -276,16 +273,16 @@ void Nodo::cargarCSV(){
 				correoPersonas[j]=datosLista[4+acum2];
 				direccionPersonas[j]=datosLista[5+acum2];
 				cedulaPersonas[j]=datosLista[6+acum2];
-				cumpleAnioPersonas[j]=datosLista[7+acum2];
-				aniverAnioPersonas[j]=datosLista[8+acum2];
+				cumpleaniosPersonas[j]=datosLista[7+acum2];
+				aniversarioPersonas[j]=datosLista[8+acum2];
 				notaPersonas[j]=datosLista[9+acum2];
 				j++;
 				acum2+=10;
 			}
 		}
 		int numNodos=0;
-		string nombre,apellido,cedula,sueldo;
-		string telefonoCasa,cumpleanios,aniversario,celular,correo,nota,direccion;
+		string nombre,apellido,telefonoCasa,celular,
+		correo,direccion,cedula,cumpleanios,aniversario,nota;
 		while(numNodos!=totalPersonas){
 			Nodo *nuevoNodo= new Nodo();
 			nombre=nombrePersonas[numNodos];
@@ -302,9 +299,9 @@ void Nodo::cargarCSV(){
 			nuevoNodo->persona.setDireccion(direccion);
 			cedula=cedulaPersonas[numNodos];
 			nuevoNodo->persona.setCedula(cedula);
-			cumpleanios=cumpleAnioPersonas[numNodos];
+			cumpleanios=cumpleanios[numNodos];
 			nuevoNodo->persona.setCumpleanios(cumpleanios);
-			aniversario=aniverAnioPersonas[numNodos];
+			aniversario=aniversario[numNodos];
 			nuevoNodo->persona.setAniversario(aniversario);
 			nota=notaPersonas[numNodos];
 			nuevoNodo->persona.setNota(nota);
@@ -379,9 +376,10 @@ void Nodo::mostrarListaUP(){
 }
 
 void Nodo::modificarNodo(){
-	string nombre,apellido,cedula,sueldo;
-	string telefonoCasa,cumpleDia,cumpleMes,cumpleAnio,cumpleanios,
-	aniverDia,aniverMes,aniverAnio,aniversario,celular,correo,nota,direccion;
+	string nombre,apellido,telefonoCasa,celular,correo,
+	direccion,cedula,cumpleDia,cumpleMes,cumpleAnio,cumpleanios,
+	aniverDia,aniverMes,aniverAnio,aniversario,nota;
+	
 	Nodo *actual = new Nodo();
 	actual = primero;
 	bool band=false;
