@@ -1,3 +1,9 @@
+
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURAS DE DATOS
+//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
+//14/06/2019
+
 #include <iostream>
 #include <stdlib.h>
 #include <conio.h>
@@ -14,7 +20,6 @@ class Nodo{
 		Nodo *sig;
 		Nodo *ant;
 		Persona persona;
-		
 		void insertarNodo();
 		void mostrarListaPU();
 		void mostrarListaUP();
@@ -22,11 +27,35 @@ class Nodo{
 		void eliminarNodo();
 		void menuDinamico();
 		void cargarCSV();
+		void qrgen(string, string);
 	private:
 		
 };
 
 Nodo *primero,*ultimo;
+
+	
+void Nodo::qrgen(string n, string a)
+{
+	string lineas="";
+	string ao="\"";
+	string tot=n+a+".png";
+	string cmd;
+	ifstream fe("temp.txt");
+   	while(!fe.eof()) 
+   	{
+   		getline (fe,lineas);
+   		ao=ao+lineas+" ";
+   	}
+   	ao=ao +"\"";
+   	fe.close();
+   	system("del temp.txt");
+    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
+    printf("\n");
+    system(cmd.c_str());
+    system(tot.c_str());
+
+}
 
 void Nodo::insertarNodo(){
 	string nombre,apellido,cedula,sueldo;
@@ -93,6 +122,7 @@ void Nodo::insertarNodo(){
 	nuevoNodo->persona.setNota(nota);
 	//CVS
 	ofstream agregarTxt;
+	ofstream temp;
 	fflush(stdin);
 	agregarTxt.open("AgendaTemp.csv",ios::app);
 	agregarTxt<<"\n"<<";"<<"Nombre: "<<";"<<nuevoNodo->persona.getNombre();
@@ -107,6 +137,22 @@ void Nodo::insertarNodo(){
 	agregarTxt<<"\n"<<";"<<"Nota: "<<";"<<nuevoNodo->persona.getNota();
 	agregarTxt<<"\n";
 	agregarTxt.close();
+	fflush(stdin);
+	temp.open("temp.txt",ios::out);
+	temp<<"\n"<<"Nombre: "<<nuevoNodo->persona.getNombre();
+	temp<<"\n"<<"Apellido: "<<nuevoNodo->persona.getApellido();
+	temp<<"\n"<<"Telefono de Casa: "<<nuevoNodo->persona.getTelefonoCasa();
+	temp<<"\n"<<"Celular: "<<nuevoNodo->persona.getCelular();
+	temp<<"\n"<<"Correo: "<<nuevoNodo->persona.getCorreo();
+	temp<<"\n"<<"Direccion: "<<nuevoNodo->persona.getDireccion();
+	temp<<"\n"<<"Cedula: "<<nuevoNodo->persona.getCedula();
+	temp<<"\n"<<"Cumpleanios: "<<nuevoNodo->persona.getCumpleanios();
+	temp<<"\n"<<"Aniversario: "<<nuevoNodo->persona.getAniversario();
+	temp<<"\n"<<"Nota: "<<nuevoNodo->persona.getNota();
+	temp<<"\n";
+	temp.close();
+	qrgen(nuevoNodo->persona.getNombre(),nuevoNodo->persona.getApellido());
+
 	//
 	if(primero==NULL){
 		primero=nuevoNodo;

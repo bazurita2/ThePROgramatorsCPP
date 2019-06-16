@@ -1,3 +1,9 @@
+
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURAS DE DATOS
+//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
+
+
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
@@ -25,6 +31,7 @@ class Persona{
 		string correo;
 		string nota;
  		string direccion;
+
 		
 	public:
 		void setCedula(string);

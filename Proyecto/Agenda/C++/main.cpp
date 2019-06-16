@@ -92,12 +92,7 @@ int seleccionar2(const char *opciones2[],int n)
 				repetir = false;
 				break;
 			case 59:
-				system("cls");
-				cout<<"Ayuda"<<endl;
-				system("ayuda.chm");
-				system("pause");
-				system("cls");
-				menu(inicio,ultimo,0);
+
 				repetir = false;
 				break;
 			}
@@ -409,23 +404,7 @@ void menu(Nodo *inicio,Nodo *ultimo,int opcion)
 				break;
              case 7:
                 
-                f.open("Agenda.csv", std::fstream::in);
-                
-              	if(!f.good())
-              	{
-              		system("cls");
-              		cout<<"ERROR: El archivo de agenda no esta creado\n";
-              		system("pause");
-				}
-				else
-				{
-					f.close();
-					system("cls");
-					system("txt2pdf.exe Agenda.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
-              		cout<<"Archivo generado exitosamente\n";
-              		system("pause");
-						
-				}
+               
 				break;
 			 case 8:
                 //SALIR

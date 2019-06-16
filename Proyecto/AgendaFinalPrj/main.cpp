@@ -1,3 +1,9 @@
+
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURAS DE DATOS
+//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
+//14/06/2019
+
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -12,9 +18,27 @@
 using namespace std;
 
 void menuDinamico();
+void portada();
 Nodo *listaDoble;
+ifstream f;
 
-int main (){
+void portada()
+{
+	cout<<"\n\n\n"<<endl;
+	cout<<"\t\t:::::::::::     :::::::::      :::::::::      ::::: ::      :::    :::::::       :::::::::::   "<<endl;
+	cout<<"\t\t:::::::::::     :::            ::   	      ::::   ::	    :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::     :::     :::            ::    	      ::::    ::    :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::     :::     :::            :::::::::      ::::     ::   :::	   :: 	 ::	 :::	 :::    "<<endl;
+	cout<<"\t\t:::::::::::     :::    :::::   ::             ::::      ::  :::    :: 	 ::	 :::::::::::   "<<endl;
+	cout<<"\t\t:::     :::     ::::::::::     ::             ::::       :: :::    :: 	 ::	 :::	 :::   "<<endl;
+	cout<<"\t\t:::     :::     ::::::::::     :::::::::      ::::        :::::    :::::::	 :::	 :::   "<<endl;
+	cout<<"\n\n\n"<<endl;
+	system("pause");
+}
+int main()
+{
+	portada();
+	system("cls");
 	menuDinamico();
 	return 0;
 }
@@ -29,70 +53,73 @@ void gotoxy(int x,int y){
 }
 
 void menuInicio(){
-	gotoxy(0,3);
-	cout<<"\t\t *        *   *********  *********  *********   *********"<<endl
-	    <<"\t\t *        *  *               *      *       *  *         "<<endl
-		<<"\t\t *        *  *               *      *       *  *         "<<endl
-		<<"\t\t *        *    *             *      *       *    *       "<<endl
-		<<"\t\t *        *       *          *      *********       *    "<<endl
-		<<"\t\t *        *          *       *      *       *          * "<<endl
-		<<"\t\t *        *           *      *      *       *           *"<<endl
-		<<"\t\t *        *           *      *      *       *           *"<<endl
-		<<"\t\t ******** *  *********       *      *       *  ********* "<<endl;
-	cout<<endl<<endl;
-	cout<<"\t\t\t\t\t\t *****  ****** *****  *      ******  ******"<<endl
-	    <<"\t\t\t\t\t\t *    * *    * *    * *      *      *"<<endl
-	    <<"\t\t\t\t\t\t *    * *    * *****  *      ******  ******"<<endl
-	    <<"\t\t\t\t\t\t *    * *    * *    * *      *             *"<<endl
-	    <<"\t\t\t\t\t\t *****  ****** *****  ****** ******  ****** "<<endl;
-    gotoxy(47,21);
+	printf("================================================\n");
+	gotoxy(5,1);
 	cout<<"\t\tMENU"<<endl;
-	gotoxy(47,23);
+	gotoxy(5,2);
 	cout<<" Insertar Nodo";
-	gotoxy(47,24);
+	gotoxy(5,3);
 	cout<<" Eliminar Nodo";
-	gotoxy(47,25);
+	gotoxy(5,4);
 	cout<<" Modificar Nodo";
-	gotoxy(47,26);
+	gotoxy(5,5);
 	cout<<" Imprimir Lista P->U";
-	gotoxy(47,27);
+	gotoxy(5,6);
 	cout<<" Imprimir Lista U->P";
-	gotoxy(47,28);
-	cout<<" Cargar";
+	gotoxy(5,7);
+	cout<<" Generar PDF de Contactos";
+	gotoxy(5,8);
+	cout<<" Salir\n";
+	printf("================================================");
 }
 
-void Selector(int i){
-	gotoxy(45,23+i);
+void Selector(int i)
+{
+	gotoxy(5,2+i);
 }
 
-void menuDinamico(){
+void menuDinamico()
+{
 	int i = 0;
 	char tecla;
 	menuInicio();
 	Selector(i);
 	while(true){
 		tecla = getch();
-		switch(tecla){
+		switch(tecla)
+		{
 			case ARRIBA:
 				i--;
-				if(i < 0){
+				if(i < 0)
+				{
 					i = 5;
 				}
 				Selector(i);
 				break;
+			case 59:
+				system("cls");
+				cout<<"Ayuda"<<endl;
+				system("ayuda.chm");
+				system("pause");
+				system("cls");
+				menuDinamico();
+				break;
 			case ABAJO:
 				i++;
-				if(i == 0){
+				if(i == 0)
+				{
 					i = 1;
 				}
-				if(i == 6){
+				if(i == 7)
+				{
 					i = 0;
 				}
 				Selector(i);
 				break;
 			case ENTER:
-				Selector(5);
-				switch(i){
+				Selector(7);
+				switch(i)
+				{
 					case 0:
 						system("cls");
 						cout<<"Insertando Nodo"<<endl;
@@ -139,11 +166,24 @@ void menuDinamico(){
 						break;
 					case 5:
 						system("cls");
-						cout<<"Cargando"<<endl;
-						listaDoble->cargarCSV();
-						system("pause");
-						system("cls");
-						menuDinamico();
+						f.open("Agenda.csv", std::fstream::in);
+              			if(!f.good())
+              			{
+              				system("cls");
+              				cout<<"ERROR: El archivo de agenda no esta creado\n";
+              				system("pause");
+              				menuDinamico();
+						}
+						else
+						{
+							f.close();
+							system("cls");
+							system("txt2pdf.exe AgendaTemp.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
+              				cout<<"Archivo generado exitosamente\n";
+              				system("pause");
+              				menuDinamico();
+						
+						}
 						break;
 					default:
 						exit(0);

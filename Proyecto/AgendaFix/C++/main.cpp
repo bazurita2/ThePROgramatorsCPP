@@ -1,3 +1,10 @@
+
+//UNIVERSIDAD DE LAS FUERZAS ARMADAS "ESPE"
+//ESTRUCTURAS DE DATOS
+//VICTOR JIMENEZ, SEBASTIAN LANDAZURI, BRYAN ZURITA
+//14/06/2019
+
+
 #include "Nodo.h"
 #include "Validacion.h"
 #include <windows.h>
