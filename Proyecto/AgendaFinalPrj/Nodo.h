@@ -10,6 +10,12 @@
 #include <time.h>
 #include <string.h>
 #include <fstream>
+#include <map>
+#include <jdbc/cppconn/driver.h>
+#include <jdbc/cppconn/exception.h>
+#include <jdbc/cppconn/resultset.h>
+#include <jdbc/mysql_connection.h>
+#include <jdbc/cppconn/statement.h>
 
 #include "Persona.h"
 
@@ -27,6 +33,7 @@ class Nodo{
 		void eliminarNodo();
 		void menuDinamico();
 		void cargarCSV();
+		void sql();
 		void qrgen(string, string);
 	private:
 		
@@ -34,6 +41,42 @@ class Nodo{
 
 Nodo *primero,*ultimo;
 
+void Nodo::sql()
+{
+	try 
+	{
+		sql::Driver *driver;
+  		sql::Connection *con;
+  		sql::Statement *stmt;
+  		sql::ResultSet *res;
+  		driver = get_driver_instance();
+  		con = driver->connect("tcp://127.0.0.1:3306", "root", "cedptmc04");
+  		con->setSchema("agenda");
+		stmt = con->createStatement();
+ 		res = stmt->executeQuery("SELECT 'Hello World!' AS _message");
+  		while (res->next()) 
+		{
+    		cout << "\t... MySQL replies: ";
+    		cout << res->getString("_message") << endl;
+    		cout << "\t... MySQL says it again: ";
+    		cout << res->getString(1) << endl;
+ 		 }
+  	delete res;
+  	delete stmt;
+  	delete con;
+  	} 
+	catch (sql::SQLException &e) 
+  	
+	{
+  		cout << "# ERR: SQLException in " << __FILE__;
+  		//cout << "(" << __FUNCTION__ << ") on line " »<< __LINE__ << endl;
+  		cout << "# ERR: " << e.what();
+  		cout << " (MySQL error code: " << e.getErrorCode();
+  		cout << ", SQLState: " << e.getSQLState() << " )" << endl;
+	}
+
+
+}
 	
 void Nodo::qrgen(string n, string a)
 {

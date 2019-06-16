@@ -1,0 +1,11 @@
+
+Nombre: 
+Apellido: 
+Telefono de Casa: 
+Celular: 
+Correo: 
+Direccion: 
+Cedula: 
+Cumpleanios: //
+Aniversario: //
+Nota: 

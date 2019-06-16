@@ -37,6 +37,8 @@ void portada()
 }
 int main()
 {
+	Nodo* sql= new Nodo();
+	sql->sql();
 	listaDoble->cargarCSV();
 	portada();
 	system("cls");
@@ -180,7 +182,7 @@ void menuDinamico()
 						{
 							f.close();
 							system("cls");
-							system("txt2pdf.exe Agenda.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
+							system("txt2pdf.exe Agenda.csv Agenda.pdf -oao -pfs60 -pps43 -ptc0 -width3000 -height2000");
               				cout<<"Archivo generado exitosamente\n";
               				system("pause");
               				system("cls");
