@@ -241,7 +241,6 @@ void Nodo::cargarCSV(){
 				palabrasCorreccion[cont3]=palabras[cont];
 				if(!(cont3%2==0)){
 				datosLista[cont2]=palabrasCorreccion[cont3];
-//				cout << datosLista[cont2] << cont2<<endl;
 				cont2++;
 				}
 				cont3++;
@@ -468,6 +467,176 @@ void Nodo::modificarNodo(){
 		if(!band){
 			cout<<"\tPersona no encontrada...";
 		}
+		
+		//Archivo CSV Modificar Persona
+		ifstream originalArchivo;
+		originalArchivo.open("Agenda.csv",ios::in);
+		
+		ofstream copiaArchivo;
+		copiaArchivo.open("AgendaTemp.csv",ios::out);
+		
+		if(originalArchivo.fail()){
+			cout<<"\n\n\tNo se pudo abrir el archivo...\n";
+		}else{
+			string texto="",textoAcumulado="";
+			int lineas=0;
+			while(!originalArchivo.eof()){
+				lineas++;
+				getline(originalArchivo,texto);
+				textoAcumulado+=texto;
+			}
+			cout<<endl;
+			originalArchivo.close();
+			//split char[]
+			string palabras[lineas*2];
+			string palabrasCorreccion[(lineas*2)-1];
+			string datosLista[lineas];
+			const unsigned int stat = textoAcumulado.length() + 1;
+			char* textoAcumChars;
+			textoAcumChars=new char[stat];
+			char *textoSeparado = strtok(textoAcumChars, ";");
+			strcpy(textoAcumChars, textoAcumulado.c_str());
+			int cont = 0,cont2 = 0,cont3 = 0;
+			while (textoSeparado != NULL) {
+				palabras[cont] = textoSeparado;
+				if(cont>0){
+					palabrasCorreccion[cont3]=palabras[cont];
+					if(!(cont3%2==0)){
+					datosLista[cont2]=palabrasCorreccion[cont3];
+					cont2++;
+					}
+					cont3++;
+				}
+				textoSeparado = strtok(NULL, ";");
+				cont++;
+			}
+			//Llenando lista
+			int contPersonas=0,totalPersonas=0;
+			for(int i=1;i<=cont2;i++){
+				//Conteo personas
+				if(i%10==0){
+					contPersonas++;
+				}
+			}
+			//Mini vectores de cada atributo para n Personas
+			totalPersonas=contPersonas;
+			string nombrePersonas[totalPersonas],apellidoPersonas[totalPersonas],telefonoCasaPersonas[totalPersonas],celularPersonas[totalPersonas],
+			correoPersonas[totalPersonas],direccionPersonas[totalPersonas],cedulaPersonas[totalPersonas],cumpleaniosPersonas[totalPersonas],
+			aniversarioPersonas[totalPersonas],notaPersonas[totalPersonas];
+			
+			int j=0,acum2=0;
+			for(int i=1;i<=cont2;i++){
+				//Otra persona
+				if(i%10==0){
+					nombrePersonas[j]=datosLista[0+acum2];
+					apellidoPersonas[j]=datosLista[1+acum2];
+					telefonoCasaPersonas[j]=datosLista[2+acum2];
+					celularPersonas[j]=datosLista[3+acum2];
+					correoPersonas[j]=datosLista[4+acum2];
+					direccionPersonas[j]=datosLista[5+acum2];
+					cedulaPersonas[j]=datosLista[6+acum2];
+					cumpleaniosPersonas[j]=datosLista[7+acum2];
+					aniversarioPersonas[j]=datosLista[8+acum2];
+					notaPersonas[j]=datosLista[9+acum2];
+					j++;
+					acum2+=10;
+				}
+			}
+			
+			string nombreDato,apellidoDato,telefonoCasaDato,celularDato,
+			correoDato,direccionDato,cedulaDato,cumpleaniosDato,aniversarioDato,notaDato;
+			
+			ofstream datosArchivo;
+			datosArchivo.open("AgendaDatosTemp.txt",ios::out);
+			
+			for(int i=0;i<totalPersonas;i++){
+				nombreDato=nombrePersonas[i];
+				apellidoDato=apellidoPersonas[i];
+				telefonoCasaDato=telefonoCasaPersonas[i];
+				celularDato=celularPersonas[i];
+				correoDato=correoPersonas[i];
+				direccionDato=direccionPersonas[i];
+				cedulaDato=cedulaPersonas[i];
+				cumpleaniosDato=cumpleaniosPersonas[i];
+				aniversarioDato=aniversarioPersonas[i];
+				notaDato=notaPersonas[i];
+				//
+				cout<<nombreDato<<" "<<apellidoDato<<" "<<telefonoCasaDato<<" "<<celularDato<<" "<<
+				correoDato<<" "<<direccionDato<<" "<<cedulaDato<<" "<<cumpleaniosDato<<" "<<aniversarioDato<<" "<<
+				notaDato<<"\n";
+				//
+				datosArchivo<<nombreDato<<" "<<apellidoDato<<" "<<telefonoCasaDato<<" "<<celularDato<<" "<<
+				correoDato<<" "<<direccionDato<<" "<<cedulaDato<<" "<<cumpleaniosDato<<" "<<aniversarioDato<<" "<<
+				notaDato<<"\n";
+			}
+			
+			datosArchivo.close();
+			
+			//Abrir de nuevo el archivo
+			ifstream datosArchivoTemp;
+			datosArchivoTemp.open("AgendaDatosTemp.txt",ios::in);
+			
+			if(datosArchivoTemp.fail()){
+				cout<<"\n\n\tNo se pudo abrir el archivo...\n";
+			}else{
+				//Archivo Modificado
+				
+				string nombreNoMod,apellidoNoMod,telefonoCasaNoMod,celularNoMod,
+				correoNoMod,direccionNoMod,cedulaNoMod,cumpleaniosNoMod,aniversarioNoMod,notaNoMod;
+				
+				string nombreMod=nombre,apellidoMod=apellido,telefonoCasaMod=telefonoCasa,celularMod=celular,correoMod=correo,
+				direccionMod=direccion,cedulaMod=cedula,cumpleDiaMod=cumpleDia,cumpleMesMod=cumpleMes,cumpleAnioMod=cumpleAnio,cumpleaniosMod=cumpleanios,
+				aniverDiaMod=aniverDia,aniverMesMod=aniverMes,aniverAnioMod=aniverAnio,aniversarioMod=aniversario,notaMod=nota;
+				
+				datosArchivoTemp>>nombreNoMod;
+				
+				while(!datosArchivoTemp.eof()){
+					
+					datosArchivoTemp>>apellidoNoMod>>telefonoCasaNoMod>>celularNoMod>>correoNoMod>>direccionNoMod>>cedulaNoMod>>
+						cumpleaniosNoMod>>aniversarioNoMod>>notaNoMod;
+						
+					if(cmpNombreStr==nombreNoMod){
+						cout<<"\nContacto "<<cmpNombreStr<<" modificar...\n";					
+						cout<<"\tModificar esta persona:\n";
+						//Cambiar en CSV
+						copiaArchivo<<"\n"<<";"<<"Nombre: "<<";"<<nombreMod;
+						copiaArchivo<<"\n"<<";"<<"Apellido: "<<";"<<apellidoMod;
+						copiaArchivo<<"\n"<<";"<<"Telefono de Casa: "<<";"<<telefonoCasaMod;
+						copiaArchivo<<"\n"<<";"<<"Celular: "<<";"<<celularMod;
+						copiaArchivo<<"\n"<<";"<<"Correo: "<<";"<<correoMod;
+						copiaArchivo<<"\n"<<";"<<"Direccion: "<<";"<<direccionMod;
+						copiaArchivo<<"\n"<<";"<<"Cedula: "<<";"<<cedulaMod;
+						copiaArchivo<<"\n"<<";"<<"Cumpleanios: "<<";"<<cumpleaniosMod;
+						copiaArchivo<<"\n"<<";"<<"Aniversario: "<<";"<<aniversarioMod;
+						copiaArchivo<<"\n"<<";"<<"Nota: "<<";"<<notaMod;
+						copiaArchivo<<"\n";
+					}else{
+						copiaArchivo<<"\n"<<";"<<"Nombre: "<<";"<<nombreNoMod;
+						copiaArchivo<<"\n"<<";"<<"Apellido: "<<";"<<apellidoNoMod;
+						copiaArchivo<<"\n"<<";"<<"Telefono de Casa: "<<";"<<telefonoCasaNoMod;
+						copiaArchivo<<"\n"<<";"<<"Celular: "<<";"<<celularNoMod;
+						copiaArchivo<<"\n"<<";"<<"Correo: "<<";"<<correoNoMod;
+						copiaArchivo<<"\n"<<";"<<"Direccion: "<<";"<<direccionNoMod;
+						copiaArchivo<<"\n"<<";"<<"Cedula: "<<";"<<cedulaNoMod;
+						copiaArchivo<<"\n"<<";"<<"Cumpleanios: "<<";"<<cumpleaniosNoMod;
+						copiaArchivo<<"\n"<<";"<<"Aniversario: "<<";"<<aniversarioNoMod;
+						copiaArchivo<<"\n"<<";"<<"Nota: "<<";"<<notaNoMod;
+						copiaArchivo<<"\n";
+					}
+					
+					datosArchivoTemp>>nombreNoMod;
+				}
+			}
+			
+			copiaArchivo.close();
+			originalArchivo.close();
+			datosArchivoTemp.close();
+			
+			remove("Agenda.csv");
+			remove("AgendaDatosTemp.txt");
+			rename("AgendaTemp.csv","Agenda.csv");
+			}
+		
 	}else{
 		cout<<"\tLista vacia...";
 	}
