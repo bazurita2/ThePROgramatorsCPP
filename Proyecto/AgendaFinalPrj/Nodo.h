@@ -124,7 +124,7 @@ void Nodo::insertarNodo(){
 	ofstream agregarTxt;
 	ofstream temp;
 	fflush(stdin);
-	agregarTxt.open("AgendaTemp.csv",ios::app);
+	agregarTxt.open("Agenda.csv",ios::app);
 	agregarTxt<<"\n"<<";"<<"Nombre: "<<";"<<nuevoNodo->persona.getNombre();
 	agregarTxt<<"\n"<<";"<<"Apellido: "<<";"<<nuevoNodo->persona.getApellido();
 	agregarTxt<<"\n"<<";"<<"Telefono de Casa: "<<";"<<nuevoNodo->persona.getTelefonoCasa();
@@ -173,7 +173,7 @@ void Nodo::cargarCSV(){
 	int lineas=0;
 	ifstream archivo;
 	string texto="",textoAcumulado="";
-	archivo.open("AgendaTemp.csv",ios::in);
+	archivo.open("Agenda.csv",ios::in);
 	if(archivo.fail()){
 		cout<<"\n\n\tNo se pudo abrir el archivo...\n";
 	}else{

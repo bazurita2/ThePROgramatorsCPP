@@ -33,10 +33,11 @@ void portada()
 	cout<<"\t\t:::     :::     ::::::::::     ::             ::::       :: :::    :: 	 ::	 :::	 :::   "<<endl;
 	cout<<"\t\t:::     :::     ::::::::::     :::::::::      ::::        :::::    :::::::	 :::	 :::   "<<endl;
 	cout<<"\n\n\n"<<endl;
-	system("pause");
+	getch();
 }
 int main()
 {
+	listaDoble->cargarCSV();
 	portada();
 	system("cls");
 	menuDinamico();
@@ -57,19 +58,19 @@ void menuInicio(){
 	gotoxy(5,1);
 	cout<<"\t\tMENU"<<endl;
 	gotoxy(5,2);
-	cout<<" Insertar Nodo";
+	cout<<"  Insertar Nodo";
 	gotoxy(5,3);
-	cout<<" Eliminar Nodo";
+	cout<<"  Eliminar Nodo";
 	gotoxy(5,4);
-	cout<<" Modificar Nodo";
+	cout<<"  Modificar Nodo";
 	gotoxy(5,5);
-	cout<<" Imprimir Lista P->U";
+	cout<<"  Imprimir Lista P->U";
 	gotoxy(5,6);
-	cout<<" Imprimir Lista U->P";
+	cout<<"  Imprimir Lista U->P";
 	gotoxy(5,7);
-	cout<<" Generar PDF de Contactos";
+	cout<<"  Generar PDF de Contactos";
 	gotoxy(5,8);
-	cout<<" Salir\n";
+	cout<<"  Salir\n";
 	printf("================================================");
 }
 
@@ -167,20 +168,22 @@ void menuDinamico()
 					case 5:
 						system("cls");
 						f.open("Agenda.csv", std::fstream::in);
-              			if(!f.good())
+              			if(f.fail())
               			{
               				system("cls");
               				cout<<"ERROR: El archivo de agenda no esta creado\n";
               				system("pause");
+              				system("cls");
               				menuDinamico();
 						}
 						else
 						{
 							f.close();
 							system("cls");
-							system("txt2pdf.exe AgendaTemp.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
+							system("txt2pdf.exe Agenda.csv Agenda.pdf -oao -ptc255 -pps43 -width2000 -height1000");
               				cout<<"Archivo generado exitosamente\n";
               				system("pause");
+              				system("cls");
               				menuDinamico();
 						
 						}
