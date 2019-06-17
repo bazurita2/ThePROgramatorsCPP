@@ -1,0 +1,10 @@
+casa
+house
+gato
+cat
+luz
+light
+carro
+car
+television
+televition

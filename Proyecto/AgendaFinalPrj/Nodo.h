@@ -12,11 +12,6 @@
 #include <fstream>
 #include <map>
 #include "Validar.h"
-//#include <jdbc/cppconn/driver.h>
-//#include <jdbc/cppconn/exception.h>
-//#include <jdbc/cppconn/resultset.h>
-//#include <jdbc/mysql_connection.h>
-//#include <jdbc/cppconn/statement.h>
 
 #include "Persona.h"
 
@@ -41,42 +36,6 @@ class Nodo{
 };
 
 Nodo *primero,*ultimo;
-
-//void Nodo::sql(){
-//	try 
-//	{
-//		sql::Driver *driver;
-//  		sql::Connection *con;
-//  		sql::Statement *stmt;
-//  		sql::ResultSet *res;
-//  		driver = get_driver_instance();
-//  		con = driver->connect("tcp://127.0.0.1:3306", "root", "cedptmc04");
-//  		con->setSchema("agenda");
-//		stmt = con->createStatement();
-// 		res = stmt->executeQuery("SELECT 'Hello World!' AS _message");
-//  		while (res->next()) 
-//		{
-//    		cout << "\t... MySQL replies: ";
-//    		cout << res->getString("_message") << endl;
-//    		cout << "\t... MySQL says it again: ";
-//    		cout << res->getString(1) << endl;
-// 		 }
-//  	delete res;
-//  	delete stmt;
-//  	delete con;
-//  	} 
-//	catch (sql::SQLException &e) 
-//  	
-//	{
-//  		cout << "# ERR: SQLException in " << __FILE__;
-//  		//cout << "(" << __FUNCTION__ << ") on line " »<< __LINE__ << endl;
-//  		cout << "# ERR: " << e.what();
-//  		cout << " (MySQL error code: " << e.getErrorCode();
-//  		cout << ", SQLState: " << e.getSQLState() << " )" << endl;
-//	}
-//
-//
-//}
 	
 void Nodo::qrgen(string n, string a){
 	string lineas="";
@@ -176,6 +135,7 @@ void Nodo::insertarNodo(){
 	//CVS
 	ofstream agregarTxt;
 	ofstream temp;
+	ofstream db;
 	fflush(stdin);
 	agregarTxt.open("Agenda.csv",ios::app);
 	agregarTxt<<"\n"<<";"<<"Nombre: "<<";"<<nuevoNodo->persona.getNombre();
@@ -204,8 +164,22 @@ void Nodo::insertarNodo(){
 	temp<<"\n"<<"Nota: "<<nuevoNodo->persona.getNota();
 	temp<<"\n";
 	temp.close();
+	fflush(stdin);
+	db.open("db.txt",ios::app);
+	db<<nuevoNodo->persona.getNombre()<<"\n";
+	db<<nuevoNodo->persona.getApellido()<<"\n";
+	db<<nuevoNodo->persona.getTelefonoCasa()<<"\n";	
+	db<<nuevoNodo->persona.getCelular()<<"\n";	
+	db<<nuevoNodo->persona.getCorreo()<<"\n";
+	db<<nuevoNodo->persona.getDireccion()<<"\n";
+	db<<nuevoNodo->persona.getCedula()<<"\n";		
+	db<<nuevoNodo->persona.getCumpleanios()<<"\n";	
+	db<<nuevoNodo->persona.getAniversario()<<"\n";	
+	db<<nuevoNodo->persona.getNota()<<"\n";
+	db.close();	
+	fflush(stdin);				
 	qrgen(nuevoNodo->persona.getNombre(),nuevoNodo->persona.getApellido());
-
+	system("java -jar Connectivity.jar");
 	//
 	if(primero==NULL){
 		primero=nuevoNodo;

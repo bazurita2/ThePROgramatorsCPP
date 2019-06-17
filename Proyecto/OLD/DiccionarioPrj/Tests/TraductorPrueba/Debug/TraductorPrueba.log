@@ -1,0 +1,10 @@
+﻿  unittest1.cpp
+c:\users\arkano036\desktop\traductorprueba\busquedabinaria\busqueda.h(77): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\string.h(129): note: vea la declaración de 'strcpy'
+c:\users\arkano036\desktop\traductorprueba\busquedabinaria\busqueda.h(79): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\string.h(431): note: vea la declaración de 'strtok'
+c:\users\arkano036\desktop\traductorprueba\busquedabinaria\busqueda.h(84): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.14393.0\ucrt\string.h(431): note: vea la declaración de 'strtok'
+c:\users\arkano036\desktop\traductorprueba\busquedabinaria\busqueda.h(49): warning C4715: 'Busqueda::recursivo': no todas las rutas de acceso de control devuelven un valor
+  TraductorPrueba.vcxproj -> C:\Users\Arkano036\Desktop\TraductorPrueba\Debug\TraductorPrueba.dll
+  TraductorPrueba.vcxproj -> C:\Users\Arkano036\Desktop\TraductorPrueba\Debug\TraductorPrueba.pdb (Partial PDB)
