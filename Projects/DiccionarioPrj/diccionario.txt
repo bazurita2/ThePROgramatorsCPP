@@ -1,0 +1,600 @@
+
+	Palabra: abdomen
+	Definicion: abdomen
+
+	Palabra: abuela
+	Definicion: grandma
+
+	Palabra: abuelo
+	Definicion: grandfather
+
+	Palabra: administración
+	Definicion: administration
+
+	Palabra: agua
+	Definicion: water
+
+	Palabra: Águila
+	Definicion: eagle
+
+	Palabra: aire
+	Definicion: air
+
+	Palabra: alma
+	Definicion: soul
+
+	Palabra: almacén
+	Definicion: warehouse
+
+	Palabra: amigo
+	Definicion: friend
+
+	Palabra: amor
+	Definicion: love
+
+	Palabra: animal
+	Definicion: animal
+
+	Palabra: apartamento
+	Definicion: apartment
+
+	Palabra: araña
+	Definicion: spider
+
+	Palabra: arcilla
+	Definicion: clay
+
+	Palabra: asambleista
+	Definicion: assemblyman
+
+	Palabra: ascensor
+	Definicion: lift
+
+	Palabra: asociación
+	Definicion: association
+
+	Palabra: atrás
+	Definicion: behind
+
+	Palabra: atún
+	Definicion: tuna
+
+	Palabra: autoridad
+	Definicion: authority
+
+	Palabra: babosa
+	Definicion: slug
+
+	Palabra: barro
+	Definicion: mud
+
+	Palabra: billete
+	Definicion: ticket
+
+	Palabra: boleto
+	Definicion: ticket
+
+	Palabra: bosque
+	Definicion: forest
+
+	Palabra: caballo
+	Definicion: horse
+
+	Palabra: cadera
+	Definicion: hip
+
+	Palabra: calamar
+	Definicion: squid
+
+	Palabra: calidad
+	Definicion: quality
+
+	Palabra: caliente
+	Definicion: hot
+
+	Palabra: cama
+	Definicion: bed
+
+	Palabra: camarón
+	Definicion: shrimp
+
+	Palabra: campaña
+	Definicion: bell
+
+	Palabra: campo
+	Definicion: field
+
+	Palabra: capital
+	Definicion: capital
+
+	Palabra: caracol
+	Definicion: snail
+
+	Palabra: cargo
+	Definicion: position
+
+	Palabra: carne
+	Definicion: meat
+
+	Palabra: casa
+	Definicion: home
+
+	Palabra: cerdo
+	Definicion: pork
+
+	Palabra: ciervo
+	Definicion: deer
+
+	Palabra: cintura
+	Definicion: waist
+
+	Palabra: ciudad
+	Definicion: city
+
+	Palabra: club
+	Definicion: club
+
+	Palabra: cobre
+	Definicion: copper
+
+	Palabra: colega
+	Definicion: colleague
+
+	Palabra: comercio
+	Definicion: commerce
+
+	Palabra: comisión
+	Definicion: commission
+
+	Palabra: compañero
+	Definicion: partner
+
+	Palabra: compañía
+	Definicion: company
+
+	Palabra: comunidad
+	Definicion: community
+
+	Palabra: conejo
+	Definicion: rabbit
+
+	Palabra: congreso
+	Definicion: congress
+
+	Palabra: conocido
+	Definicion: known
+
+	Palabra: constitución
+	Definicion: constitution
+
+	Palabra: construcción
+	Definicion: building
+
+	Palabra: consumo
+	Definicion: consumption
+
+	Palabra: continuar
+	Definicion: continue
+
+	Palabra: corazón
+	Definicion: heart
+
+	Palabra: corazón
+	Definicion: heart
+
+	Palabra: costa
+	Definicion: coast
+
+	Palabra: criatura
+	Definicion: creature
+
+	Palabra: cuarto
+	Definicion: quarter
+
+	Palabra: cucaracha
+	Definicion: cockroach
+
+	Palabra: cuello
+	Definicion: neck
+
+	Palabra: cuenta
+	Definicion: account
+
+	Palabra: cuervo
+	Definicion: raven
+
+	Palabra: culo
+	Definicion: ass
+
+	Palabra: demanda
+	Definicion: demand
+
+	Palabra: democracia
+	Definicion: democracy
+
+	Palabra: dentro
+	Definicion: inside
+
+	Palabra: departamento
+	Definicion: department
+
+	Palabra: derecho
+	Definicion: straight
+
+	Palabra: desierto
+	Definicion: desert
+
+	Palabra: diarrea
+	Definicion: diarrhea
+
+	Palabra: dictadura
+	Definicion: dictatorship
+
+	Palabra: dinero
+	Definicion: money
+
+	Palabra: director
+	Definicion: director
+
+	Palabra: dirigir
+	Definicion: lead
+
+	Palabra: dormitorio
+	Definicion: bedroom
+
+	Palabra: economú}
+	Definicion: economy
+
+	Palabra: economú}
+	Definicion: economy
+
+	Palabra: edificio
+	Definicion: building
+
+	Palabra: elefante
+	Definicion: elephant
+
+	Palabra: emitir
+	Definicion: to emit
+
+	Palabra: empresa
+	Definicion: company
+
+	Palabra: encuentro
+	Definicion: meeting
+
+	Palabra: enfermedad
+	Definicion: disease
+
+	Palabra: entrada
+	Definicion: entry
+
+	Palabra: equipo
+	Definicion: team
+
+	Palabra: escritorio
+	Definicion: desk
+
+	Palabra: especies
+	Definicion: species
+
+	Palabra: esposa
+	Definicion: wife
+
+	Palabra: estado
+	Definicion: state
+
+	Palabra: estructura
+	Definicion: structure
+
+	Palabra: exterior
+	Definicion: exterior
+
+	Palabra: fábrica
+	Definicion: factory
+
+	Palabra: familia
+	Definicion: family
+
+	Palabra: frúŒ
+	Definicion: cold
+
+	Palabra: frúŒ
+	Definicion: cold
+
+	Palabra: fuego
+	Definicion: fire
+
+	Palabra: fumar
+	Definicion: smoke
+
+	Palabra: gas
+	Definicion: gas
+
+	Palabra: gato
+	Definicion: cat
+
+	Palabra: gente
+	Definicion: people
+
+	Palabra: gobierno
+	Definicion: government
+
+	Palabra: gorrión
+	Definicion: sparrow
+
+	Palabra: guay
+	Definicion: cool
+
+	Palabra: gusano
+	Definicion: worm
+
+	Palabra: habitación
+	Definicion: room
+
+	Palabra: halcón
+	Definicion: hawk
+
+	Palabra: hermana
+	Definicion: sister
+
+	Palabra: hermano
+	Definicion: brother
+
+	Palabra: hielo
+	Definicion: ice
+
+	Palabra: hú„ado
+	Definicion: liver
+
+	Palabra: hija
+	Definicion: daughter
+
+	Palabra: hijo
+	Definicion: son
+
+	Palabra: hogar
+	Definicion: home
+
+	Palabra: hombre
+	Definicion: man
+
+	Palabra: hotel
+	Definicion: hotel
+
+	Palabra: hueso
+	Definicion: bone
+
+	Palabra: humano
+	Definicion: human
+
+	Palabra: insecto
+	Definicion: insect
+
+	Palabra: jirafa
+	Definicion: giraffe
+
+	Palabra: jungla
+	Definicion: jungle
+
+	Palabra: langosta
+	Definicion: locust
+
+	Palabra: león
+	Definicion: lion
+
+	Palabra: madre
+	Definicion: mother
+
+	Palabra: máquina expendedora
+	Definicion: Vending machine
+
+	Palabra: marido
+	Definicion: husband
+
+	Palabra: marijuana
+	Definicion: marijuana
+
+	Palabra: mariposa
+	Definicion: butterfly
+
+	Palabra: mariscos
+	Definicion: seafood
+
+	Palabra: matrimonio
+	Definicion: marriage
+
+	Palabra: mente
+	Definicion: mind
+
+	Palabra: mesa
+	Definicion: table
+
+	Palabra: metal
+	Definicion: metal
+
+	Palabra: ministro
+	Definicion: minister
+
+	Palabra: mono
+	Definicion: monkey
+
+	Palabra: mosquito
+	Definicion: mosquito
+
+	Palabra: mujer
+	Definicion: woman
+
+	Palabra: músculo
+	Definicion: muscle
+
+	Palabra: naturaleza
+	Definicion: nature
+
+	Palabra: nieta
+	Definicion: granddaughter
+
+	Palabra: nieto
+	Definicion: grandchild
+
+	Palabra: obligación
+	Definicion: obligation
+
+	Palabra: oficina
+	Definicion: office
+
+	Palabra: opio
+	Definicion: opium
+
+	Palabra: organización
+	Definicion: organization
+
+	Palabra: oro
+	Definicion: gold
+
+	Palabra: oveja
+	Definicion: sheep
+
+	Palabra: padre
+	Definicion: father
+
+	Palabra: pájaro
+	Definicion: bird
+
+	Palabra: panel
+	Definicion: panel
+	
+	Palabra: pecho
+	Definicion: chest
+
+	Palabra: permiso
+	Definicion: permission
+
+	Palabra: perro
+	Definicion: dog
+
+	Palabra: persona
+	Definicion: person
+
+	Palabra: pez
+	Definicion: fish
+
+	Palabra: piel
+	Definicion: skin
+
+	Palabra: planchar
+	Definicion: iron
+
+	Palabra: plata
+	Definicion: silver
+
+	Palabra: playa
+	Definicion: beach
+
+	Palabra: polilla
+	Definicion: moth
+
+	Palabra: pollo
+	Definicion: chicken
+
+	Palabra: precio
+	Definicion: price
+
+	Palabra: presidente
+	Definicion: president
+	
+	Palabra: prima
+	Definicion: cousin
+
+	Palabra: primo
+	Definicion: cousin
+
+	Palabra: producto
+	Definicion: product
+
+	Palabra: prohibición
+	Definicion: prohibition
+
+	Palabra: provincia
+	Definicion: Province
+
+	Palabra: pueblo
+	Definicion: village
+
+	Palabra: puerta
+	Definicion: door
+
+	Palabra: puerta
+	Definicion: door
+
+	Palabra: pulpo
+	Definicion: octopus
+
+	Palabra: rana
+	Definicion: frog
+
+	Palabra: rata
+	Definicion: rat
+
+	Palabra: representante
+	Definicion: representative
+
+	Palabra: reunión
+	Definicion: meeting
+
+	Palabra: rúŒ
+	Definicion: river
+
+	Palabra: sal
+	Definicion: salt
+
+	Palabra: saltamontes
+	Definicion: grasshopper
+
+	Palabra: sangre
+	Definicion: blood
+
+	Palabra: sardina
+	Definicion: sardine
+
+	Palabra: silla
+	Definicion: chair
+
+	Palabra: sociedad
+	Definicion: society
+
+	Palabra: tabaco
+	Definicion: tobacco
+
+	Palabra: tú}
+	Definicion: aunt
+
+	Palabra: tierra
+	Definicion: earth
+
+	Palabra: tigre
+	Definicion: tiger
+
+	Palabra: túŒ
+	Definicion: uncle
+
+	Palabra: transacción
+	Definicion: transaction
+
+	Palabra: vaca
+	Definicion: cow
+
+	Palabra: vapor
+	Definicion: steam
+
+	Palabra: ventana
+	Definicion: window
+
+	Palabra: villa
+	Definicion: villa
+
+	Palabra: volar
+	Definicion: fly
+
+	Palabra: vuelto
+	Definicion: turned

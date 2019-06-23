@@ -1,0 +1,17 @@
+﻿Compilación iniciada a las 8/5/2019 11:16:12.
+     1>Proyecto "C:\Users\Labs-DCCO\Desktop\CorreoTest\UnitTestAdministrado\UnitTestAdministrado.vcxproj" en el nodo 2 (Build destinos).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yu"stdafx.h" /Fp"Release\UnitTestAdministrado.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt Pruebas.cpp
+         Pruebas.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" shell32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.lib" /MACHINE:X86 /SAFESEH /DLL Release\stdafx.obj
+         Release\Pruebas.obj
+            Creando biblioteca C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.lib y objeto C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.exp
+         Generando código
+         Generación de código finalizada
+         UnitTestAdministrado.vcxproj -> C:\Users\Labs-DCCO\Desktop\CorreoTest\Release\UnitTestAdministrado.dll
+     1>Compilación del proyecto terminada "C:\Users\Labs-DCCO\Desktop\CorreoTest\UnitTestAdministrado\UnitTestAdministrado.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+Tiempo transcurrido 00:00:01.28
