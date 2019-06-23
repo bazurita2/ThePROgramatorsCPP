@@ -73,8 +73,7 @@ class Persona{
 };
 
 void Persona::setCedula(string cedula){
-//	bool band=true;
-//	band=validacionCedula(cedula);
+	bool band=false;
 //	if(band==false||cedula.length()!=10){
 //		for(int i=0;i<cedula.length();i++){
 //		if(!(cedula[i]>='0'&&cedula[i]<='9')||band==0){
@@ -88,6 +87,17 @@ void Persona::setCedula(string cedula){
 //		}
 //	  }
 //	}
+	band=validacionCedula(cedula);
+	while(band==false||cedula.length()!=10){
+		if(!(cedula[i]>='0'&&cedula[i]<='9')||band==0){
+		band=true;
+		cedula="0";
+		cout<<"\tIngrese un cedula real. Vuelva a intentarlo"<<endl<<endl;
+		cout<<"\tIngrese la cedula: ";
+		cin>>cedula;
+		fflush(stdin);
+		setCedula(cedula);
+	}
 	this->cedula=cedula;
 }
 void Persona::setNombre(string nombre){

@@ -11,7 +11,6 @@
 #include <string.h>
 #include <fstream>
 #include <map>
-#include "Validar.h"
 
 #include "Persona.h"
 
@@ -67,19 +66,19 @@ void Nodo::insertarNodo(){
 	cout<<endl<<endl;
 	//Nombre
 	cout<<"\n\tIngrese el nombre de la persona: ";
-	nombre=ingresarLetras();
+	cin>>nombre;
 	nuevoNodo->persona.setNombre(nombre);
 	//Apellido
 	cout<<"\n\tIngrese el apellido de la persona: ";
-	apellido=ingresarLetras();
+	cin>>apellido;
 	nuevoNodo->persona.setApellido(apellido);
 	//Telefono Casa
 	cout<<"\n\tIngrese el telefono de Casa: ";
-	telefonoCasa=ingresarCasa();
+	cin>>telefonoCasa;
 	nuevoNodo->persona.setTelefonoCasa(telefonoCasa);
 	//Celular
 	cout<<"\n\tIngrese el celular: ";
-	celular=ingresarCelular();
+	cin>>celular;
 	nuevoNodo->persona.setCelular(celular);
 	//Correo
 	cout<<"\n\tIngrese el correo: ";
@@ -90,41 +89,30 @@ void Nodo::insertarNodo(){
 	cin>>direccion;
 	nuevoNodo->persona.setDireccion(direccion);
 	//Cedula
-	cedula=validarCedula();
+	cout<<"\n\tIngrese la cedula: ";
+	cin>>cedula;
 	nuevoNodo->persona.setCedula(cedula);
 	//Cumpleaños
-	do{
 	cout<<"\n\tIngrese el cumple Dia: ";
-	cumpleDia=ingresarDia();
-	}while(cumpleDia<"01"||cumpleDia>"31");
+	cin>>cumpleDia;
 	nuevoNodo->persona.setCumpleDia(cumpleDia);
-	do{
 	cout<<"\n\tIngrese el cumple Mes: ";
-	cumpleMes=ingresarMes();
-	}while(cumpleMes<"01"||cumpleMes>"12");
+	cin>>cumpleMes;
 	nuevoNodo->persona.setCumpleMes(cumpleMes);
-	do{
 	cout<<"\n\tIngrese el cumple Anio: ";
-	cumpleAnio=ingresarAnio();
-	}while(cumpleAnio<"1900"||cumpleAnio>"2019");
+	cin>>cumpleAnio;
 	nuevoNodo->persona.setCumpleAnio(cumpleAnio);
 	cumpleanios=nuevoNodo->persona.getCumpleDia()+"/"+nuevoNodo->persona.getCumpleMes()+"/"+nuevoNodo->persona.getCumpleAnio();
 	nuevoNodo->persona.setCumpleanios(cumpleanios);
 	//Aniversario
-	do{
 	cout<<"\n\tIngrese el aniver Dia: ";
-	aniverDia=ingresarDia();
-	}while(aniverDia<"01"||aniverDia>"31");
+	cin>>aniverDia;
 	nuevoNodo->persona.setAniverDia(aniverDia);
-	do{
 	cout<<"\n\tIngrese el aniver Mes: ";
-	aniverMes=ingresarMes();
-	}while(aniverMes<"01"||aniverMes>"12");
+	cin>>aniverMes;
 	nuevoNodo->persona.setAniverMes(aniverMes);
-	do{
 	cout<<"\n\tIngrese el aniver Anio: ";
-	aniverAnio=ingresarAnio();
-	}while(aniverAnio<"1900"||aniverAnio>"2019");
+	cin>>aniverAnio;
 	nuevoNodo->persona.setAniverAnio(aniverAnio);
 	aniversario=nuevoNodo->persona.getAniverDia()+"/"+nuevoNodo->persona.getAniverMes()+"/"+nuevoNodo->persona.getAniverAnio();
 	nuevoNodo->persona.setAniversario(aniversario);
@@ -179,6 +167,7 @@ void Nodo::insertarNodo(){
 	db.close();	
 	fflush(stdin);				
 	qrgen(nuevoNodo->persona.getNombre(),nuevoNodo->persona.getApellido());
+		fflush(stdin);
 	system("java -jar Connectivity.jar");
 	//
 	if(primero==NULL){
@@ -371,7 +360,7 @@ void Nodo::modificarNodo(){
 	string cmpNombreStr;
 	cout<<endl<<endl;
 	cout<<"\n\tIngrese el nombre de la persona a modificar: ";
-	cmpNombreStr=ingresarLetras();
+	cin>>cmpNombreStr;
 	if(primero!=NULL){
 		while(actual!=NULL&&band!=true){
 			if(actual->persona.getNombre()==cmpNombreStr){
@@ -391,19 +380,19 @@ void Nodo::modificarNodo(){
 				cout<<"\t\nModificar esta persona:\n";
 				//Nombre
 				cout<<"\n\tIngrese el nombre de la persona: ";
-				nombre=ingresarLetras();
+				cin>>nombre;
 				actual->persona.setNombre(nombre);
 				//Apellido
 				cout<<"\n\tIngrese el apellido de la persona: ";
-				apellido=ingresarLetras();
+				cin>>apellido;
 				actual->persona.setApellido(apellido);
 				//Telefono Casa
 				cout<<"\n\tIngrese el telefono de Casa: ";
-				telefonoCasa=ingresarCasa();
+				cin>>telefonoCasa;
 				actual->persona.setTelefonoCasa(telefonoCasa);
 				//Celular
 				cout<<"\n\tIngrese el celular: ";
-				celular=ingresarCelular();
+				cin>>celular;
 				actual->persona.setCelular(celular);
 				//Correo
 				cout<<"\n\tIngrese el correo: ";
@@ -414,41 +403,29 @@ void Nodo::modificarNodo(){
 				cin>>direccion;
 				actual->persona.setDireccion(direccion);
 				//Cedula
-				cedula=validarCedula();
+				cin>>cedula;
 				actual->persona.setCedula(cedula);
 				//Cumpleaños
-				do{
 				cout<<"\n\tIngrese el cumple Dia: ";
-				cumpleDia=ingresarDia();
-				}while(cumpleDia<"01"||cumpleDia>"31");
+				cin>>cumpleDia;
 				actual->persona.setCumpleDia(cumpleDia);
-					do{
 				cout<<"\n\tIngrese el cumple Mes: ";
-				cumpleMes=ingresarMes();
-				}while(cumpleMes<"01"||cumpleMes>"12");
+				cin>>cumpleMes;
 				actual->persona.setCumpleMes(cumpleMes);
-				do{
 				cout<<"\n\tIngrese el cumple Anio: ";
-				cumpleAnio=ingresarAnio();
-				}while(cumpleAnio<"1900"||cumpleAnio>"2019");
+				cin>>cumpleAnio;
 				actual->persona.setCumpleAnio(cumpleAnio);
 				cumpleanios=actual->persona.getCumpleDia()+"/"+actual->persona.getCumpleMes()+"/"+actual->persona.getCumpleAnio();
 				actual->persona.setCumpleanios(cumpleanios);
 				//Aniversario
-				do{
 				cout<<"\n\tIngrese el aniver Dia: ";
-				aniverDia=ingresarDia();
-				}while(aniverDia<"01"||aniverDia>"31");
+				cin>>aniverDia;
 				actual->persona.setAniverDia(aniverDia);
-					do{
 				cout<<"\n\tIngrese el aniver Mes: ";
-				aniverMes=ingresarMes();
-				}while(aniverMes<"01"||aniverMes>"12");
+				cin>>aniverMes;
 				actual->persona.setAniverMes(aniverMes);
-					do{
 				cout<<"\n\tIngrese el aniver Anio: ";
-				aniverAnio=ingresarAnio();
-				}while(aniverAnio<"1900"||aniverAnio>"2019");
+				cin>>aniverAnio;
 				actual->persona.setAniverAnio(aniverAnio);
 				aniversario=actual->persona.getAniverDia()+"/"+actual->persona.getAniverMes()+"/"+actual->persona.getAniverAnio();
 				actual->persona.setAniversario(aniversario);
@@ -465,7 +442,7 @@ void Nodo::modificarNodo(){
 			cout<<"\n\tPersona no encontrada...";
 		}
 		
-		//Archivo CSV Modificar Persona
+		//Archivo CSV Modificardd Persona
 		ifstream originalArchivo;
 		originalArchivo.open("Agenda.csv",ios::in);
 		

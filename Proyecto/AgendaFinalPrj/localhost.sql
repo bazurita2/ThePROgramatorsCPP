@@ -47,8 +47,7 @@ CREATE TABLE `directorio` (
 --
 
 INSERT INTO `directorio` (`clave`, `nombre`, `apellido`, `telefono`, `celular`, `correo`, `direccion`, `cedula`, `cumpleanos`, `aniversario`, `nota`) VALUES
-(97, 'victor', 'jimenez', '456456', '456456', 'sdfsdfsdf', '1725082786', 'sdfsdf', '04/17/1667', 'ghjcjhgjhgcjhfgjhfgjghf', ''),
-(78, 'victor', 'jimenez', '456456', '456456', 'sdfsdfsdf', '1725082786', 'sdfsdf', '04/17/1667', 'ghjcjhgjhgcjhfgjhfgjghf', '');
+(97, 'bryan', 'zurita', '2332946', '0984565509', 'iced036@live.com', 'Conocoto', '1725082786', '04/07/1996', '16/08/2019', 'Estudiante ESPE');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -30,7 +30,7 @@ public class Conexion
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","CONTRASENA");
+            con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","");
         }
         catch (Exception ex)
         {
