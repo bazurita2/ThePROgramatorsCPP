@@ -7,8 +7,7 @@
 
 using namespace std;
 
-class Dato
-{
+class Dato{
 	private:
 		string num;
 	public:
@@ -17,12 +16,10 @@ class Dato
 };
 
 
-void Dato::setNum(string num)
-{
+void Dato::setNum(string num){
 	this->num=num;
 }
 
-string Dato::getNum()
-{
+string Dato::getNum(){
 	return num;
 }

@@ -20,8 +20,7 @@ class Nodo{
 	private:
 };
 
-Nodo* Nodo::crearNodo(string num,Nodo *padre)
-{
+Nodo* Nodo::crearNodo(string num,Nodo *padre){
 	Nodo *nuevoNodo = new Nodo();
 	nuevoNodo->dato.setNum(num);
 	nuevoNodo->der=NULL;

@@ -4,14 +4,15 @@
 #include <time.h>
 #include <string.h>
 #include <fstream>
-
 #include "ArbolBinario.h"
 
 using namespace std;
 
+
+
 int main(){
 	ArbolBinario *arbolBinario=new ArbolBinario();
-	arbolBinario->menu();
+	arbolBinario->menuArbol();
 	getch();
 	return 0;
 }
