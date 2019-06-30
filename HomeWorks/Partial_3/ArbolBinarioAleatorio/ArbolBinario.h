@@ -15,6 +15,7 @@ class ArbolBinario{
 		void insertarNodo(Nodo *&,string,Nodo *);
 		void mostrarArbol(Nodo *,int);
 		void preOrden(Nodo *);
+		void postOrden(Nodo *);
 		string randomNum();
 		void menu();
 	private:
@@ -32,6 +33,7 @@ void ArbolBinario::menu(){
 		cout<<"1. Insertar nuevo nodo"<<endl;
 		cout<<"2. Mostrar arbol"<<endl;
 		cout<<"3. Mostrar arbol Pre-Orden"<<endl;
+		cout<<"4. Mostrar arbol Post-Orden"<<endl;
 		cout<<"6. Salir\n"<<endl;
 		cout<<"\t Opcion: ";
 		cin>>op;
@@ -58,6 +60,9 @@ void ArbolBinario::menu(){
 				system("pause");
 				break;
 			case 4:
+				cout<<"\n\tMostrar arbol Post-Orden (I->D->R)"<<endl<<endl;
+				preOrden(arbol);				
+				cout<<endl<<endl;
 //				cout<<"\nDigite un numero a modificar: ";
 //				cin>>num;
 //				insertarNodo(arbol,num);
@@ -103,12 +108,22 @@ void ArbolBinario::mostrarArbol(Nodo *arbol,int cont){
 }
 
 void ArbolBinario::preOrden(Nodo *arbol){
-	if(arbol==NULL){
+	if(arbol==NULL){ 
 		return;
 	}else{
 		cout<<arbol->dato.getNum()<<" - ";
 		preOrden(arbol->izq);
 		preOrden(arbol->der);
+	}
+}
+void ArbolBinario::postOrden(Nodo *arbol){
+	if(arbol==NULL){ 
+		return;
+	}else{
+		postOrden(arbol->izq);
+		postOrden(arbol->der);
+		cout<<arbol->dato.getNum()<<" - ";
+	
 	}
 }
 
