@@ -206,7 +206,7 @@ void ArbolBinario::mostrarArbol(Nodo *arbol,int cont){
 		for(int i=0;i<cont;i++){
 			cout<<"  ";
 		}
-		cout<<arbol->dato.getNum()<<endl;
+		cout<<"("<<arbol->dato.getNum()<<")"<<endl;
 		mostrarArbol(arbol->izq,cont+1);
 	}
 }
@@ -215,7 +215,7 @@ void ArbolBinario::preOrden(Nodo *arbol){
 	if(arbol==NULL){
 		return;
 	}else{
-		cout<<arbol->dato.getNum()<<" - ";
+		cout<<arbol->dato.getNum()<<" , ";
 		preOrden(arbol->izq);
 		preOrden(arbol->der);
 	}
@@ -226,7 +226,7 @@ void ArbolBinario::inOrden(Nodo *arbol){
 		return;
 	}else{
 		inOrden(arbol->izq);
-		cout<<arbol->dato.getNum()<<" - ";
+		cout<<arbol->dato.getNum()<<" , ";
 		inOrden(arbol->der);
 	}
 }
@@ -236,7 +236,7 @@ void ArbolBinario::postOrden(Nodo *arbol){
 	}else{
 		postOrden(arbol->izq);
 		postOrden(arbol->der);
-		cout<<arbol->dato.getNum()<<" - ";
+		cout<<arbol->dato.getNum()<<" , ";
 	
 	}
 }
