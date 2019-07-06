@@ -21,6 +21,7 @@ class ArbolBinario{
 		void preOrden(Nodo *);
 		void postOrden(Nodo *);
 		void inOrden(Nodo *);
+		bool buscarNodo(Nodo *,string);
 		string randomNum();
 		void menuArbol();
 		void gotoxy(int,int);
@@ -50,9 +51,9 @@ int ArbolBinario::menuOp(const char titulo[], const char *opciones[], int n){
    do {
 system("cls");
       gotoxy(25,8); cout<<"=============================================";
-      gotoxy(25,18); cout<<"=============================================";
+      gotoxy(25,25); cout<<"=============================================";
 
-      for (int i = 0; i < 10; ++i) {
+      for (int i = 0; i < 18; ++i) {
          gotoxy(25, 8 + i); cout<< "=";
          gotoxy(69, 8 + i); cout<< "=";
       }
@@ -108,19 +109,20 @@ system("cls");
 
 void ArbolBinario::menuArbol(){setlocale(LC_CTYPE,"Spanish");
     char* plbr;
-        char* aux2;
-        char* aux3;
-      plbr=new char[20];
+    char* aux2;
+    char* aux3;
+    string buscar;
+    plbr=new char[20];
     aux2=new char[20];
     aux3=new char[20];
     bool repite = true;
-   int opcion,cont;
+    int opcion,cont;
    string num;
    // Titulo del menú y nombres de las opciones
    setlocale(LC_CTYPE,"Spanish");
    const char *titulo = "\t  -------< MENU >---------";
-   const char *opciones[] = { " Insertar nuevo nodo", " Mostrar arbol"," Mostrar arbol Pre-Orden"," Mostrar arbol Post-Orden"," Mostrar arbol In-Orden"," SALIR"};
-   int n = 6;  // Numero de opciones
+   const char *opciones[] = { " Insertar nuevo nodo", " Mostrar arbol"," Mostrar arbol Pre-Orden"," Mostrar arbol Post-Orden"," Mostrar arbol In-Orden"," Buscar nodo"," SALIR"};
+   int n = 7;  // Numero de opciones
 
    do {
 
@@ -173,7 +175,22 @@ void ArbolBinario::menuArbol(){setlocale(LC_CTYPE,"Spanish");
 				cout<<endl<<endl;
 				system("pause");
 				break;
-        	case 6:
+			case 6:
+				system("cls");
+				cout<<"\n\tBuscar nodo"<<endl<<endl;
+				cout<<"\tIngrese el nodo a buscar: ";
+				cin>>buscar;
+				cout<<endl;
+				cout<<endl;
+				if(buscarNodo(arbol,buscar)==true){
+					cout<<"\n\tElemento "<<buscar<<" encontrado en el arbol"<<endl;
+				}else{
+					cout<<"\nElemento no encontrado"<<endl;
+				}
+				cout<<endl<<endl;
+				system("pause");
+				break;	
+        	case 7:
             	repite = false;
             	break;
       }
@@ -208,6 +225,18 @@ void ArbolBinario::mostrarArbol(Nodo *arbol,int cont){
 		}
 		cout<<"("<<arbol->dato.getNum()<<")"<<endl;
 		mostrarArbol(arbol->izq,cont+1);
+	}
+}
+
+bool ArbolBinario::buscarNodo(Nodo *arbol, string n1){
+	if(arbol==NULL){
+		return false;
+	}else if(arbol->dato.getNum()==n1){
+		return true;
+	}else if(n1<arbol->dato.getNum()){
+		return buscarNodo(arbol->izq,n1);
+	}else{
+		return buscarNodo(arbol->der,n1);
 	}
 }
 

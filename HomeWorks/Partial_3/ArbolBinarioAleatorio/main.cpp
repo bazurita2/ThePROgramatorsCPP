@@ -13,6 +13,7 @@ using namespace std;
 int main(){
 	ArbolBinario *arbolBinario=new ArbolBinario();
 	arbolBinario->menuArbol();
+	cout<<"\n\n"<<endl;
 	getch();
 	return 0;
 }
