@@ -169,6 +169,8 @@
     <ClCompile Include="Tests_AVL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\ArbolAVL.h" />
+    <ClInclude Include="..\..\..\Nodo.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
