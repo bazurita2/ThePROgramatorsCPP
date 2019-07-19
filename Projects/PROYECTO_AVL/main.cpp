@@ -9,12 +9,46 @@
 #include <conio.h>
 #include <time.h>
 #include <string.h>
+#include <string>
 #include <windows.h>
 #include "ArbolAVL.h"
 #define ARRIBA 72
 #define ABAJO 80
 #define ENTER 13
 #define TAM 100
+
+void qrgen(int altura, int balance){
+	char buf[16]; 
+	sprintf(buf,"%d",altura);
+	const char*p =buf;
+	std::string ao;
+	std::string balanc;
+	std::string num1(p);
+	std::string num2;
+	if(balance == 1)
+	{
+		num2="El arbol esta balanceado";
+	}
+	else if(balance == 0)
+	{
+		num2="El arbol esta balanceado";
+	}
+	else if(balance == -1)
+	{
+		num2="El arbol esta balanceado";
+	}
+	else
+	{
+		num2="El arbol no corresponde a un balanceo";
+	}
+	std::string tot="qrarbol.png";
+	std::string cmd;
+   	ao="\"" + std::string("La Profundidad del arbol es de: ")+num1+std::string(" Estado del arbol: ")+num2+"\"";
+    cmd="qrcode.exe -o "+tot+" -s 10 -l H " +ao ;
+    printf("\n");
+    system(cmd.c_str());
+    system(tot.c_str());
+}
 
 void gotoxy(int x,int y){
       HANDLE hcon;
@@ -90,6 +124,8 @@ system("cls");
 }
 
 
+
+
 void menuArbol(){setlocale(LC_CTYPE,"Spanish");
     system("color 9f");
 	char* plbr;
@@ -105,8 +141,8 @@ void menuArbol(){setlocale(LC_CTYPE,"Spanish");
    // Titulo del menú y nombres de las opciones
    setlocale(LC_CTYPE,"Spanish");
    const char *titulo = "\t  -------< MENU >---------";
-   const char *opciones[] = { " Insertar nuevo nodo"," Buscar nodo"," Eliminar nodo"," Mostrar Arbol"," Generar PDF"," SALIR"};
-   int n = 6;  // Numero de opciones
+   const char *opciones[] = { " Insertar nuevo nodo"," Buscar nodo"," Eliminar nodo"," Mostrar Arbol"," Generar PDF"," Generar QR con información del arbol"," SALIR"};
+   int n = 7;  // Numero de opciones
    int c,i,resp;
    ArbolAVL avl;
 
@@ -160,8 +196,16 @@ void menuArbol(){setlocale(LC_CTYPE,"Spanish");
             cout<<"Archivo generado exitosamente\n";
             cout<<endl<<endl;
             system("pause");
+				break;			
+		case 6: 
+			system("cls");
+			avl.altura(raiz);
+			avl.Balancear(raiz);
+            cout<<"PNG generado\n";
+            cout<<endl<<endl;
+            system("pause");
 				break;						
-		case 6:
+		case 7:
 				repite = false;
 				cout<<"\n\n\n\n"<<endl<<endl;
             	break;

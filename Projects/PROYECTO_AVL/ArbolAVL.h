@@ -11,7 +11,7 @@
 #include <fstream>
 #include<string.h>
 #include <sstream>
-#include<graphics.h>
+#include <graphics.h>
 #include "Nodo.h"
 #include<stdio.h>
 #include <windows.h>
