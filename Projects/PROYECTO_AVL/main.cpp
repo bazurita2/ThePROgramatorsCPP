@@ -17,6 +17,13 @@
 #define ENTER 13
 #define TAM 100
 
+/**
+* /brief qrgen
+*
+* Genera un archivo .png, donde se muestra un qr que permite visualizar si el arbol esta balanceado o no, ademas de su profundidad y estado actual
+* @param int x
+* @param int y
+*/
 void qrgen(int altura, int balance){
 	char buf[16]; 
 	sprintf(buf,"%d",altura);
@@ -49,7 +56,13 @@ void qrgen(int altura, int balance){
     system(cmd.c_str());
     system(tot.c_str());
 }
-
+/**
+* /brief gotoxy	
+*
+* Permite el manejo de cursores de teclado
+* @param int x
+* @param int y
+*/
 void gotoxy(int x,int y){
       HANDLE hcon;
       hcon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -58,6 +71,15 @@ void gotoxy(int x,int y){
       dwPos.Y= y;
       SetConsoleCursorPosition(hcon,dwPos);
  }
+  /**
+* /brief menuOp	
+*
+* Permite la movilidad de los cursores para el menu donde se puede escoger la opcion  deseada
+* @param const char titulo[]
+* @param const char *opciones[]
+* @param int n
+* @return opcionSeleccionada
+*/
 int menuOp(const char titulo[], const char *opciones[], int n){
    int opcionSeleccionada = 1;  // Indica la opcionSeleccionada
 
@@ -123,9 +145,11 @@ system("cls");
    return opcionSeleccionada;
 }
 
-
-
-
+/**
+* /brief menuArbol	
+*
+* Muestra en pantalla un menu donde se puede escoger la opcion mediante el uso de cursores de teclado, separandolos por casos, y llamando en cada uno a las funciones necesarias
+*/
 void menuArbol(){setlocale(LC_CTYPE,"Spanish");
     system("color 9f");
 	char* plbr;
@@ -215,8 +239,12 @@ void menuArbol(){setlocale(LC_CTYPE,"Spanish");
 
 }
 
-
-
+ /**
+* /brief main	
+*
+* Hace llamada a la funcion menuArbol(), que permitira el menu dinamico
+* @return 0
+*/
 
 int main()
 {

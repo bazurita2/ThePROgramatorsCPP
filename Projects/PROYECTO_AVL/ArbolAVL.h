@@ -40,7 +40,12 @@ class ArbolAVL{
             raiz = NULL;
         }
 };
-
+ /**
+* /brief buscar	
+*
+* Recorre el arbol por sus lados hasta encontrar el dato deseado, en caso de no encontrarlo o estar vacio mostrara su respectivo mensaje
+* @param int dato
+*/
 void ArbolAVL::buscar(int dato)
 {
      Nodo *temp = raiz,*padre = raiz;
@@ -70,7 +75,12 @@ void ArbolAVL::buscar(int dato)
         }
         
 }
-
+ /**
+* /brief intercambiarNodos	
+*
+* Cuando el arbol esta desvalanceado, intercambia el nodo correspondiente ya sea por la derecha o por izquierda
+* @param Nodo *p
+*/
 void ArbolAVL::intercambiarNodos(Nodo * p)
 
 {
@@ -82,6 +92,12 @@ void ArbolAVL::intercambiarNodos(Nodo * p)
      p->derecha=temp;
      
 }
+ /**
+* /brief destruirNodo	
+*
+* Una vez que se balancea el arbol se debe eliminar el nodo que fue movido
+* @param Nodo *p
+*/
 void destruirNodo(Nodo *p)
 
 {
@@ -90,6 +106,12 @@ void destruirNodo(Nodo *p)
      destruirNodo(p->derecha);
      delete p;
 }
+/**
+* /brief eliminar	
+*
+* Mediante la creacion de Nodos auxiliares, elimina el valor del dato que este contenido en el Nodo
+* @param Nodo *p
+*/
 void eliminar(Nodo *p)
 {    Nodo* lc=p->izquierda;
      if(lc&&(lc->izquierda||lc->derecha)) eliminar(lc);
@@ -104,6 +126,11 @@ void eliminar(Nodo *p)
        p->derecha=NULL;
      }
 }
+ /**
+* /brief borrarHojas	
+*
+* En el caso que se desee eliminar un nodo, se verifica si es hoja, si esto cumple la eliminacion es directa 
+*/
 void ArbolAVL::borrarHojas()
 
 {
@@ -113,73 +140,78 @@ void ArbolAVL::borrarHojas()
      destruirNodo(raiz);
 }
 
-
+/**
+* /brief max	
+*
+* Compara los valores de los nodos, retornando el mayor de ellos
+* @param int a
+* @param int b
+* @return (a > b)? a : b;
+*/
 int ArbolAVL::max(int a, int b)
 {
     return (a > b)? a : b;
 }
  
-
+/**
+* /brief altura	
+*
+* Verifica si el arbol esta vacio retorna 0, caso contrario retornara la altura del arbol
+* @param Nodo *N
+* @return 0 || return N->altura
+*/
 int ArbolAVL::altura( Nodo *N)
 {
     if (N == NULL)
         return 0;
     return N->altura;
 }
-
+/**
+* /brief Dibujar	
+*
+* Mediante el uso de las funciones de la libreria graphics.h, se procede a graficar de forma dinamica, se aplica recursividad para recorrer los dos lados del arbol 
+* @param Nodo *Arbol
+* @param int a
+* @param int b
+* @param int c
+* @param int d
+*/
 void ArbolAVL::Dibujar(Nodo *Arbol, int a, int b, int c, int d){
   string value;
+ofstream agregarTxt;
+agregarTxt.open("AVL.txt",ios::app); 
   if (Arbol != NULL){
-  	value=static_cast<ostringstream*>(&(ostringstream() << Arbol->dato))->str();
-   // value = to_string(Arbol->dato);
+    value = to_string(Arbol->dato);
     char value2[value.length() +1];
     strcpy(value2, value.c_str());
     circle(300 + a, 75 + b, 14);
+    agregarTxt<<circle(300 + a, 75 + b, 14);
 
     setcolor(YELLOW);
     outtextxy(292 + a, 68 + b, value2);
+    agregarTxt<<outtextxy(292 + a, 68 + b, value2);
     setcolor(WHITE);
-    if (d == 1)
+     if (d == 1){
       line(300 + a + pow(2, c + 1), b + 14, 300 + a, 61 + b);
-    else if (d == 2)
+      agregarTxt<<line(300 + a + pow(2, c + 1), b + 14, 300 + a, 61 + b);
+  	}
+    else if (d == 2){
       line(300 + a - pow(2, c + 1), b + 14, 300 + a, 61 + b);
+      agregarTxt<<line(300 + a - pow(2, c + 1), b + 14, 300 + a, 61 + b);
+  	}
     Dibujar(Arbol->izquierda, a - pow(2, c) - pow(2, d - 4), b + 75, c - 1, 1);
     Dibujar(Arbol->derecha, a + pow(2, c) + pow(2, d - 4), b + 75, c - 1, 2);
   }
+agregarTxt.close();
 }
-
-void ArbolAVL::imprimir(Nodo *ptr, int nivel)
-{
-	ofstream agregarTxt;
-
-    fflush(stdin);
-	
-	agregarTxt.open("AVL.txt",ios::app);  
-    int i;
-    if (ptr!=NULL)
-    {
-		  
-		imprimir(ptr->derecha, nivel + 1);
-        agregarTxt<<"\n";
-		printf("\n");
-        if (ptr == raiz){
-        agregarTxt<<"Raiz -> ";
-		cout<<"Raiz -> ";
-    	}
-        for (i = 0; i < nivel && ptr != raiz; i++){
-            agregarTxt<<"        ";
-			cout<<"        ";
-        }
-        agregarTxt<<ptr->dato;
-		cout<<ptr->dato;
-        imprimir(ptr->izquierda, nivel + 1);
-        
-    }
-    agregarTxt.close();
-}
-
  
-
+/**
+* /brief nuevo_nodo	
+*
+* Reserva espacio de memoria, crea un nodo con sus lados nulos
+* @param int dato
+* @return nodo
+*/
  Nodo* ArbolAVL::nuevo_nodo(int dato){
     Nodo *nodo = (class Nodo*) malloc(sizeof(class Nodo));
     nodo->dato   = dato;
@@ -189,7 +221,13 @@ void ArbolAVL::imprimir(Nodo *ptr, int nivel)
     return(nodo);
 }
  
-
+  /**
+* /brief RotacionDerecha	
+*
+* Si el arbol esta desbalanceado en su lado izquierdo, se procede a balancear a su derecha
+* @param class Nodo *y
+* @return x
+*/
  Nodo* ArbolAVL::RotacionDerecha(class Nodo *y)
 {
      Nodo *x = y->izquierda;
@@ -204,7 +242,13 @@ void ArbolAVL::imprimir(Nodo *ptr, int nivel)
     return x;
 }
  
-
+ /**
+* /brief RotacionIzquierda	
+*
+* Si el arbol esta desbalanceado en su lado derecho, se procede a balancear a su izquierda
+* @param Nodo *x
+* @return y
+*/
  Nodo* ArbolAVL::RotacionIzquierda( Nodo *x)
 {
     class Nodo *y = x->derecha;
@@ -219,14 +263,27 @@ void ArbolAVL::imprimir(Nodo *ptr, int nivel)
     return y;
 }
  
-
+/**
+* /brief Balancear
+*
+* Realiza la resta de alturas de su lado izquierdo menos su lado derecho, para comprobar si esta balanceado
+* @param Nodo *N
+* @return altura(N->izquierda) - altura(N->derecha);
+*/
 int ArbolAVL::Balancear( Nodo *N)
 {
     if (N == NULL)
         return 0;
     return altura(N->izquierda) - altura(N->derecha);
 }
-
+ /**
+* /brief Insertar
+*
+* Verifica si el arbol esta vacio, en ese caso lo inserta como raiz, caso contrario compara si es menor o mayor de la raiz, para ponerlo a su derecha o izquierda, llamando a la funcion balancear una vez insertado
+* @param Nodo *nodo
+* @param int dato
+* @return nodo
+*/
  Nodo* ArbolAVL::Insertar( Nodo* nodo, int dato)
 {
    
@@ -259,7 +316,13 @@ int ArbolAVL::Balancear( Nodo *N)
   
     return nodo;
 }
-
+/**
+* /brief minimoValorNodo
+*
+* Instancia de un Nodo, recorre el lado izquierdo hasta encontrar el valor menor
+* @param Nodo *nodo
+* @return aux
+*/
  Nodo * ArbolAVL::minimoValorNodo( Nodo* nodo)
 {
      class Nodo* aux = nodo;
@@ -268,7 +331,14 @@ int ArbolAVL::Balancear( Nodo *N)
         aux = aux->izquierda;
     return aux;
 }
- 
+ /**
+* /brief eliminarNodo
+*
+* Verifica si la raiz esta vacia, si no lo es recorre su lao izquierdo en caso de que sea menor, o lado derecho en caso de que sea mayor hasta encontrar el nodo
+* Cuando ha sido encontrado se verifica si es hoja o subraiz, elimina el nodo y procede hacer el balanceo
+* @param Nodo *N
+* @return altura(N->izquierda) - altura(N->derecha);
+*/
  Nodo* ArbolAVL::eliminarNodo( Nodo* raiz, int dato)
 {
   
